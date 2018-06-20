@@ -1,0 +1,135 @@
+package com.magic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.db.magic.Dbase;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class showThree extends ActionSupport{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String chr;
+	private String start;
+	private String end;
+	private String gene;
+	private String search;
+	
+
+	public String execute(){
+		
+		System.out.println(chr);
+		System.out.println(start);
+		System.out.println(end);
+		System.out.println(gene);
+		System.out.println(search);
+		Map<String,Object> attributes = ActionContext.getContext().getSession();
+		
+		System.out.println(attributes.get("trait"));
+		
+		int traitlen = (Integer) attributes.get("traitlen");
+		
+		String[] traitArray = (String[]) attributes.get("traitArray");
+		
+		for(int i=0;i<traitlen;i++){
+			System.out.println("traitArray "+i+" is "+traitArray[i]);
+		}
+		
+
+		attributes.put("search", search);
+		String sql;
+		
+		Dbase d = new Dbase();
+		
+		Map<String,Object> map =  new HashMap<String,Object>();
+		
+		if(search.equals("first")){
+			sql = "select chr,pos,trait,snp,p from MAGIC_all_sig_SNP where chr='" +chr+ "'AND  pos BETWEEN "+start+" AND "+end+" AND (";
+			for(int i=0;i<traitlen;i++){
+				String sql1 = "";
+				if(i==traitlen-1){
+					sql1 = "trait = '"+traitArray[i];
+				}else{
+					sql1 = "trait = '"+traitArray[i]+"' or ";
+				}
+				sql += sql1;
+			}
+			sql += "')";
+			System.out.println(sql);
+			
+		}else{
+			sql = "select snp,allele,gene,transcript,annotation from sig_snp_annotation where gene='"+gene+"'";
+			System.out.println(sql);
+		}
+		
+		map = (HashMap<String,Object>)d.getChr(sql);
+		
+		attributes.put("len", map.get("len"));
+		attributes.put("data", map.get("data"));
+		
+		
+		d.Close();
+		return SUCCESS;
+	}
+
+
+	
+	public String getSearch() {
+		return search;
+	}
+
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
+	public String getChr() {
+		return chr;
+	}
+
+
+	public void setChr(String chr) {
+		this.chr = chr;
+	}
+
+
+	public String getStart() {
+		return start;
+	}
+
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+
+	public String getEnd() {
+		return end;
+	}
+
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+
+	public String getGene() {
+		return gene;
+	}
+
+
+	public void setGene(String gene) {
+		this.gene = gene;
+	}
+	
+	
+	
+	
+	
+    
+}
+
