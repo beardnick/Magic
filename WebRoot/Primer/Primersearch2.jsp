@@ -20,7 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="Css/mycss.css" rel="stylesheet"/>
 	<script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
-
 </head>
   
   <body>
