@@ -71,19 +71,19 @@
 </head>
 <body>
 	<%@ include file="../ListHeader.jsp"%>
-	<div class="content" style="height:1300px;margin-top:20px;">
+	<div class="content" style="height:5000px;margin-top:20px;">
 		<div id="carousel">
 			<div class="slidebox-01">
 				<ul style="left:0px;" class="slidepic-01">
 					<a href="/Magic/Dataintroduction/genotypedata.jsp" target="_blank">
 						<!--ie浏览器解析图片的时候有时会默认给它加一个边框-->
-						<li><image class="img" alt="" src="images/index1.png" /></li>
+						<li><image class="img" alt="" src="images/index1.png" style="max-width:none;width:100%;" /></li>
 					</a>
-					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank">
-						<li><image class="img" alt="" src="images/index2.png" /></li>
+					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank"/>
+						<li><image class="img" alt="" src="images/index2.png"  style="max-width:none;width:100%;" /></li>
 					</a>
 					<a href="/Magic/contact.jsp" target="_blank">
-						<li><image class="img" alt="" src="images/index3.png" /></li>
+						<li><image class="img" alt="" src="images/index3.png"  style="max-width:none;width:100%;" /></li>
 					</a>
 				</ul>
 				<div class="slidebtn-01">
@@ -98,66 +98,106 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-3" style="position:sticky;top:10px;">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Navigation</div>
 					<div class="panel-body">
 						<ul class="list-group">
-							<li class="list-group-item">Cras justo odio</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<a href="" class="list-group-item"
+								style="color:#333;text-align:center;">Cras justo odio</a>
+							<a href="" class="list-group-item"
+								style="color:#333;text-align:center;">Dapibus ac facilisis
+								in</a>
+							<a href="" class="list-group-item"
+								style="color:#333;text-align:center;">Morbi leo risus</a>
+							<a href="" class="list-group-item"
+								style="color:#333;text-align:center;">Porta ac consectetur
+								ac</a>
+							<a href="" class="list-group-item"
+								style="color:#333;text-align:center;">Vestibulum at eros</a>
+							<a href="Draw/magic" class="list-group-item"
+								style="color:#333;text-align:center;">Bin Map</a>
+							<a href="JBrowse/jbrowsetool.jsp" class="list-group-item"
+								style="color:#333;text-align:center;"><h5>Variation
+									Browser</h5></a>
+							<a href="Step\step_one.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">GWAS Search</a>
+							<a href="genetree\gene_tree.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">GWAS Diagram</a>
+							<a href="Last\Last.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">BLAST/Primer-BLAST</a>
+							<a href="Primer\Primersearch2.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">General Primer Design</a>
+							<a href="Primer\Primersearch1.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">Primer Design By
+								Region</a>
+							<a href="Primer\Primersearch3.jsp" class="list-group-item"
+								style="color:#333;text-align:center;">Primer Design By
+								Variation ID</a>
 						</ul>
 					</div>
 					<div class="panel-footer"></div>
 				</div>
 			</div>
 
-			<div class="col-md-10" style="text-align:justify;">
-				<div class="my-panel">
-					<div class="title" style="text-align: center;">
-						<h1>Welcome to Maize CUBIC Variation Database</h1>
-						<div class="title">
-							<h2>Database Overview</h2>
-						</div>
+			<div class="col-md-9" style="text-align:justify;">
+				<div class="title"
+					style="text-align: center;color:#4381be;margin-bottom:15px">
+					<h1>Welcome to Maize CUBIC Variation Database</h1>
+					<div class="title" style="color:#4381be;margin-bottom:15px">
+						<h2>Database Overview</h2>
 					</div>
-					<div class="panel-body">
-						<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A maize Complete-diallel
-							plus Unbalanced Breeding-like Inter-Cross population (CUBIC)
+				</div>
+				<div class="panel-body">
+					<div class="my-panel">
+						<h2>Population Design</h2>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A maize Complete-diallel plus
+							Unbalanced Breeding-like Inter-Cross population (CUBIC)
 							population consist of 1404 individuals derived from twenty-four
 							elite lines that have been widely applied in Chinese breeding
-							programs has been developed.</h3>
-						<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•30 F1s with best agronomic
+							programs has been developed.</>
+					</div>
+					<div class="my-panel">
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•30 F1s with best agronomic
 							performance were selected to futher cross in NCII,and the other
 							110 F1s were randomly selected to cross with open pollinated in
-							isolated region.</h4>
-						<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•The seed from above F1s
-							were mixed together with the amount of 2:1 with an expectation to
-							improve the population performance.</h4>
-						<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•All harvest individuals
-							were next planted under open pollination within isolated region
-							for totally 6 generations.</h4>
-						<h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•Following,the population
-							was self-pollinated for another 6 generations.</h4>
-						<h3>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All progenies and founders have
-							been sequenced at low coverage (1x and 11x, respectively). DNA
-							libraries were sequenced with Illumina HiSeq 2500 with 125-bp
+							isolated region.</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•The seed from above F1s were
+							mixed together with the amount of 2:1 with an expectation to
+							improve the population performance.</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•All harvest individuals were
+							next planted under open pollination within isolated region for
+							totally 6 generations.</p>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•Following,the population was
+							self-pollinated for another 6 generations.</p>
+						<div style="text-align:center">
+							<img alt="graph" src="images\graph.png"
+								style="margin:0 auto;width:700px"></img> <img alt="maize"
+								src="images\maize.png" style="margin:0 auto;width:400px"></img>
+						</div>
+					</div>
+					<div class="my-panel">
+						<h2>Sequencing</h2>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All progenies and founders
+							have been sequenced at low coverage (1x and 11x, respectively).
+							DNA libraries were sequenced with Illumina HiSeq 2500 with 125-bp
 							paired-end reads using V4 reagents, generating generations. All
 							progenies and founders have been sequenced at low coverage (1x
 							and 11x, respectively). DNA libraries were sequenced with
 							Illumina HiSeq 2500 with 125-bp paired-end reads using V4
 							reagents, generating almost 2000x genome coverage. Sequences data
 							are available in
-							<div class="class0" style="display:inline;">
-								<a href="http://bigd.big.ac.cn/">BIG Data Center (BIGD)</a>, and
-								GSA project accession number is <u><b>PRJCA000346</u></b>.
-						</h3>
-						<h3>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An integrated strategy in variant
-							calling and imputation was applied to the population, and over
-							53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
+						<div class="class0" style="display:inline;">
+							<a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG Data
+								Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
+						</div>
+					</div>
+					</p>
+					<div class="my-panel">
+						<h2>Genotyping</h2>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An integrated strategy in
+							variant calling and imputation was applied to the population, and
+							over 53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
 							finally obtained, which constituted the highest density and the
 							most diverse maize variant map to date. The SNP set was found
 							>99% consistency compared with genotypes derived from array- and
@@ -165,18 +205,27 @@
 							structural variants was considered as ~60%. This variant map,
 							together with the methodological practices, would be a great
 							valuable resource for the plant community.
-							<div class="class0">
-								<a href="/Magic/Dataintroduction/genotypedata.jsp">Read
-									more……</a>
-							</div>
-						</h3>
+						<div class="class0">
+							<a href="/Magic/Dataintroduction/genotypedata.jsp"
+								style="color:#4381be;">Read more……</a>
+						</div>
+						</p>
+
+
+						<h2>Phenotyping</h2>
+						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
+							five different provinces in the summer of 2014 and 20 traits were
+							investigated.
+						<div class="class0">
+							<a href="/Magic/Dataintroduction/genotypedata.jsp"
+								style="color:#4381be;">Read more……</a>
+						</div>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div style="height:50px;"></div>
 	</div>
-
 	<%@ include file="../ListFooter.jsp"%>
 </body>
 </html>

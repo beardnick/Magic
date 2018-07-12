@@ -22,6 +22,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+.list-group a:link a:visited a:hover{
+	color:#333333;
+}
+
 .class0 a {
 	white-space: nowrap;
 	font-size: 20px;
@@ -279,12 +283,17 @@ body {
 	border: solid 1px #eee;
 	border-radius: 3px;
 	padding: 5px;
+	margin-bottom:21px;
 }
 
 .my-panel>.title {
 	color: #4381be;
 	margin-bottom: 15px;
 }
+.my-panel>.p{
+	font-size:4
+}
+
 
 .each-tool {
 	transition: background 0.5s;
