@@ -71,6 +71,7 @@
 </head>
 <body>
 	<%@ include file="../ListHeader.jsp"%>
+
 	<div class="content" style="height:5000px;margin-top:20px;">
 		<div id="carousel">
 			<div class="slidebox-01">
@@ -211,7 +212,7 @@
 						</div>
 						</p>
 
-
+                        <div class="my-panel">
 						<h2>Phenotyping</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
 							five different provinces in the summer of 2014 and 20 traits were
@@ -221,6 +222,7 @@
 								style="color:#4381be;">Read more……</a>
 						</div>
 						</p>
+						</div>
 					</div>
 				</div>
 			</div>

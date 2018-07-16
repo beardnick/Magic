@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var tas = new Array();
 				for(var i=0;i<num;i++){
 				    
-					tas[i]= myData[i].name;
+					tas[i]= myData[i].id;
 					//alert(tas[i]);
 				} 
 				//alert(tas);

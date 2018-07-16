@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%@ include file="../ListHeader.jsp"%>
+    <%@ include file="../py_scripts/chrome.html"%>
     <div class="content" style="">
     	<div class="describe">
         	<h3>Bin Map</h3>

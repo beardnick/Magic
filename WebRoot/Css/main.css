@@ -284,6 +284,7 @@ body {
 	border-radius: 3px;
 	padding: 5px;
 	margin-bottom:21px;
+	box-shadow:0.3px 0.3px 0px #e5e4e4;
 }
 
 .my-panel>.title {
