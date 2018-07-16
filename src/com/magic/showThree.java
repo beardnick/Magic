@@ -80,11 +80,9 @@ public class showThree extends ActionSupport {
 			System.out.println(sql);
 		}
 
-        URL pathURL = showThree.class.getResource("");
-        String path = pathURL.getPath();
+		String path = getWebRoot();
         path = path.substring(1 , path.length());
-        path = path.substring(0, path.indexOf(".metadata/"));
-        path = path + "Magic/WebRoot/py_scripts/";
+		path = path + "py_scripts/";
         String driver = path.substring(0 , path.indexOf('/'));
         System.out.println(path);
         Runtime rt = Runtime.getRuntime();

@@ -149,6 +149,7 @@ public class Blast extends ActionSupport{
 		{
 			try{
 				String filePath=getWebRoot();
+				System.out.println(filePath);
 	            filePath = filePath+"file/";
 	            filePath = filePath.substring(1);
 	            filePath = filePath.replaceAll("\\/","\\\\");
