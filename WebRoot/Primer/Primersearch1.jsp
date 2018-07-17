@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%@ include file="../ListHeader.jsp"%>
-    
     <div class="content" style="height:700px;width:1200px;">
             <div class="describe">
                 <h3>Primer Design by Region</h3>

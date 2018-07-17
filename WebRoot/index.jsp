@@ -78,13 +78,16 @@
 				<ul style="left:0px;" class="slidepic-01">
 					<a href="/Magic/Dataintroduction/genotypedata.jsp" target="_blank">
 						<!--ie浏览器解析图片的时候有时会默认给它加一个边框-->
-						<li><image class="img" alt="" src="images/index1.png" style="max-width:none;width:100%;" /></li>
+						<li><image class="img" alt="" src="images/index1.png"
+								style="max-width:none;width:100%;" /></li>
 					</a>
-					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank"/>
-						<li><image class="img" alt="" src="images/index2.png"  style="max-width:none;width:100%;" /></li>
+					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank" />
+					<li><image class="img" alt="" src="images/index2.png"
+							style="max-width:none;width:100%;" /></li>
 					</a>
 					<a href="/Magic/contact.jsp" target="_blank">
-						<li><image class="img" alt="" src="images/index3.png"  style="max-width:none;width:100%;" /></li>
+						<li><image class="img" alt="" src="images/index3.png"
+								style="max-width:none;width:100%;" /></li>
 					</a>
 				</ul>
 				<div class="slidebtn-01">
@@ -104,23 +107,16 @@
 					<div class="panel-heading">Navigation</div>
 					<div class="panel-body">
 						<ul class="list-group">
-							<a href="" class="list-group-item"
-								style="color:#333;text-align:center;">Cras justo odio</a>
-							<a href="" class="list-group-item"
-								style="color:#333;text-align:center;">Dapibus ac facilisis
-								in</a>
-							<a href="" class="list-group-item"
-								style="color:#333;text-align:center;">Morbi leo risus</a>
-							<a href="" class="list-group-item"
-								style="color:#333;text-align:center;">Porta ac consectetur
-								ac</a>
-							<a href="" class="list-group-item"
-								style="color:#333;text-align:center;">Vestibulum at eros</a>
+							<a href="Dataintroduction/genotypedata.jsp"
+								class="list-group-item" style="color:#333;text-align:center;">Porta
+								ac consectetur ac</a>
+							<a href="Dataintroduction/phenotypedata.jsp"
+								class="list-group-item" style="color:#333;text-align:center;">Vestibulum
+								at eros</a>
 							<a href="Draw/magic" class="list-group-item"
 								style="color:#333;text-align:center;">Bin Map</a>
 							<a href="JBrowse/jbrowsetool.jsp" class="list-group-item"
-								style="color:#333;text-align:center;"><h5>Variation
-									Browser</h5></a>
+								style="color:#333;text-align:center;">Variation Browser</a>
 							<a href="Step\step_one.jsp" class="list-group-item"
 								style="color:#333;text-align:center;">GWAS Search</a>
 							<a href="genetree\gene_tree.jsp" class="list-group-item"
@@ -189,8 +185,8 @@
 							reagents, generating almost 2000x genome coverage. Sequences data
 							are available in
 						<div class="class0" style="display:inline;">
-							<a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG Data
-								Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
+							<a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG
+								Data Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
 						</div>
 					</div>
 					</p>
@@ -211,8 +207,9 @@
 								style="color:#4381be;">Read more……</a>
 						</div>
 						</p>
+					</div>
 
-                        <div class="my-panel">
+					<div class="my-panel">
 						<h2>Phenotyping</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
 							five different provinces in the summer of 2014 and 20 traits were
@@ -222,7 +219,6 @@
 								style="color:#4381be;">Read more……</a>
 						</div>
 						</p>
-						</div>
 					</div>
 				</div>
 			</div>

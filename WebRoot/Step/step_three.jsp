@@ -35,13 +35,17 @@
 
 <body>
 	<%@ include file="../ListHeader.jsp"%>
-	<%@ include file="../py_scripts/chrome.html" %>
-	<!-- <input name="butt" value="Í³¼Æ" type="button" id="change" onclick="change()" />
-	<div class="box2">
-		<iframe id="ifrID"  frameBorder="0"
-			width="100%" scrolling="yes" height="100%"> </iframe>
-	</div> -->
+	
+
 	<div class="content" style="">
+            <div class="describe">
+                <h3>GWAS Result</h3>
+                <br/>
+                <h4>Only significant locus plotted below</h4>
+            </div>
+	<div class="col-md-12">
+	<%@ include file="../py_scripts/chrome.html" %>
+	</div>
 		<div class="describe">
 			<h3>Bin Map</h3>
 			<br />

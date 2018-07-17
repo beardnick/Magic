@@ -71,6 +71,19 @@ public class Dbase {
 		return map;
 	}
 	
+	public Map<String, String> getStartEnd(String gene){
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			rs = stmt.executeQuery("select start, end from zmb73_annotation_combined where ID ='" + gene + "'");
+			map.put("start" , rs.getString("start") );
+			map.put("end" , rs.getString("end"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return map;
+	}
+	
 	public String test(String sql){
 		String result = "";
 		try {

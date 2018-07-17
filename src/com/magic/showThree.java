@@ -34,14 +34,14 @@ public class showThree extends ActionSupport {
 		return path;
 	}
 
-	public String execute(){
+	public String execute() {
 
 		System.out.println(chr);
 		System.out.println(start);
 		System.out.println(end);
 		System.out.println(gene);
 		System.out.println(search);
-		Map<String,Object> attributes = ActionContext.getContext().getSession();
+		Map<String, Object> attributes = ActionContext.getContext().getSession();
 
 		System.out.println(attributes.get("trait"));
 
@@ -49,46 +49,50 @@ public class showThree extends ActionSupport {
 
 		String[] traitArray = (String[]) attributes.get("traitArray");
 
-		for(int i=0;i<traitlen;i++){
-			System.out.println("traitArray "+i+" is "+traitArray[i]);
+		for (int i = 0; i < traitlen; i++) {
+			System.out.println("traitArray " + i + " is " + traitArray[i]);
 		}
-
 
 		attributes.put("search", search);
 		String sql;
 
 		Dbase d = new Dbase();
 
-		Map<String,Object> map =  new HashMap<String,Object>();
-
-		if(search.equals("first")){
-			sql = "select chr,pos,trait,snp,p from MAGIC_all_sig_SNP where chr='" +chr+ "'AND  pos BETWEEN "+start+" AND "+end+" AND (";
-			for(int i=0;i<traitlen;i++){
-				String sql1 = "";
-				if(i==traitlen-1){
-					sql1 = "trait = '"+traitArray[i];
-				}else{
-					sql1 = "trait = '"+traitArray[i]+"' or ";
-				}
-				sql += sql1;
+		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, String> startEndMap;
+		String sql1 = "";
+		for (int i = 0; i < traitlen; i++) {
+			if (i == traitlen - 1) {
+				sql1 = sql1 + "trait = '" + traitArray[i];
+			} else {
+				sql1 = sql1 + "trait = '" + traitArray[i] + "' or ";
 			}
+		}
+		if (search.equals("first")) {
+			sql = "select chr,pos,trait,snp,p from MAGIC_all_sig_SNP where chr='" + chr + "'AND  pos BETWEEN " + start
+					+ " AND " + end + " AND (";
+			sql += sql1;
 			sql += "')";
 			System.out.println(sql);
 
-		}else{
-			sql = "select snp,allele,gene,transcript,annotation from sig_snp_annotation where gene='"+gene+"'";
+		} else {
+			sql = "select snp,allele,gene,transcript,annotation from sig_snp_annotation where gene='" + gene + "'";
 			System.out.println(sql);
+			startEndMap = d.getStartEnd(gene);
+			start = startEndMap.get("start");
+			end = startEndMap.get("end");
 		}
 
 		String path = getWebRoot();
-        path = path.substring(1 , path.length());
+		path = path.substring(1, path.length());
 		path = path + "py_scripts/";
-        String driver = path.substring(0 , path.indexOf('/'));
-        System.out.println(path);
-        Runtime rt = Runtime.getRuntime();
-        try {
-        	String tmp =" cmd /c " + driver + " && cd " + path + " &&  " + driver + " &&  python "  + path + "chromesome.py " +  start + " " + end; 
-        	System.out.println(tmp);
+		String driver = path.substring(0, path.indexOf('/'));
+		System.out.println(path);
+		Runtime rt = Runtime.getRuntime();
+		try {
+			String tmp = " cmd /c " + driver + " && cd " + path + " &&  " + driver + " &&  python " + path
+					+ "chromesome.py " + start + " " + end + " " + chr + " " + "\""+ sql1 + "\"";
+			System.out.println(tmp);
 			rt.exec(tmp).waitFor();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -96,10 +100,9 @@ public class showThree extends ActionSupport {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		map = (HashMap<String,Object>)d.getChr(sql);
+		map = (HashMap<String, Object>) d.getChr(sql);
 		attributes.put("len", map.get("len"));
 		attributes.put("data", map.get("data"));
-
 
 		d.Close();
 		return SUCCESS;
