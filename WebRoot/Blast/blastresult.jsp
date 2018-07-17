@@ -12,12 +12,9 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><!-- lv 7-11 change 第七行修改jdk -->
 <html>
   <head>
-  	<style type="text/css">
-	h1 {text-align: center}
-	</style>
     <base href="<%=basePath%>">
     <title>Last</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
@@ -27,8 +24,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="describe" content=""/>
     <link href="Css/bootstrap.min.css" rel="stylesheet"/>
     <link href="Css/main.css" rel="stylesheet"/>
-	<script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+    <link href="Css/tableexport.css" rel="stylesheet"/>
+    <link href="Css/bootstrap-table.css" rel="stylesheet"/>
+    <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="Jscript/bootstrap.min.js"></script>
     <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="Jscript/tableExport.js"></script>
+    <script type="text/javascript" src="Jscript/bootstrap-table-export.js"></script>
+          <style type="text/css">
+	.fixed-table-body{overflow-x:auto;overflow-y:auto;height:auto;}
+	tr,td,th{
+	border:0px solid transparent !important;
+	}
+	.pagination a:hover{
+	background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);border:1px solid #979797 !important;
+	}
+	.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+	 {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background: linear-gradient(to bottom, #585858 0%, #111 100%);
+    border-color: #428bca;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 10px;
+    line-height: 2.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+     }
+     .btn{
+     line-height:0.4;
+     }
+  </style>
 <%
 	Map attribute = ActionContext.getContext().getSession();
 	String queryid=(String)attribute.get("queryid");
@@ -109,6 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	Set<String> chrname=chrmap.keySet();
 	Iterator<String> itchr=chrname.iterator();
 	Iterator<String> itchr1=chrname.iterator();
+	Iterator<String> itchr2=chrname.iterator();/*<!--lv 7-12 change new-->*/
 	char[] qseq2;
 	char[] midline1;
 	char[] hseq1;
@@ -133,39 +162,45 @@ function check1()
     
     <div class="content" style="height:auto;">
             <div class="describe">
-                <h3>BLASTN/Primer-BLASTN</h3>
+                <h3  color = "blue">BLASTN/Primer-BLASTN</h3>
                 
                 <p><div class="left3">
-                    <h4>Blast Summary</h4>
-                    <table class="table blast-table"style="height: auto; width: 1200px" >
+                    <h4 style="color:blue;">Blast Summary</h4>
+                    <hr/>
+                    <table class="table blast-table"style="height: auto; width: 1200px;backgorund:#CCCCCC" >
                         
                         <tr>
-                            <td style="width: 130px; height: 31px" >Query ID</td><td align="left" style="height: 36px; width: 400px; " ><%=queryid%></td>
-                            <td style="width: 130px;height: 41px ">Database</td><td align="left"><%=database%></td>
+                            <td style="width: 20%; height: 31px;" >Query ID</td>
+                            <td style="width: 20%;height: 41px ">Database</td>
+                        	<td style="width: 20%;height: 41px ">Program</td>
+                        
+                            <td style="width: 20%; height: 45px">Query Length</td>
+                        
+                        
+                            <td style="width: 20%;height: 41px " >Molecule type</td>
                         </tr>
                         
-                        <tr>
-                            <td style="width: 80px;height: 41px " >Molecule type</td><td align="left">null</td>
-                            <td style="width: 130px;height: 41px ">Program</td><td align="left"><%=blastprograme%></td>
+                        <tr bgcolor="white">
+                            <td style="width: 20%; height: 31px" align="left" ><%=queryid%></td><td align="left"><%=database%></td>
+                            <td style="width: 20%; height: 31px" align="left"><%=blastprograme%></td><td align="left"><%=querylength%></td>
+                            <td style="width: 20%; height: 31px" align="left">null</td>
                         </tr>
-                        <tr>
-                            <td style="width: 130px; height: 45px">Query Length</td><td align="left"><%=querylength%></td>
-                        </tr>
-                    </table>
+					</table>
                     </div>
                     <form action="blast" method="post" onsubmit="return check1()">
                     <div class="left4" name="button">
-                    <h4>Descriptions</h4>
-                    <table class="table blast-table"   style="height: auto; width: 1200px">
+                    <h4  style="color:blue;">Descriptions</h4>
+                    <hr/>
+                    <table id="table3" class="table blast-table"   style="height: auto; width: 100%">
                         
-                        <tr>
+<!--                         <tr>
                             <td style="width: 250px; height: 45px">Description<td style="width: 250px; height: 45px">Max score<td style="width: 250px; height: 45px">Total score<td style="width: 250px;height: 45px ">Query cover</td>
                             <td style="width: 250px;height: 45px ">E&nbsp;value</td><td style="width: 147px;height: 45px ">Ident</td>
-                        </tr>
+                        </tr> -->
                         <%int sum=0;
 						if(!itchr.hasNext())
 						{%>
-							<tr><td><h3>No matching data!</h3></td></tr>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
 						<%}
                         while(itchr.hasNext())
                         {
@@ -200,32 +235,32 @@ function check1()
                     </table>
                     </div>
                     <div class="left2">
-                     <h4>Please choose chr</h4>
+                     <h4>Please choose chromosome  (If you do not choose, the following section will not be shown)</h4>
                     <form action="blast" method="post" onsubmit="return check1()">
-                    <select class="select" name="trait" id="trait1" style="width: 145px; height: 50px" > 
+                    <select class="select" name="trait" id="trait1" style="width: 145px; height: 40px;border-radius:4px;border:1px solid #2392ff;color:#0078e8;" > 
 				          
 				           <%while(itchr1.hasNext()) 
 				           {
 				           String chrkey=itchr1.next();
 				           chrvalue=chrmap.get(chrkey);%>
-				          <option style="width:150px"><%=chrvalue%></option>
+				          <option style="width:150px;height:47px;border-radius:5px;"><%=chrvalue%></option>
 				          <%} %>
-				          </select><button class="btn" id="next1">Choose</button> <input id="percent" type="hidden" class="form-control" name="blastprograme" onblur='javascript:$("#auto")' value=<%=blastprograme%>><input id="database1" type="hidden" class="form-control" name="database" onblur='javascript:$("#auto")' value=<%=database%>>
+				          </select><button class="btn" id="next1" style = "height:40px;">Search</button>
 				          
-                
                 </form>
                
                 </div>
                 	<div class="left2">
-                    <h4>Alignments</h4>
+                    <h4 style="color:blue;">Alignments</h4>
+                    <hr/>
                     <table class="table blast-table"   style="height: auto; width:1200px">
                         
                         <tr>
-                       	<td style="width: 150px; height: 45px">Score<td style="width: 150px; height: 45px">Expect<td style="width: 150px; height: 45px">Identities<td style="width: 150px;height: 45px ">Gaps</td>   <td style="width: 200px;height: 45px ">Query From-To</td>  <td style="width: 200px;height: 45px ">Hit From-To</td>  
+                       	<td style="width: 250px; height: 45px">Score<td style="width: 250px; height: 45px">Expect<td style="width: 250px; height: 45px">Identities<td style="width: 250px;height: 45px ">Gaps</td>   <td style="width: 250px;height: 45px ">Query From-To</td>  <td style="width: 250px;height: 45px ">Hit From-To</td>  
                         </tr>
-						<%if(!itchr.hasNext())
+						<%if(!itchr2.hasNext())/*<!--lv 7-12 change new-->*/
 						{%>
-							<tr><td><h3>No matching data!</h3></td></tr>
+							<tr><td style="font-size:25px;width:30%;color:red"><b>No matching data!</b></td></tr>
 						<%}%>
                         <tr>
                         <%
@@ -251,12 +286,12 @@ function check1()
                         	float querylenfloat=Float.parseFloat(querylength);
                       	    float identities=(identityfloat/querylenfloat)*100;
                         	 %>
-                        <td align="left"><%=score%></td>
-                        <td align="left"><%=evaluevalue %></td>
-                        <td align="left"><%=identities%>%</td>
-                        <td align="left"><%=gap1%></td>
-                        <td align="left"><%=queryfrom1 %>-<%=queryto1 %></td>
-                        <td align="left"><%=hitfrom1 %>-<%=hitto1 %></td>
+                        <td align="left" style="padding-top: 0px;"><%=score%></td>
+                        <td align="left" style="padding-top: 0px;"><%=evaluevalue %></td>
+                        <td align="left" style="padding-top: 0px;"><%=identities%>%</td>
+                        <td align="left" style="padding-top: 0px;"><%=gap1%></td>
+                        <td align="left" style="padding-top: 0px;"><%=queryfrom1 %>-<%=queryto1 %></td>
+                        <td align="left" style="padding-top: 0px;"><%=hitfrom1 %>-<%=hitto1 %></td>
                         <% }%>
 						</tr>
                         
@@ -264,7 +299,8 @@ function check1()
                     </div>
                     <div class="leftblast" >
                     
-                    <h4>Alignment</h4>
+                    <h4  style="color:blue;">Alignment</h4>
+                    <hr/>
                     <table class="table blast-table" style="height:auto;">
                      <td style="font-family:Simsun">
                		<%  int t1=0;
@@ -303,41 +339,39 @@ function check1()
                     				<%{%>
                     					<%=qseq.charAt(t1) %>
                     				<%} %> 
-                    	 
-                    	<%if(t1==qseqlen-1) 
-                    		break;%>
-                    	<%}%>
-						&nbsp&nbsp<%out.print("Query&nbsp&nbsp"+t1+"   "); %>
+                    	            <%if(t1==qseqlen-1) 
+                    		            break;%>
+                    	        <%}%>
+						&nbsp;&nbsp;<%out.print("Query&nbsp&nbsp"+t1+"   "); %>
                     	<br>
-                    	<%for(int s=0;s<130;s++,t2++)
-                    	{%>	
-                    	<%if(t2==midlinelen)
-                    		break; %>
-                    	<%if(midline.charAt(t2)==' ')%>
-                    	<%{ %>
-                    		<% out.print("<font color=#EE1100><b>" + "X" + "</b></font>");%>
-                    	<%} %>
-                    	<%else%>
-                    	<%{ %>
-                    		<%=midline.charAt(t2)%>
-                    	<%} %>
-                    	<%}%>
+                    	      <%for(int s=0;s<130;s++,t2++)
+                    	      {%>	
+                    	         <%if(t2==midlinelen)
+                    		          break; %>
+                    	         <%if(midline.charAt(t2)==' ')%>
+                    	          <%{ %>
+                    		          <% out.print("<font color=#EE1100><b>" + "X" + "</b></font>");%>
+                    	           <%} %>
+                    	          <%else %>
+                    	          <%{ %>
+                    	 	          <%=midline.charAt(t2)%>
+                    	          <%} %>
+                    	     <%}%>
                     	<br>
-                    	
-                    	<%for(int s=0;s<130;s++,t3++)
-                    	{
-                    	if(midline.charAt(t3)==' ')
-                    	{ %>
-                    	<% out.print("<font color=#EE1100><b>" + hseq.charAt(t3) + "</b></font>");%>
-                    	<%} %>
-                    	<%else %>
-                    	<%{%>
-                    	<%=hseq.charAt(t3) %>
-                    	<%} %> 
-                    	<%if(t3==hseqlen-1) 
-                    		break;%>
-                    	<%}%>
-                    	&nbsp&nbsp<%out.print("Subject&nbsp"+t1+"   "); %>
+                    	     <%for(int s=0;s<130;s++,t3++)
+                    	      {
+                    	        if(midline.charAt(t3)==' ')
+                    	          { %>
+                    	             <% out.print("<font color=#EE1100><b>" + hseq.charAt(t3) + "</b></font>");%>
+                    	        <%} %>
+                    	        <%else %>
+                            	<%{%>
+                    	           <%=hseq.charAt(t3) %>
+                    	        <%} %> 
+                    	        <%if(t3==hseqlen-1) 
+                    		        break;%>
+                    	     <%}%>
+                    	&nbsp;&nbsp;<%out.print("Subject&nbsp"+t1+"   "); %>
                     	<br></br>
                     <% }}%>
                     <br></br>
@@ -350,7 +384,7 @@ function check1()
                 
                 
                 <div class="btns">
-                <button class="btn" id="next1" href="tools.jsp"><a href="Last/Last.jsp">Back</a></button>
+                <a href="Last/Last.jsp"><button class="btn" id="next1" href="tools.jsp">Back</button></a>
                 </div>
                 
                 
@@ -361,5 +395,46 @@ function check1()
     
     
     <%@ include file="../ListFooter.jsp"%>
+    <script type="text/javascript">
+    $(function(){
+        $('#table3').bootstrapTable({//'#table' 改为所用表的选择器
+        url: "http://localhost:8080/Magic/blast",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
+        method: 'GET',                      //请求方式（*）
+       	striped: true,                      //是否显示行间隔色
+       	pagination: true,
+       	pageSize: 6,
+       	smartDisplay:false,
+       	search: true,
+        showExport: true,
+        buttonsAlign:"left",
+        exportTypes:['csv','excel'], 
+		 columns: [{//修改为所用表的信息 field填数据库中的 对应的标题，title为要显示的名称
+        field: 'Description',
+        title: 'Description',
+        sortable:true
+    }, {
+        field: 'Max score',
+        title: 'Max score',
+        sortable:true
+    }, {
+        field: 'Total score',
+        title: 'Total score',
+        sortable:true
+    },{
+        field: 'Query cover',
+        title: 'Query cover',
+        sortable:true
+    },{
+        field: 'E value',
+        title: 'E value',
+        sortable:true
+    },{
+        field: 'Ident',
+        title: 'Ident',
+        sortable:true    
+    }],  
+ 		});
+ 		});
+</script>
   </body>
 </html>

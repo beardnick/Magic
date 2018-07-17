@@ -21,10 +21,10 @@ public class findDataInMagic extends ActionSupport{
 	private String names;
 	public String execute(){
 		Dbase d = new Dbase();
-		
-		System.out.println("chr"+chr);
-		System.out.println("namee"+namee);
-		System.out.println("names"+names);
+		System.out.println("chr "+chr);
+		System.out.println("namel "+name1);
+		System.out.println("names "+names);
+		System.out.println("namee "+namee);
 		String [] na = null ;
 		String []chrs = null;
 		
@@ -38,9 +38,9 @@ public class findDataInMagic extends ActionSupport{
 		
 		na = name.split(", ");
 		System.out.println("_________________");
-		System.out.println("na" + na);
-		System.out.println("name" + name);
-		System.out.println("chr"+chr);
+		System.out.println("na " + na);
+		System.out.println("name " + name);
+		System.out.println("chr "+chr);
 		
 		Map<String,Object> attributes = ActionContext.getContext().getSession();
 		attributes.put("names", na);
@@ -52,33 +52,108 @@ public class findDataInMagic extends ActionSupport{
 				if(names.equals(""))
 				{
 					names="1";
+					if(chr.equals("1")){
 					namee="301354135";
+					}
+					else if(chr.equals("2")){
+						namee="237068873";
+						}
+					else if(chr.equals("3")){
+						namee="232140174";
+						}
+					else if(chr.equals("4")){
+						namee="241473504";
+						}
+					else if(chr.equals("5")){
+						namee="217872852";
+						}
+					else if(chr.equals("6")){
+						namee="169174353";
+						}
+					else if(chr.equals("7")){
+						namee="176764762";
+						}
+					else if(chr.equals("8")){
+						namee="175793759";
+						}
+					else if(chr.equals("9")){
+						namee="156750706";
+						}
+					else if(chr.equals("10")){
+						namee="150189435";
+						}
 					sql="select parent,sta,end from all_bin where name='"+na[i]+"' AND chr='"+chr+"'";
 				}
 				else 
 				{
-					System.out.println("select parent,sta,end from all_bin where name='"+na[i]+"'AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chr+"'");
-					sql="select parent,sta,end from all_bin where name='"+na[i]+"'AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chr+"'";
+					System.out.println("select parent,sta,end from all_bin where name='"+na[i]+"' AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chr+"'");
+					sql="select parent,sta,end from all_bin where name='"+na[i]+"' AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chr+"'";
 				}
 				System.out.println(na[i]);
 				d.getLen(sql).toString();
+				System.out.println(d.getLen(sql));
 				attributes.put(na[i], d.getLen(sql));
 			}
 		}else{
 			for(int i=0;i<chrs.length;i++){
-				String sql="select parent,sta,end from all_bin where chr='"+chrs[i]+"' AND name='"+na[0]+"'";
+				String sql=null;
+				if(names.equals(""))
+				{
+					names="1";
+					if(chrs[i].equals("1")){
+						namee="301354135";
+						}
+						else if(chrs[i].equals("2")){
+							namee="237068873";
+							}
+						else if(chrs[i].equals("3")){
+							namee="232140174";
+							}
+						else if(chrs[i].equals("4")){
+							namee="241473504";
+							}
+						else if(chrs[i].equals("5")){
+							namee="217872852";
+							}
+						else if(chrs[i].equals("6")){
+							namee="169174353";
+							}
+						else if(chrs[i].equals("7")){
+							namee="176764762";
+							}
+						else if(chrs[i].equals("8")){
+							namee="175793759";
+							}
+						else if(chrs[i].equals("9")){
+							namee="156750706";
+							}
+						else if(chrs[i].equals("10")){
+							namee="150189435";
+							}
+					System.out.println("select parent,sta,end from all_bin where chr='"+chrs[i]+"' AND name='"+na[0]+"'");
+					sql="select parent,sta,end from all_bin where chr='"+chrs[i]+"' AND name='"+na[0]+"'";
+				}
+				else
+				{
+					System.out.println("select parent,sta,end from all_bin where name='"+na[0]+"'AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chrs[i]+"'");
+					sql="select parent,sta,end from all_bin where name='"+na[0]+"'AND ((sta BETWEEN "+names+" AND "+namee+") OR (end BETWEEN "+names+" AND "+namee+"))"+" AND chr='"+chrs[i]+"'";
+				}
 				System.out.println(chrs[i]);
 				d.getLen(sql).toString();
+				System.out.println(d.getLen(sql));
 				attributes.put(chrs[i], d.getLen(sql));
 			}
 		}
 		//鐢昏〃
 		HashMap<String,ArrayList<String>> mtable = new HashMap<String,ArrayList<String>>();
+		System.out.println(na.length);
+		if(na.length!=1){
 		for(int i=0;i<na.length;i++){
 			String sql="select * from bin_summary_maxp2 where name='"+na[i]+"'";
 			System.out.println(na[i]);
+			System.out.println(sql);
 			mtable.put(na[i], d.getTable(sql));
-			
+			System.out.println(mtable);
 		}
 		attributes.put("table", mtable);
 		double sta1=1;
@@ -91,14 +166,67 @@ public class findDataInMagic extends ActionSupport{
 		{
 		    end1 = Double.parseDouble(namee);
 		}
+		System.out.println(sta1);
+		System.out.println(end1);
 		attributes.put("sta1", sta1);
 		attributes.put("end1", end1);
 		System.out.println(attributes.toString());
 		
 		d.Close();
 		return SUCCESS;
+	}else{
+		String sql="select * from bin_summary_maxp2 where name='"+na[0]+"'";
+		System.out.println(na[0]);
+		mtable.put(na[0], d.getTable(sql));
+		attributes.put("table",mtable);
+		double sta1=1;
+		double end1=1;
+		double end1x=1;
+		for(int i=0;i<chrs.length;i++){
+			String chrx=chrs[i];
+			if(chrx.equals("1"))
+				end1x=301354135;
+			else if(chrx.equals("2"))
+				end1x=237068873;
+			else if(chrx.equals("3"))
+				end1x=232140174;
+			else if(chrx.equals("4"))
+				end1x=241473504;
+			else if(chrx.equals("5"))
+				end1x=217872852;
+			else if(chrx.equals("6"))
+				end1x=169174353;
+			else if(chrx.equals("7"))
+				end1x=176764762;
+			else if(chrx.equals("8"))
+				end1x=175793759;
+			else if(chrx.equals("9"))
+				end1x=156750706;
+			else if(chrx.equals("10"))
+				end1x=150189435;
+			if(end1x>end1)
+				end1=end1x;
 	}
-	
+		if(!names.equals(""))
+		{
+			sta1 = Double.parseDouble(names);
+		}
+		if(!namee.equals(""))
+		{
+		    end1 = Double.parseDouble(namee);
+		}
+		System.out.println(names);
+		System.out.println(namee);
+		System.out.println(sta1);
+		System.out.println(end1);
+		attributes.put("sta1", sta1);
+		attributes.put("end1", end1);
+		System.out.println(attributes.toString());
+		
+		d.Close();
+		return SUCCESS;
+		}
+	}
 	
 	public double elect(double x,String chrx)
 	{

@@ -1,7 +1,9 @@
 package blast;
 
 import java.util.Map;
+import java.util.Properties;
 
+import com.db.magic.Dbase;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.util.finder.Test;
@@ -10,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
-import java.util.Properties;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,8 +28,7 @@ import java.io.OutputStream;
 import java.sql.*;
 import java.io.Reader;  
 
-
-public class Blast2 extends ActionSupport{
+public class Blast4 extends ActionSupport{
 	/**
 	 * 
 	 */
@@ -50,11 +50,15 @@ public class Blast2 extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
 	Map<String, Object> attribute = ActionContext.getContext().getSession();
-	String fornum,forseq,forstart,forin,forN,forgc,forTm,forany,forend,forlity;
+	String fornum,forseq,forstart,forin,forN,forgc,forTm,forany,forend,forlity,inputtex;
 	String intnum,intseq,intstart,intin,intN,intgc,intTm,intany,intend,intlity;
 	String revnum,revseq,revstart,revin,revN,revgc,revTm,revany,revend,revlity;
-	String chromosome,database,sposition,eposition,opsize,maxsize,minsize,opttm,maxtm,mintm,optgc,maxgc,mingc,defaultproduct,maxployx,selfany;
-
+	String opsize,maxsize,minsize,opttm,maxtm,mintm,optgc,maxgc,mingc,defaultproduct,maxployx,selfany;
+	String id="    ";
+	String upstream="    ";
+	String downstream="    ";
+	String chromosome="1";
+	String database="v3.25";
     Map<String, String> fornummap=new HashMap<String, String>();
     
     Map<String, String> intnummap=new HashMap<String, String>();
@@ -65,35 +69,35 @@ public class Blast2 extends ActionSupport{
     Map<String, String[]> formap=new HashMap<String, String[]>();
     Map<String, String[]> intmap=new HashMap<String, String[]>();
     Map<String, String[]> revmap=new HashMap<String, String[]>();
-    public String getChromosome() {
-		return chromosome;
+    public String getId() {
+		return id;
 	}
     
-	public void setChromosome(String chromosome) {
-		this.chromosome= chromosome;
+    public void setId(String id) {
+		this.id= id;
 	}
     
-	public String getDatabase() {
+/*	public String getDatabase() {
 		return database;
 	}
     
 	public void setDatabase(String database) {
 		this.database= database;
-	}
-	public String getSposition() {
-		return sposition;
+	}*/
+	public String getUpstream() {
+		return upstream;
 	}
     
-	public void setSposition(String sposition) {
-		this.sposition= sposition;
+	public void setUpstream(String upstream) {
+		this.upstream= upstream;
 	}
 	
-	public String getEposition() {
-		return eposition;
+	public String getDownstream() {
+		return downstream;
 	}
     
-	public void setEposition(String eposition) {
-		this.eposition= eposition;
+	public void setDownstream(String downstream) {
+		this.downstream= downstream;
 	}
 	public String getOpsize() {
 		return opsize;
@@ -189,16 +193,54 @@ public class Blast2 extends ActionSupport{
 	public void setSelfany(String selfany) {
 		this.selfany= selfany;
 	}
-	
-	
+	public String getInputtex(){
+		return  inputtex;
+	}
+	public void setInputtex(String inputtex){
+		this.inputtex = inputtex;
+	}
+
 	LocalDateTime localdatetime=LocalDateTime.now();//新建一个LocalDateTime对象获取时间
 	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
 	String localTime = df.format(localdatetime);
 	String name = localTime;
+	
+	
 	public String execute(){
 		try{
+			String position = (id.substring(id.indexOf("_")+1));
+		String chrname =id.substring(0,id.indexOf("_"));
+		String expand =id.substring(id.indexOf(".")+1,id.indexOf("_"));
+		int positiontnumber = Integer.valueOf(position);
+		int upnumber = Integer.valueOf(upstream);
+		int downnumber = Integer.valueOf(downstream);
+		
+		int startnumber = positiontnumber - upnumber;
+		int endnumber = positiontnumber + downnumber;
+		
+		String sposition = String.valueOf(startnumber);
+		String eposition = String.valueOf(endnumber);
+		String listname = " ";
+		if(expand.equals("s")){
+		listname = "`"+chrname+"`";
+		}
+		else if(expand.equals("i"))
+		{
+		listname = "indel";
+		}
+		String sql = "select spos+1"+"-"+startnumber+",epos-spos+1 from "+listname+" where spos between "+startnumber+" and "+endnumber;
+		System.out.println("sql:"+sql);
+		String re;
+		Dbase d = new Dbase();
+		re = d.getPrimer3(sql);
+		System.out.println("re:"+re.getBytes());
+		
+		try{
+			// Map<String,Object> map = new HashMap<String,Object> ();
+			// String sql = "";
+			 
 			 String filePath=getWebRoot();
-			 String textpath=filePath+"file/parameter.input";//parameter.input路径
+			 String textpath=filePath+"file/primerexample2.input";//primerexample2.input路径
 			 textpath=textpath.substring(1);
 			 textpath=textpath.replaceAll("\\/","\\\\");
 			 System.out.println(textpath);
@@ -206,10 +248,13 @@ public class Blast2 extends ActionSupport{
 			 if(writer.exists())
 			 {
 				 OutputStream out=null;
+				 
 				 out=new FileOutputStream(writer);
 				 byte b[] = ("PRIMER_SEQUENCE_ID="+name+"\r\n").getBytes();
 				 out.write(b);
-				 b = ("PRIMER_OPT_SIZE="+opsize+"\r\n").getBytes();
+				 b = re.getBytes();
+				 out.write(b);
+				 b=("PRIMER_OPT_SIZE="+opsize+"\r\n").getBytes();
 				 out.write(b);
 				 b=("PRIMER_MAX_SIZE="+maxsize+"\r\n").getBytes();
 				 out.write(b);
@@ -251,96 +296,96 @@ public class Blast2 extends ActionSupport{
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String pl_path = p.getProperty("path_pl");
-            Runtime rt1 = Runtime.getRuntime();  
-            String filePath=getWebRoot();
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            Process pr1 = rt1.exec("cmd /c "+" cd "+pl_path+" "+database+" "+chromosome+" "+sposition+" "+eposition+" "+filePath+"region.fasta "); // cmd /c calc  
-            //type C:\Users\xinwang\Desktop\work\primer3\region.fasta C:\Users\xinwang\Desktop\work\primer3\parameter.input >C:\Users\xinwang\Desktop\work\primer3\p3.input
-            System.out.println("cmd /c "+"cd "+pl_path+" "+database+" "+chromosome+" "+sposition+" "+eposition+" "+filePath+"region.fasta ");
-            BufferedReader input1 = new BufferedReader(new InputStreamReader(pr1.getInputStream(), "GBK"));  
-           
-            String line = null;  
-            System.out.println(line);
-            while ((line = input1.readLine()) != null) {  
-            	byte[] line1=line.getBytes();
-                System.out.println(line);  
-            }  
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        } catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+          Runtime rt1 = Runtime.getRuntime();  
+          String filePath=getWebRoot();
+          filePath = filePath+"file/";
+          filePath = filePath.substring(1);
+          filePath = filePath.replaceAll("\\/","\\\\");
+          Process pr1 = rt1.exec("cmd /c "+"cd "+pl_path+" "+database+" "+chromosome+" "+sposition+" "+eposition+" "+filePath+"region.fasta "); // cmd /c calc  
+          //type C:\Users\xinwang\Desktop\work\primer3\region.fasta C:\Users\xinwang\Desktop\work\primer3\parameter.input >C:\Users\xinwang\Desktop\work\primer3\p3.input
+          System.out.println("cmd /c "+"cd "+pl_path+" "+database+" "+chromosome+" "+sposition+" "+eposition+" "+filePath+"region.fasta ");
+          BufferedReader input1 = new BufferedReader(new InputStreamReader(pr1.getInputStream(), "GBK"));  
+         
+          String line = null;  
+          System.out.println(line);
+          while ((line = input1.readLine()) != null) {  
+          	byte[] line1=line.getBytes();
+              System.out.println(line);  
+          }  
+
+          int exitVal = pr1.waitFor();  
+          //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+      } catch (IOException e) {  
+          //System.out.println(e.toString());  
+          e.printStackTrace();  
+      } catch (Exception e) {  
+          //System.out.println(e.toString());  
+          e.printStackTrace();  
+      }
 		finally{}
 		try {  
-            Runtime rt1 = Runtime.getRuntime();  
-            String filePath=getWebRoot(); 
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            Process pr1 = rt1.exec("cmd /c "+"cd C: & type "+filePath+"region.fasta "+filePath+"parameter.input > "+filePath+"p2.input"); // cmd /c calc  
-            //type C:\Users\xinwang\Desktop\work\primer3\region.fasta C:\Users\xinwang\Desktop\work\primer3\parameter.input >C:\Users\xinwang\Desktop\work\primer3\p3.input
-            System.out.println("cmd /c "+"type "+ filePath+"region.fasta "+filePath+"parameter.input >"+filePath+"p2.input");
-            BufferedReader input1 = new BufferedReader(new InputStreamReader(pr1.getInputStream(), "GBK"));  
-           
-            String line = null;  
-            System.out.println(line);
-            while ((line = input1.readLine()) != null) {  
-            	byte[] line1=line.getBytes();
-                System.out.println(line);  
-            }  
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        }catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+          Runtime rt1 = Runtime.getRuntime();  
+          String filePath=getWebRoot(); 
+          filePath = filePath+"file/";
+          filePath = filePath.substring(1);
+          filePath = filePath.replaceAll("\\/","\\\\");
+          Process pr1 = rt1.exec("cmd /c "+"cd C: & type "+filePath+"region.fasta "+filePath+"primerexample2.input > "+filePath+"p4.input"); // cmd /c calc  
+          //type C:\Users\xinwang\Desktop\work\primer3\region.fasta C:\Users\xinwang\Desktop\work\primer3\parameter.input >C:\Users\xinwang\Desktop\work\primer3\p3.input
+          System.out.println("cmd /c "+"type "+ filePath+"region.fasta "+filePath+"primerexample2.input >"+filePath+"p4.input");
+          BufferedReader input1 = new BufferedReader(new InputStreamReader(pr1.getInputStream(), "GBK"));  
+         
+          String line = null;  
+          System.out.println(line);
+          while ((line = input1.readLine()) != null) {  
+          	byte[] line1=line.getBytes();
+              System.out.println(line);  
+          }  
+
+          int exitVal = pr1.waitFor();  
+          //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+      }catch (IOException e) {  
+          //System.out.println(e.toString());  
+          e.printStackTrace();  
+      }catch (Exception e) {  
+          //System.out.println(e.toString());  
+          e.printStackTrace();  
+      }
 		finally{}
-		
 		try {  
 			 // 读取配置文件pro.properties
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primer3_core_path = p.getProperty("path_primer3_core");
 			Runtime rt1 = Runtime.getRuntime();  
-            String filePath=getWebRoot();
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            Runtime rt3 = Runtime.getRuntime(); 
-            Process pr3 = rt3.exec("cmd /c "+"cd "+primer3_core_path+" < "+filePath+"p2.input"); // cmd /c calc  
-            //Process pr3 = rt3.exec("cmd /c "+"cd C:\\Users\\xinwang\\Desktop\\work\\primer & primer3_core.exe <"+filePath+"p3.input"); // cmd /c calc  
-            
-            //System.out.println("cmd /c "+"cd E: & cd E:\\Magic\\primer3 & primer3_core.exe <"+filePath+"p3.input");
-            //cmd /c "+"F: & cd F:\\primer\\src & primer3_core.exe
-            System.out.println("cmd /c "+"cd "+primer3_core_path+" < "+filePath+"p2.input");
-            BufferedReader input3 = new BufferedReader(new InputStreamReader(pr3.getInputStream(), "GBK")); 
-            String line = null;  
-  
-            while ((line = input3.readLine()) != null) {  
-            	byte[] line1=line.getBytes();
-                System.out.println(line);  
-            }  
-            int exitVal = pr3.waitFor(); 
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        }catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+           String filePath=getWebRoot();
+           filePath = filePath+"file/";
+           filePath = filePath.substring(1);
+           filePath = filePath.replaceAll("\\/","\\\\");
+           Runtime rt3 = Runtime.getRuntime(); 
+           Process pr3 = rt3.exec("cmd /c "+"cd "+primer3_core_path+" < "+filePath+"p4.input"); // cmd /c calc  
+           //Process pr3 = rt3.exec("cmd /c "+"cd C:\\Users\\xinwang\\Desktop\\work\\primer & primer3_core.exe <"+filePath+"p3.input"); // cmd /c calc  
+           
+           //System.out.println("cmd /c "+"cd E: & cd E:\\Magic\\primer3 & primer3_core.exe <"+filePath+"p3.input");
+           //cmd /c "+"F: & cd F:\\primer\\src & primer3_core.exe
+           System.out.println("cmd /c "+"cd "+primer3_core_path+" < "+filePath+"p4.input");
+           BufferedReader input3 = new BufferedReader(new InputStreamReader(pr3.getInputStream(), "GBK")); 
+           String line = null;  
+ 
+           while ((line = input3.readLine()) != null) {  
+           	byte[] line1=line.getBytes();
+               System.out.println(line);  
+           }  
+           int exitVal = pr3.waitFor(); 
+           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+       }catch (IOException e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }catch (Exception e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }
 		finally{}
+		
 		try {  
 			 // 读取配置文件pro.properties
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
@@ -349,25 +394,25 @@ public class Blast2 extends ActionSupport{
 		    String primerexamlie_name = p.getProperty("PRIMER_SEQUENCE_ID");
 			String filePath=getWebRoot();
 			System.out.println(filePath);
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            Runtime rt1 = Runtime.getRuntime(); 
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".for " +filePath); // cmd /c calc  
-            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath); // cmd /c calc  
-            
-            System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".for " +filePath);
-            //System.out.println("copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath);
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        }catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+           filePath = filePath+"file/";
+           filePath = filePath.substring(1);
+           filePath = filePath.replaceAll("\\/","\\\\");
+           Runtime rt1 = Runtime.getRuntime(); 
+           Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".for " +filePath); // cmd /c calc  
+           //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath); // cmd /c calc  
+           
+           System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".for " +filePath);
+           //System.out.println("copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath);
+ 
+           int exitVal = pr1.waitFor();  
+           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+       }catch (IOException e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       } catch (Exception e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }
 		finally{}
 		try {  
 			 // 读取配置文件pro.properties
@@ -375,49 +420,49 @@ public class Blast2 extends ActionSupport{
 		    // 获取配置文件中的相关内容
 		    String primerexample_path = p.getProperty("path_primerexample");
 			String filePath=getWebRoot();
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            Runtime rt1 = Runtime.getRuntime(); 
-            //Process pr1 = rt1.exec("cmd /c "+"copy/y C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.int "+filePath); // cmd /c calc  
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".int " +filePath); // cmd /c calc  
-            System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".int " +filePath);
-            
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        }catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+           filePath = filePath+"file/";
+           filePath = filePath.substring(1);
+           filePath = filePath.replaceAll("\\/","\\\\");
+           Runtime rt1 = Runtime.getRuntime(); 
+           //Process pr1 = rt1.exec("cmd /c "+"copy/y C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.int "+filePath); // cmd /c calc  
+           Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".int " +filePath); // cmd /c calc  
+           System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".int " +filePath);
+           
+ 
+           int exitVal = pr1.waitFor();  
+           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+       }catch (IOException e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       } catch (Exception e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }
 		finally{}
 		try {  
 			 // 读取配置文件pro.properties
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primerexample_path = p.getProperty("path_primerexample");
-            Runtime rt1 = Runtime.getRuntime(); 
-            String filePath=getWebRoot();
-            filePath = filePath+"file/";
-            filePath = filePath.substring(1);
-            filePath = filePath.replaceAll("\\/","\\\\");
-            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.rev "+filePath); // cmd /c calc  
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".rev " +filePath); // cmd /c calc  
-            
-            System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".rev " +filePath);
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        }catch (IOException e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
-        }
+           Runtime rt1 = Runtime.getRuntime(); 
+           String filePath=getWebRoot();
+           filePath = filePath+"file/";
+           filePath = filePath.substring(1);
+           filePath = filePath.replaceAll("\\/","\\\\");
+           //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.rev "+filePath); // cmd /c calc  
+           Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".rev " +filePath); // cmd /c calc  
+           
+           System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".rev " +filePath);
+ 
+           int exitVal = pr1.waitFor();  
+           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
+       }catch (IOException e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }catch (Exception e) {  
+           //System.out.println(e.toString());  
+           e.printStackTrace();  
+       }
 		finally{}
 		try {
             String encoding="GBK";
@@ -586,7 +631,11 @@ public class Blast2 extends ActionSupport{
 				e.printStackTrace();
 			}
 		finally{}
-		
+		}catch(Exception e)
+		{
+		System.out.println("输入内容出错");
+		}
+		finally{}
 		attribute.put("fornummap", fornummap);
 		
 		attribute.put("intnummap", intnummap);
@@ -596,7 +645,8 @@ public class Blast2 extends ActionSupport{
 		attribute.put("formap",formap);
 		attribute.put("intmap",intmap);
 		attribute.put("revmap",revmap);
+		
 		return SUCCESS;  
-	}
-}
 
+}
+}

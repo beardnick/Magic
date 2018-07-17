@@ -15,9 +15,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <style type="text/css">
-        h1 {text-align: center}
-    </style>
+   
     <base href="<%=basePath%>">
     <title>Primer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
@@ -25,10 +23,41 @@
     <meta name="author" content="Daliu"/>
     <meta name="keywords" content=""/>
     <meta name="describe" content=""/>
-    <link href="Css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="Css/main.css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="Css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="Css/bootstrap-table.css"/>
+    <link type="text/css" rel="stylesheet" href="Css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="Css/tableexport.css"/>
     <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="Jscript/bootstrap.min.js"></script>
     <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="Jscript/tableExport.js"></script>
+    <script type="text/javascript" src="Jscript/bootstrap-table-export.js"></script>
+      <style type="text/css">
+	.fixed-table-body{overflow-x:auto;overflow-y:auto;height:auto;}
+	tr,td,th{
+	border:0px solid transparent !important;
+	}
+	.pagination a:hover{
+	background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);border:1px solid #979797 !important;
+	}
+	.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus
+	 {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background: linear-gradient(to bottom, #585858 0%, #111 100%);
+    border-color: #428bca;
+    }
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    padding: 10px;
+    line-height: 2.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+     }
+     .btn{
+     line-height:0.4;
+     }
+  </style>
     <%
         Map attribute = ActionContext.getContext().getSession();
         Map<String, String[]> formap=new HashMap<String, String[]>();
@@ -67,7 +96,6 @@
         Set<String> revnumname=revnummap.keySet();
         Iterator<String> itrevnum=revnumname.iterator();
     %>
-
 </head>
 
 <body>
@@ -76,18 +104,25 @@
 <div  style="height:auto;">
     <div class="describe1">
 
-        <div class="left5" name="button" style="height: auto; width: 95%;">
-            <h4>ACCEPTABLE LEFT PRIMERS</h4>
-            <table class="table blast-table"   style="height: auto; width: auto">
-                <tr>
+        <div class="left5" name="button" style="height: auto; width: 100%;">
+            
+            <table id='table' class="table blast-table"  data-toggle="table">
+            
+            <h4 style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
+            <hr/>
+<!--                 <tr>
                     <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
                 </tr>
                 <tr>
                     <td style="width: 50px; height: 20px">#</td><td style="width: 300px; height: 45px">seqence</td><td style="width: 30px; height: 45px">start</td><td style="width: 30px;height: 45px ">in</td>
                     <td style="width: 20px;height: 45px ">#N</td><td style="width: 50px;height: 45px ">GC%</td><td style="width: 50px;height: 45px ">Tm</td><td style="width: 20px;height: 45px ">selfany</td>
                     <td style="width: 30px;height: 45px ">selfend</td><td style="width: 30px;height: 45px ">quallity</td>
-                </tr>
+                </tr> -->
                 <%int sum=0;
+                	if(!itfornum.hasNext())
+						{%>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+						<%}
                     while(itfornum.hasNext())
                     {
                         String numkey=itfornum.next();
@@ -116,29 +151,19 @@
                     <td align="left"><%=sTm %></td><td align="left"><%=sany %></td><td align="left"><%=send %></td><td align="left"><%=slity %></td>
                 </tr>
                 <%} %>
-                <div class="download"></div>
-
-
-            </table><button class="btn" id="back"><a href="download/primerexample.for" target="_blank">Download</a></button>
-
-
-        </div>
-
-
+			</table>
+		</div>
     </div>
     <div class="describe2">
-        <div class="left5" name="int" style="height: auto; width: 95%">
-            <h4>ACCEPTABLE INTERNAL OLIGOS</h4>
-            <table class="table blast-table"   style="height: auto; width: auto">
-                <tr>
-                    <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
-                </tr>
-                <tr>
-                    <td style="width: 50px; height: 20px">#</td><td style="width: 300px; height: 45px">seqence</td><td style="width: 30px; height: 45px">start</td><td style="width: 30px;height: 45px ">in</td>
-                    <td style="width: 20px;height: 45px ">#N</td><td style="width: 50px;height: 45px ">GC%</td><td style="width: 50px;height: 45px ">Tm</td><td style="width: 30px;height: 45px ">selfany</td>
-                    <td style="width: 30px;height: 45px ">selfend</td><td style="width: 30px;height: 45px ">quallity</td>
-                </tr>
+        <div class="left5" name="int" style="height: auto; width: 100%"> 
+            <table id='table1' class="table blast-table"  data-toggle="table" >
+            <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
+            <hr/>
                 <%sum=0;
+                	if(!itintnum.hasNext())
+						{%>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+						<%}
                     while(itintnum.hasNext())
                     {
                         String numkey=itintnum.next();
@@ -167,33 +192,23 @@
                     <td align="left"><%=sTm %></td><td align="left"><%=sany %></td><td align="left"><%=send %></td><td align="left"><%=slity %></td>
                 </tr>
                 <%} %>
-
-
-
-            </table><div class="download">
-            <button class="btn" id="back"><a href ="download/primerexample.int" target="_blank">Download</a></button>
-        </div>
-
-
+            </table>
         </div>
 
 
     </div>
     <div class="describe3">
-        <div class="left5" name="int" style="height: auto; width: 95%">
-            <h4>ACCEPTABLE RIGHT PRIMERS</h4>
+        <div class="left5" name="int" style="height: auto; width: 100%">
+           
 
-            <table class="table blast-table"   style="height: auto; width: auto">
-
-                <tr>
-                    <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
-                </tr>
-                <tr>
-                    <td style="width: 50px; height: 20px">#</td><td style="width: 300px; height: 45px">seqence</td><td style="width: 30px; height: 45px">start</td><td style="width: 30px;height: 45px ">in</td>
-                    <td style="width: 20px;height: 45px ">#N</td><td style="width: 50px;height: 45px ">GC%</td><td style="width: 50px;height: 45px ">Tm</td><td style="width: 20px;height: 45px ">selfany</td>
-                    <td style="width: 30px;height: 45px ">selfend</td><td style="width: 30px;height: 45px ">quallity</td>
-                </tr>
+            <table id='table2' class="table blast-table"  data-toggle="table" >
+			 <h4 style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
+			 <hr/>
                 <%sum=0;
+                	if(!itrevnum.hasNext())
+						{%>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+						<%}
                     while(itrevnum.hasNext())
                     {
                         String numkey=itrevnum.next();
@@ -225,21 +240,204 @@
 
 
 
-            </table><div class="download">
-            <button class="btn" id="back"><a href ="download/primerexample.rev" target="_blank">Download</a></button>
+            </table>
         </div>
-
-
-        </div>
-
-
     </div>
     <div class="btns">
-        <button class="btn" id="back"><a href="tools.jsp">Back</a></button>
+        <a href="tools.jsp"><button class="btn" id="back">Back</button></a>
     </div>
 <%@ include file="../ListFooter.jsp"%>
 </div>
 
-
+<script type="text/javascript">
+    $(function(){
+        $('#table').bootstrapTable({//'#table' 改为所用表的选择器
+        url: "localhost:8080/Magic/Primer/Primersearch1.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
+        method: 'GET',                      //请求方式（*）
+       	striped: true,                      //是否显示行间隔色
+       	pagination: true,
+       	pageSize: 5,
+       	smartDisplay:false,
+       	search: true,
+        showExport: true,
+        buttonsAlign:"left",
+        exportTypes:['csv','excel'], 
+         exportOptions:{  
+          //ignoreColumn: [0,0],            //忽略某一列的索引  
+          fileName: 'ACCEPTABLE_LEFT_PRIMERS',              //文件名称设置  
+          worksheetName: 'Sheet1',          //表格工作区名称  
+          tableName: 'ACCEPTABLE_LEFT_PRIMERS',  
+      },
+		 columns: [{//修改为所用表的信息 field填数据库中的 对应的标题，title为要显示的名称
+        field: '#',
+        title: '#',
+        sortable:true
+    }, {
+        field: 'seqence',
+        title: 'seqence',
+        sortable:true
+    }, {
+        field: 'start',
+        title: 'start',
+        sortable:true
+    },{
+        field: 'in',
+        title: 'in',
+        sortable:true
+    },{
+        field: '#N',
+        title: '#N',
+        sortable:true
+    },{
+        field: 'GC%',
+        title: 'GC%',
+        sortable:true    
+    },{
+        field: 'Tm',
+        title: 'Tm',
+        sortable:true    
+    },{
+        field: 'selfany',
+        title: 'selfany',
+        sortable:true    
+    },{
+        field: 'selfend',
+        title: 'selfend',
+        sortable:true    
+    },{
+        field: 'quality',
+        title: 'quality',
+        sortable:true    
+    }],  
+ 		});
+ 		});
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('#table1').bootstrapTable({//'#table' 改为所用表的选择器
+        url: "localhost:8080/Magic/Primer/Primersearch1.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
+        method: 'GET',                      //请求方式（*）
+       	striped: true,                      //是否显示行间隔色
+       	pagination: true,
+       	pageSize: 5,
+       	search: true,
+       	smartDisplay:false,
+        showExport: true,
+        buttonsAlign:"left",
+        exportTypes:['csv','excel'], 
+         exportOptions:{  
+          //ignoreColumn: [0,0],            //忽略某一列的索引  
+          fileName: 'ACCEPTABLE_INTERNAL_PRIMERS',              //文件名称设置  
+          worksheetName: 'Sheet1',          //表格工作区名称  
+          tableName: 'ACCEPTABLE_INTERNAL_PRIMERS',  
+      },
+		 columns: [{//修改为所用表的信息 field填数据库中的 对应的标题，title为要显示的名称
+        field: '#',
+        title: '#',
+        sortable:true
+    }, {
+        field: 'seqence',
+        title: 'seqence',
+        sortable:true
+    }, {
+        field: 'start',
+        title: 'start',
+        sortable:true
+    },{
+        field: 'in',
+        title: 'in',
+        sortable:true
+    },{
+        field: '#N',
+        title: '#N',
+        sortable:true
+    },{
+        field: 'GC%',
+        title: 'GC%',
+        sortable:true    
+    },{
+        field: 'Tm',
+        title: 'Tm',
+        sortable:true    
+    },{
+        field: 'selfany',
+        title: 'selfany',
+        sortable:true    
+    },{
+        field: 'selfend',
+        title: 'selfend',
+        sortable:true    
+    },{
+        field: 'quality',
+        title: 'quality',
+        sortable:true    
+    }],  
+ 		});
+ 		});
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('#table2').bootstrapTable({//'#table' 改为所用表的选择器
+        url: "localhost:8080/Magic/Primer/Primersearch1.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
+        method: 'GET',                      //请求方式（*）
+       	striped: true,                      //是否显示行间隔色
+       	pagination: true,
+       	pageSize: 5,
+       	search: true,
+       	smartDisplay:false,
+        showExport: true,
+        buttonsAlign:"left",
+        exportTypes:['csv','excel'], 
+        exportOptions:{  
+          //ignoreColumn: [0,0],            //忽略某一列的索引  
+          fileName: 'ACCEPTABLE_RIGHT_PRIMERS',              //文件名称设置  
+          worksheetName: 'Sheet1',          //表格工作区名称  
+          tableName: 'ACCEPTABLE_RIGHT_PRIMERS',  
+      },
+        
+		 columns: [{//修改为所用表的信息 field填数据库中的 对应的标题，title为要显示的名称
+        field: '#',
+        title: '#',
+        sortable:true
+    }, {
+        field: 'seqence',
+        title: 'seqence',
+        sortable:true
+    }, {
+        field: 'start',
+        title: 'start',
+        sortable:true
+    },{
+        field: 'in',
+        title: 'in',
+        sortable:true
+    },{
+        field: '#N',
+        title: '#N',
+        sortable:true
+    },{
+        field: 'GC%',
+        title: 'GC%',
+        sortable:true    
+    },{
+        field: 'Tm',
+        title: 'Tm',
+        sortable:true    
+    },{
+        field: 'selfany',
+        title: 'selfany',
+        sortable:true    
+    },{
+        field: 'selfend',
+        title: 'selfend',
+        sortable:true    
+    },{
+        field: 'quality',
+        title: 'quality',
+        sortable:true    
+    }],  
+ 		});
+ 		});
+</script>
 </body>
 </html>

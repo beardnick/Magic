@@ -51,13 +51,24 @@ public class Dbase {
 			rs = stmt.executeQuery(sql);
 		    int i = 1;
 			while(rs.next()){
+			    int j = 1;
 				ArrayList<String> list = new ArrayList<String>();
-			    list.add(rs.getString(1));
+/*			    list.add(rs.getString(1));
 			    list.add(rs.getString(2));
 			    list.add(rs.getString(3));
 			    list.add(rs.getString(4));
 			    list.add(rs.getString(5));
-			    
+			    list.add(rs.getString(6));
+			    list.add(rs.getString(7));
+			    list.add(rs.getString(8));
+			    list.add(rs.getString(9));
+			    list.add(rs.getString(10));*/
+			    while(j<=rs.getMetaData().getColumnCount()){
+			    	System.out.println(j);
+			    	list.add(rs.getString(j));
+			    	j++;
+			    }
+			    System.out.println(list);
 			    map1.put(Integer.toString(i), list);
 			    i++;
 			}
@@ -70,13 +81,39 @@ public class Dbase {
 		map.put("len", len);
 		return map;
 	}
+
+	public String getPrimer3(String sql){
+		String result = "";
+		try {
+			rs = stmt.executeQuery(sql);
+			 while(rs.next()){
+				 String st1 = rs.getString(1);
+				 System.out.println(st1);
+				 String st2 = rs.getString(2);
+				 /*System.out.println(st1+ st2);*/
+				 result =result+"TARGET=" + st1+"," + st2+ "\r\n"+"PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION="+st1+"," + st2+"\r\n";
+				 
+		     }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("result:" + result);
+		return result;
+	}
 	
 	public Map<String, String> getStartEnd(String gene){
 		Map<String, String> map = new HashMap<String, String>();
 		try {
-			rs = stmt.executeQuery("select start, end from zmb73_annotation_combined where ID ='" + gene + "'");
-			map.put("start" , rs.getString("start") );
+			String sql = "select start, end , chr from zmb73_annotation_combined where ID ='" + gene + "'";
+			rs = stmt.executeQuery(sql);
+			System.out.println(sql);
+			if(rs.next()){
+			map.put("start" , rs.getString("start"));
 			map.put("end" , rs.getString("end"));
+			map.put("chr" , rs.getString("chr"));
+			}else{
+				System.out.println("no gene match");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

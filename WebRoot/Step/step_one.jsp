@@ -18,23 +18,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link type="text/css" rel="stylesheet" href="Css/bootstrap-table.min.css"/>
         <link type="text/css" rel="stylesheet" href="Css/main.css"/>
         <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="Jscript/jquery.1.11.3.min.js"></script>
         <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
+                <script src="Jscript/data.js" type="text/javascript"></script>
+        <script type="text/javascript">
+    	$(document).ready(function(){
+    	    $('input:radio[name="search"]').click(function(){
+				var val=$('input:radio[name="search"]:checked').val();
+				//alert(val);
+				if(val == "first"){
+					$("#sh1").removeAttr("readonly");
+					$("#sh2").removeAttr("readonly");
+					$("#sh3").attr("readonly","readonly");
+					$("#sh3").val("");
+				}else{
+					$("#sh3").removeAttr("readonly");
+					$("#sh1").attr("readonly","readonly");
+					$("#sh2").attr("readonly","readonly");
+					$("#sh1").val("");
+					$("#sh2").val("");
+				}
+    	    });
+    	    
+    	    
+    		$("#next").click(function(){
+    		    var val=$('input:radio[name="search"]:checked').val();
+    		    if(val=="first" || val=="second"){
+    				form.submit();
+    			}
+    			else{
+    				alert("please choose one chance");
+    			}
+    		});
+    	});
+    </script>
   </head>
   
   <body>
     <%@ include file="../ListHeader.jsp"%>
-    <div class="content" style="height:auto;">
+    <h3 style="position:relative;left:4.9%;">GWAS Search</h3>
+    <br>
+    <div class="content">
             <div class="describe">
-                <h3>GWAS Search</h3>
-                <br/>
-                <p>Search the significant SNPs (2.79x10-8) in GWAS results in a number of ways, including by trait, SNP identifier, study and gene. </p>
+                <p><font size="3">Three GWAS method including single-variant-based GWAS using mixed linear models, a new the haplotype-based mixed linear model method and allelic genetic heterogeneity GWAS was used for dissecting genetic mechanisms of over 20 agronomic and yield traits. You can search and  visualise the GWAS results in a number of ways. </font></p>
+                <p><font size="3">Search the significant SNPs (2.79x10-8) in GWAS results in a number of ways, including by trait, SNP identifier, study and gene.</font> </p><!--定义了字体大小-->
             </div>
-            <div class="steps">
-                <image src="images/steps1.png">
-            </div>
-            <form action="showTwo" method="post" onsubmit="return check();">
-            <div class="search">
-                <table id="table-methods-table" data-toggle="table" data="data" data-height="520">
+            <form action="showThree" method="post" onsubmit="return check();">
+            <div class="search" style="width:40%;position:relative;left:10%;">
+                <table id="table-methods-table" data-toggle="table" data="data" data-height="370">
                 <!-- data-height="246" -->
                     <thead>
                         <tr>
@@ -45,15 +76,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </thead>
                 </table>
             </div>
-            <input type="hidden"  id="sead" name="trait" />
-            <div class="btns2">
-                <button class="btn" text-algin="right" id="next1" float="right">NEXT</button>
+            <br>
+            <br>
+                        <input type="hidden"  id="sead" name="trait" />
+                        <div class="btns2">
+                <button class="btn" text-algin="right" id="next" float="right">Search</button>
+            </div>
+            <div style="position:absolute;left:53%;top:125px;width:0px;height:400px;border-style:solid;border-color:#ddd;border-width:0.5px;"></div>
+            <div class="search" style="position:absolute;left:56%;top:130px;width:620px;padding:40px;border-style:solid;border-color:#ddd;border-width:1px;border-radius:3px;">
+                <div class="row">
+                    <input type="radio" name="search" value="first"> <font size="3">Search By Region</font><br>
+                <div style="background:#EDF1F1;border:solid 2px #D9E2EB;border-radius:3px;float:left;margin:5px;">                    <!-- <input type="text" placeholder="Chr" class="input"> -->
+                    <select  class="input" name="chr" >
+                        <option value='' disabled selected style='display:none;'>Choose One Chromesome</option>
+                    	<option value="1">Chr1</option>
+						<option value="2">Chr2</option>
+						<option value="3">Chr3</option>
+						<option value="4">Chr4</option>
+						<option value="5">Chr5</option>
+					    <option value="6">Chr6</option>
+					    <option value="7">Chr7</option>
+					    <option value="8">Chr8</option>
+					    <option value="9">Chr9</option>
+					    <option value="10">Chr10</option>
+                    </select>
+                    <input type="text" placeholder="Start" class="input" name="start" readonly="readonly" id="sh1">
+                    <span style="color:gray">------</span>
+                    <input type="text" placeholder="End" class="input" name="end" readonly="readonly" id="sh2">
+                    <br>
+                </div>
+                    <span style="color:gray;float:left;"><font size="3">(eg: Chr1 147 6782830 )</font></span><!--修改了与注释不符的错误-->
+                </div>
+                <div class="row">
+                <div style="background:#EDF1F1;border:solid 2px #D9E2EB;border-radius:3px;float:left;margin:5px;">
+                    <input type="radio" name="search" value="second"><font size="3"> Search By Gene ID</font><!--定义了字体大小-->
+                    <input type="text" placeholder="Gene" class="input" name="gene" readonly="readonly" id="sh3">
+                    <br>
+                </div>
+                <div style="height:44px;"></div>
+                   <span style="color:gray;float:left;"><font size="3">(eg: GRMZM2G040389 )</font></span><!--修改了与注释不符的错误-->
+                </div>
             </div>
             </form>
         </div>
         <%@ include file="../ListFooter.jsp"%>
-        <script src="Jscript/data.js" type="text/javascript"></script>
-		<script type="text/javascript">
+        		<script type="text/javascript">
 			/*
 			$ajax({
 	        	type:"get",
@@ -76,11 +143,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    var myData = $('#table-methods-table').bootstrapTable('getAllSelections');
 			    //alert(JSON.stringify(myData));
 			    //alert(myData.length);
-			   
+			   var val=$('input:radio[name="search"]:checked').val();
 				var num = myData.length;
 				var tas = new Array();
 				for(var i=0;i<num;i++){
-				    
 					tas[i]= myData[i].id;
 					//alert(tas[i]);
 				} 
@@ -91,8 +157,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				if(num == 0){
 					alert("You must choose at least one trait！");
 					return false;
-				}else{
-					//alert(name);
+				}else if(val==undefined){
+				return false;
+				}
+				else {
 					return true;
 			    } 	
 			}

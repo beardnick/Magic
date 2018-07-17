@@ -17,7 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="describe" content=""/>
     <link href="Css/bootstrap.min.css" rel="stylesheet"/>
     <link href="Css/main.css" rel="stylesheet"/>
-    <link href="Css/mycss.css" rel="stylesheet"/>
 	<script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
 <script type="text/javascript"> 
@@ -63,25 +62,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@ include file="../ListHeader.jsp"%>
     
-    <div class="content" style="height:850px;">
+    <div class="content" style="height:600px;"><!--lv 7-11-11：16 change  850->600-->
             <div class="describe">
                 <h3>BLASTN/Primer-BLASTN</h3>
-                <h4>You can use BLASTN program comparing nucleotide sequence to our databases and calculates the statistical significance. If you query sequence is Less than 50 bp, please use Primer-BLASTN. Here we use <u><b>Basic Local Alignment Search Tool (BLAST) </b></u>as a backend engine.</h4>
+                <h4>You can use BLASTN program comparing nucleotide sequence to our databases and calculates the statistical significance. If you query sequence is Less than 50 bp, please use Primer-BLASTN. Here we use Basic Local Alignment Search Tool (BLAST) as a backend engine.</h4>
                  </div>
             <div class="inputs">
              <form action="blast" method="post" onsubmit="return check1()">
                 <div class="left">
-                    <div style="height:100px;">
-                        <div class="myinput" style="float:left;width:45%;margin:5px;">
-                            <h4>BLAST programe</h4>
-                            <select name="blastprograme" id="blastprograme1"  onchange="checkdata()">
+                    <div style="height:10%;">
+                        <div class="background" style="width:49%;height:auto;float:left;margin-right:2%"><!-- lv 7-11-10：01 change -->
+                            <span style="padding-left:8px;display:inline-block;height:30px;line-height:30px;width:60%"> <h4>BLAST programe:&nbsp;&nbsp;</h4></span><!-- lv 7-11-10：49 change -->
+                            <select name="blastprograme" id="blastprograme1" class="input"  onchange="checkdata()"style="width:30%;">
+                            	
                                 <option value="blastn">blastn</option>
                                 <option value="primer-blast">primer-blast</option>
                             </select>
                         </div>
-                        <div class="myinput"  style="float:left;width:45%;margin:5px;">
-                            <h4>Database</h4>
-                            <select  name="database" id="Database">
+                        <div class="background" style="width:49%;height:auto;float:left;"><!-- lv 7-11-10：01 change -->
+                            <span style="padding-left:8px;display:inline-block;height:30px;line-height:30px;width:60%"><h4> Database:&nbsp;&nbsp;&nbsp;&nbsp;</h4></span><!-- lv 7-11-10：49 change -->
+                            <select  class="input" name="database" id="Database" style="width:30%;"> 
                                 <option style="width:150px" value="HZS">HZS</option>
                                 <option style="width:150px" value="V3.25">V3.25</option>
                                 <option style="width:150px" value="V4">V4</option>
@@ -89,38 +89,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </select>
                         </div>
                     </div>
-                    <div class="myinput" style="height:180px;padding:5px;padding-right:7%;">
-                        <h4>Enter FASTA sequence</h4>
-                        <textarea class="form-control" rows="5" name="inputtext" id="inputtext" type="text" onblur='javascript:$("#auto")'></textarea>
+                    <div class="background" style="height:260px;padding:5px;padding-right:7%;clear:both"><!-- lv 7-11-10：01 change class=""->class="background" 180px->280px-->
+                        <span style="padding-left:8px;display:inline-block;height:30px;line-height:30px;"><h4>Enter FASTA sequence</h4></span><!-- lv 7-11-10：49 change -->
+                        <textarea style="resize:none" class="form-control" rows="8" name="inputtext" id="inputtext" type="text" onblur='javascript:$("#auto")'></textarea><!-- lv 7-11-10：49 change rows8->12-->
                     </div>
-                    <div class="" style="padding-top:5px;">
-                        <h4>Or input file</h4>
+                    <div class="background" style="padding-top:5px;"><!-- lv 7-11-10：01 change class=""->class="background"-->
+                        <span style="padding-left:8px;display:inline-block;height:30px;line-height:30px;margin-top:10px;"><h4>Or input file</h4></span><!-- lv 7-11-10：49 change -->
                         <input type="file"  type="text" onblur='javascript:$("#auto")' id="inputfile1" name="inputfile"/>
                     </div>
                 </div>
                 <div class="right">
                     <h4>Parameter selection</h4>
-                    <table class="table last-table" style="height: 98px; width: 400px">
-                  
-                        <tr class="myinput" >
-                            <td  style="height: 41px"><span>Evalue</span></td>
-                            <td><input class="form-control" id="Eralue"  type="text" name="inputeralue" onblur='javascript:$("#auto")' value="0.00001" style="height:41px"/></td>
+                    <table class="table last-table" style="height: 88px; width: 500px"><!-- lv 7-11 change 98->88 400->500 -->
+                    <br/>
+                        <tr>
+                            
+                            <td style="width: 300px; height: 55px"><h4>Evalue</h4></td>  <!-- lv 7-11 change 200->300 45->55 -->                 
+                            <td><input id="Eralue" class="form-control" type="text" name="inputeralue" style="width:150px;" onblur='javascript:$("#auto")' value="0.00001"/></td><!-- lv 7-11 change add style-->
                         </tr>
-                        
-                        <tr class="myinput">
-                            <td style="height: 41px"><span>Percent Identity</span></td>
-                            <td><input class="form-control" style="height:41px" id="percent" type="text"  name="inputpercent" onblur='javascript:$("#auto")' value="5"/></td>
+                        <tr>
+                            <td style="width: 300px;height: 51px "><h4>Percent Identity</h4></td><!-- lv 7-11 change 200->300 41->51 -->
+                            <td><input id="percent" type="text" class="form-control" name="inputpercent" style="width:150px;" onblur='javascript:$("#auto")' value="5"/></td><!-- lv 7-11 change add style-->
                         </tr>
-
-                        <tr class="myinput">
-                            <td style="height: 41px"><span>Max target seqences</span></td>
-							<td><input class="form-control" style="height:41px" id="maxtar" type="text"  name="inputmaxtarget" onblur='javascript:$("#auto")' value="50" /></td>
+                        <tr>
+                            <td style="width: 300px;height: 51px "><h4>Max target seqences</h4></td><!-- lv 7-11 change 200->300 41->51 -->
+                         		 <td><input id="maxtar" type="text" class="form-control" name="inputmaxtarget" style="width:150px;" onblur='javascript:$("#auto")' value="50" /></td><!-- lv 7-11 change add style-->
                         </tr>
                         
                     </table>
                 </div>
                 <div class="btns">
-                <button class="btn" id="next1">NEXT</button></form>
+                <button class="btn" id="next1">Submit</button></form>
                 </div>
                 
           		

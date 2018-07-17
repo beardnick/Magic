@@ -32,7 +32,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Magic/Last/Last.jsp">·BLAST/Primer-BLAST</a><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Magic/Primer/Primersearch2.jsp">·General Primer Design</a><br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Magic/Primer/Primersearch1.jsp">·Primer Design By Region</a><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Magic/Primer/Primersearch3.jsp">·Primer Design By Variation ID</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/Magic/Primer/Primersearch3.jsp">·Design Primer by SNP/INDEL ID</a>
                     </div></div>
                 </div>
                 <div class="list">

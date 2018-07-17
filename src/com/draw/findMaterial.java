@@ -17,11 +17,11 @@ public class findMaterial extends ActionSupport{
     
 	public String execute(){
 		System.out.println("your pop is " +pop);
-		
 		String sql = "select name from  bin_summary_maxp2 where pop = '"+pop+"'";
 		PrintWriter writer = null;
 		Dbase d = new Dbase();
         String  result  = d.test(sql);
+        result=result.substring(0,result.length()-1);
         System.out.println(result);
 		try {
 			writer = ServletActionContext.getResponse().getWriter();
