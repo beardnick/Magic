@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
++<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -29,53 +29,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div class="describe">
                <h3>Bin Map</h3>
                <br/>
-               <p>The Visualisation of mosaic haplotypes for progenies in synthetic population, reflecting a high-resolution reshuffle across 24 founders genomes.</p>
+               <h4>The Visualisation of mosaic haplotypes for progenies in synthetic population, reflecting a high-resolution reshuffle across 24 founders genomes.</h4>
         </div>
-        <div class="inputs">
-        	<form method = "post" action ="picture" onsubmit="return check();">
-        		<span class="Phenotypicstrongblack">Population:</span><div style="display:inline-block;width:60px"></div>
-            	<span class="Phenotypicstrongblack">Material:</span><div style="display:inline-block;width:75px"></div>
-            	<span class="Phenotypicstrongblack">Chr:</span><br>
-            	<select id="sel1" name="pop"  size="4" class="select" style = "margin-left:0px;width:130px;height:200px">
-			    	<option value="L1">L1</option>
-				    <option value="L2">L2</option>
-				    <option value="L3">L3</option>
-	   			    <option value="L4">L4</option>
-	   			    <option value="Ref">Ref</option>						   
-				</select>
-				<select id="sel2" name="name" multiple="multiple" size="5" class="select" style="width:130px;height:200px;"></select>
-				<select id="sel3" name="chr" multiple="multiple" size="5" class="select" style="width:130px;height:200px;">
-					<option value="1">Chr1</option>
-				    <option value="2">Chr2</option>
-			   	    <option value="3">Chr3</option>
-					<option value="4">Chr4</option>
-				    <option value="5">Chr5</option>
-				    <option value="6">Chr6</option>
-				    <option value="7">Chr7</option>
-				    <option value="8">Chr8</option>
-				    <option value="9">Chr9</option>
-				    <option value="10">Chr10</option>	
-				</select>
-				
-				<div class="inputMessage" style="margin-top:50px;">
-			    	<span class="Phenotypicstrongblack">Or input the Material:&nbsp;</span>
-				    <input class="input1" name="name1" type = "text"></input>
-				    <span class = "Grand9" style="font-size:12px">
-					(e.g:M1722 or M1703 or M1727)</span>
+        <div class="inputs" style="width:100%;height:100%;position:relative;">
+        	<form method = "post" action ="picture" style="width:1130px;height:500px;margin:0;position:relative;"onsubmit="return check();">
+	        	<div class="left" style="width:45%;height:400px">
+	        		<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Population</h4></div>
+	            	<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Material</h4></div>
+	            	<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Chr</h4></div>
+	            	<select id="sel1" name="pop" multiple="multiple" size="4" class="select" style = "display:inline-block;width:32.5%;height:350px;margin-top:3px">
+				    	<option value="L1">L1</option>
+					    <option value="L2">L2</option>
+					    <option value="L3">L3</option>
+		   			    <option value="L4">L4</option>
+		   			    <option value="Ref">Ref</option>						   
+					</select>
+					<select id="sel2" name="name" multiple="multiple" size="5" class="select" style="display:inline-block;width:32.5%;height:350px;"></select>
+					<select id="sel3" name="chr" multiple="multiple" size="5" class="select" style="display:inline-block;width:32.5%;height:350px;">
+						<option value="1">Chr1</option>
+					    <option value="2">Chr2</option>
+				   	    <option value="3">Chr3</option>
+						<option value="4">Chr4</option>
+					    <option value="5">Chr5</option>
+					    <option value="6">Chr6</option>
+					    <option value="7">Chr7</option>
+					    <option value="8">Chr8</option>
+					    <option value="9">Chr9</option>
+					    <option value="10">Chr10</option>	
+					</select>
 				</div>
-				<div class="inputMessage" style="margin-top:50px;">
-			    	<span class="Phenotypicstrongblack">Input the start and end:&nbsp;</span>
-				    <input class="inputs" name="names" type = "text"></input>
-				     &nbsp;-----&nbsp; <input class="inpute" name="namee" type = "text" ></input>
-				</div>
-				
-				
-				<div class="btns">
-                	<button class="btn" >NEXT</button>
-                </div>
+				<div class="line"></div>
+				<div class="right" style="width:45%;height:400px;float:right">
+						<div class="inputMessage" style="display:inline-block;width:100%;height:150px;padding:0 5% 5%">
+				    		<h4 class="Phenotypicstrongblack">Or input the Material:&nbsp;</h4>
+				    		<div class="background" style="width:80%;height:30px">
+				    			<p style="font-size:19px;float:left;height:29px;display:inline-block;margin-bottom:0">Material:&nbsp;</p>
+				    			<input class="input1" name="name1" placeholder="Please input the Material" type = "text" style="width:270px;float:right;"></input>
+				    		</div>
+					    	<span class = "Grand9" style="font-size:14px;color:grey;margin-left:120px">(e.g:M1722 or M1703 or M1727)</span>
+						</div>
+						<hr class="style-two" />
+						<div class="inputMessage" style="display:inline-block;width:100%;height:250px;padding:0 5%">
+				    		<h4 class="Phenotypicstrongblack" style="display:block">Input the start and end position:&nbsp;</h4>
+				    		<div class="background" style="width:80%;height:30px">
+				    			<p style="font-size:19px;height:29px;display:inline-block;margin-left:20px;margin-bottom:0">Start:&nbsp;</p>
+				    			<input class="inputss" name="names" placeholder="Please input the start position" type = "text" style="width:270px;float:right;margin-top:0"></input>
+				    		</div>
+				    		<div class="background" style="width:80%;height:30px">
+				    			<p style="font-size:19px;float:left;height:29px;display:inline-block;margin-left:20px;margin-bottom:0;">End:&nbsp;</p>
+				    			<input class="inpute" name="namee" placeholder="Please input the end position" type = "text" style="width:270px;float:right;"></input>
+							</div>
+					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">(e.g:start:1 end 300000000</span>
+					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">or start:2000 end 3000000)</span>
+							<div class="btns" style="margin-top:3%">
+	                			<button class="btn" style="position:relative;margin:auto;">Submit</button>
+	                		</div>
+						</div>
+				</div>	
             </form>
         </div>
   	</div>
+  	
   	<%@ include file="../ListFooter.jsp"%>
   </body>
   
@@ -84,27 +98,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var sel2 = $("#sel2");
     var sel3 = $("#sel3");
     var na = $(".input1");
-    var nas = $(".input1");
-    var nae = $(".input1");
+    var nas = $(".inputss");
+    var nae = $(".inpute");
     sel1.click(function(){
+    	var arr1=sel1.val();
     	sel2.html("");
-    	$.ajax({
-    		type:"post",
-    		url:"findMaterial",
-    		data:{pop:sel1.val()},
-    		success:function(result){
-    			console.log(result);
-                var array = result.split(",");
-                console.log(array);
-                for (var i = 0; i < array.length; i++){
-                	console.log(array[i]);
-                 	sel2.append('<option value="' + array[i] + '">' + array[i] + '</option>');
-                }
-    		},
-    		error:function(error){
-              console.log("findMaterial    "+error);
-            }
-    	});
+    	for(var j=0;j<arr1.length;j++){
+	    	$.ajax({
+	    		type:"post",
+	    		url:"findMaterial",
+	    		data:{pop:arr1[j]},
+	    		success:function(result){
+	    			console.log(result);
+	                var array = result.split(",");
+	                console.log(array);
+	                for (var i = 0; i < array.length; i++){
+	                	console.log(array[i]);
+	                 	sel2.append('<option value="' + array[i] + '">' + array[i] + '</option>');
+	                }
+	    		},
+	    		error:function(error){
+	              console.log("findMaterial    "+error);
+	            }
+	    	});
+    	}
     });
     
     na.change(function(){
@@ -154,9 +171,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if (reg1.test(a)) {
 				
 			}else{
-				alert("Input error, please input again.");
+				alert("Input material error, please input again.");
 				return false;
 			}
+    	}
+    	if($(".inputss").val() == '' && $(".inpute").val() != ''){
+    		alert(("please input start position!"));
+    		return false;
+    	}
+    	if($(".inpute").val() == '' && $(".inputss").val() != ''){
+    		alert(("please input end position!"));
+    		return false;
+    	}
+    	
+    	if($(".inputss").val() != '' && $(".inpute").val() != ''){
+    		var reg2 = /^\d{1,9}$/;
+    		if(reg2.test($(".inputss").val())&&reg2.test($(".inpute").val())){
+    			if(parseInt($(".inputss").val())<1||parseInt($(".inputss").val())>301354135||parseInt($(".inpute").val())<1||parseInt($(".inpute").val())>301354135){
+    			alert("Input start or end position error,please input again.");
+    			return false;
+    			}
+    		}else{
+    			alert("Input start or end position error,please input again.");
+    			return false;
+    		}
     	}
     	return true;
     }

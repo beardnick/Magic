@@ -455,17 +455,17 @@ public class Blast2 extends ActionSupport{
             			
             			formap.put(fornum,str);
             			
-            			System.out.println(""+lineTxt);
-            			System.out.print("fornum="+fornum);
-            			System.out.print("forseq="+forseq);
-            			System.out.print("forstart="+forstart);
-            			System.out.print("forin="+forin);
-            			System.out.print("forN="+forN);
-            			System.out.print("forgc="+forgc);
-            			System.out.print("forTm="+forTm);
-            			System.out.print("forany="+forany);
-            			System.out.print("forend="+forend);
-            			System.out.println("forlity="+forlity);
+//            			System.out.println(""+lineTxt);
+//            			System.out.print("fornum="+fornum);
+//            			System.out.print("forseq="+forseq);
+//            			System.out.print("forstart="+forstart);
+//            			System.out.print("forin="+forin);
+//            			System.out.print("forN="+forN);
+//            			System.out.print("forgc="+forgc);
+//            			System.out.print("forTm="+forTm);
+//            			System.out.print("forany="+forany);
+//            			System.out.print("forend="+forend);
+//            			System.out.println("forlity="+forlity);
                 }
             		
             		read.close();
@@ -511,17 +511,17 @@ public class Blast2 extends ActionSupport{
             			intmap.put(intnum,str);
             			intnummap.put(intnum,intnum);
             			
-            			System.out.println(""+lineTxt);
-            			System.out.print("intnum="+intnum);
-            			System.out.print("intseq="+intseq);
-            			System.out.print("intstart="+intstart);
-            			System.out.print("intin="+intin);
-            			System.out.print("intN="+intN);
-            			System.out.print("intgc="+intgc);
-            			System.out.print("intTm="+intTm);
-            			System.out.print("intany="+intany);
-            			System.out.print("intend="+intend);
-            			System.out.println("intlity="+intlity);
+//            			System.out.println(""+lineTxt);
+//            			System.out.print("intnum="+intnum);
+//            			System.out.print("intseq="+intseq);
+//            			System.out.print("intstart="+intstart);
+//            			System.out.print("intin="+intin);
+//            			System.out.print("intN="+intN);
+//            			System.out.print("intgc="+intgc);
+//            			System.out.print("intTm="+intTm);
+//            			System.out.print("intany="+intany);
+//            			System.out.print("intend="+intend);
+//            			System.out.println("intlity="+intlity);
                 }
             		
             		read.close();
@@ -566,16 +566,16 @@ public class Blast2 extends ActionSupport{
             			revmap.put(revnum,str);
             			revnummap.put(revnum,revnum);
             			
-            			System.out.print("revnum="+revnum);
-            			System.out.print("revseq="+revseq);
-            			System.out.print("revstart="+revstart);
-            			System.out.print("revin="+revin);
-            			System.out.print("revN="+revN);
-            			System.out.print("revgc="+revgc);
-            			System.out.print("revTm="+revTm);
-            			System.out.print("revany="+revany);
-            			System.out.print("revend="+revend);
-            			System.out.println("revlity="+revlity);
+//            			System.out.print("revnum="+revnum);
+//            			System.out.print("revseq="+revseq);
+//            			System.out.print("revstart="+revstart);
+//            			System.out.print("revin="+revin);
+//            			System.out.print("revN="+revN);
+//            			System.out.print("revgc="+revgc);
+//            			System.out.print("revTm="+revTm);
+//            			System.out.print("revany="+revany);
+//            			System.out.print("revend="+revend);
+//            			System.out.println("revlity="+revlity);
                 }
             		read.close();
             	}else{

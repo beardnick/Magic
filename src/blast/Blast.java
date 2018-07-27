@@ -440,30 +440,30 @@ public class Blast extends ActionSupport{
             			}
             			else if(lineTxt.indexOf("</Hit>")!=-1)
             			{
-            				System.out.println("queryid="+queryid1);
-                    		System.out.println("programe="+programe1);
-                    		System.out.println("database="+database);
-                    		System.out.println("database1="+database1);
-                    		System.out.println("blastdatabase1="+blastdatabase1);
-                    		System.out.println("blastdatabase="+blastdatabase);
-                    		System.out.println("inputid="+inputid1);
-                    		System.out.println("querylength="+querylength1);
-                    		System.out.println("score="+score1);
-                    		System.out.println("evalue="+evalue1);
-                    		System.out.println("identity="+identity1);
-                    		System.out.println("gap="+gap1);
-                    		System.out.println("qseq=   "+qseq1);
-                    		System.out.println("midline="+midline1);
-                    		System.out.println("hseq=   "+hseq1);	
-                    		System.out.println("hitnum="+hitnum1);
-                    		System.out.println("chr=   "+chr1);
-                    		System.out.println("hspnum=   "+hspnum1);
-                    		System.out.println("Key="+chr1+"."+hitnum1+"."+hspnum1);
-                    		System.out.println("trait="+trait);
-                    		System.out.println("queryfrom="+queryfrom1);
-                    		System.out.println("queryto="+queryto1);
-                    		System.out.println("hitfrom="+hitfrom1);
-                    		System.out.println("hitto="+hitto);
+//            				System.out.println("queryid="+queryid1);
+//                    		System.out.println("programe="+programe1);
+//                    		System.out.println("database="+database);
+//                    		System.out.println("database1="+database1);
+//                    		System.out.println("blastdatabase1="+blastdatabase1);
+//                    		System.out.println("blastdatabase="+blastdatabase);
+//                    		System.out.println("inputid="+inputid1);
+//                    		System.out.println("querylength="+querylength1);
+//                    		System.out.println("score="+score1);
+//                    		System.out.println("evalue="+evalue1);
+//                    		System.out.println("identity="+identity1);
+//                    		System.out.println("gap="+gap1);
+//                    		System.out.println("qseq=   "+qseq1);
+//                    		System.out.println("midline="+midline1);
+//                    		System.out.println("hseq=   "+hseq1);	
+//                    		System.out.println("hitnum="+hitnum1);
+//                    		System.out.println("chr=   "+chr1);
+//                    		System.out.println("hspnum=   "+hspnum1);
+//                    		System.out.println("Key="+chr1+"."+hitnum1+"."+hspnum1);
+//                    		System.out.println("trait="+trait);
+//                    		System.out.println("queryfrom="+queryfrom1);
+//                    		System.out.println("queryto="+queryto1);
+//                    		System.out.println("hitfrom="+hitfrom1);
+//                    		System.out.println("hitto="+hitto);
                     		
             				
             				hitfrom=null;

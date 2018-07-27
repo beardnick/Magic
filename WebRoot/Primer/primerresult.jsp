@@ -102,7 +102,8 @@
 <%@ include file="../ListHeader.jsp"%>
 
 <div  style="height:auto;">
-    <div class="describe1">
+    <div class="col-md-12">
+    <div class="describe1" style="margin:50px;">
 
         <div class="left5" name="button" style="height: auto; width: 100%;">
             
@@ -154,7 +155,9 @@
 			</table>
 		</div>
     </div>
-    <div class="describe2">
+    </div>
+    <div class="col-md-12">
+    <div class="describe2" style="margin:50px;">
         <div class="left5" name="int" style="height: auto; width: 100%"> 
             <table id='table1' class="table blast-table"  data-toggle="table" >
             <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
@@ -197,7 +200,9 @@
 
 
     </div>
-    <div class="describe3">
+    </div>
+    <div class="col-md-12">
+    <div class="describe3" style="margin:50px;">
         <div class="left5" name="int" style="height: auto; width: 100%">
            
 
@@ -242,6 +247,7 @@
 
             </table>
         </div>
+    </div>
     </div>
     <div class="btns">
         <a href="tools.jsp"><button class="btn" id="back">Back</button></a>

@@ -72,7 +72,7 @@
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="content" style="height:5000px;margin-top:20px;">
+	<div class="content" style="height:2500px;margin-top:20px;">
 		<div id="carousel">
 			<div class="slidebox-01">
 				<ul style="left:0px;" class="slidepic-01">
@@ -108,11 +108,9 @@
 					<div class="panel-body">
 						<ul class="list-group">
 							<a href="Dataintroduction/genotypedata.jsp"
-								class="list-group-item" style="color:#333;text-align:center;">Porta
-								ac consectetur ac</a>
+								class="list-group-item" style="color:#333;text-align:center;">Genotype Data</a>
 							<a href="Dataintroduction/phenotypedata.jsp"
-								class="list-group-item" style="color:#333;text-align:center;">Vestibulum
-								at eros</a>
+								class="list-group-item" style="color:#333;text-align:center;">Phenotype Data</a>
 							<a href="Draw/magic" class="list-group-item"
 								style="color:#333;text-align:center;">Bin Map</a>
 							<a href="JBrowse/jbrowsetool.jsp" class="list-group-item"
@@ -138,23 +136,23 @@
 			</div>
 
 			<div class="col-md-9" style="text-align:justify;">
-				<div class="title"
-					style="text-align: center;color:#4381be;margin-bottom:15px">
+				<div class="title" style="text-align: center;color:#4381be;margin-bottom:15px">
 					<h1>Welcome to Maize CUBIC Variation Database</h1>
 					<div class="title" style="color:#4381be;margin-bottom:15px">
-						<h2>Database Overview</h2>
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="my-panel">
-						<h2>Population Design</h2>
+						<h2 style="color:#4381be;">Population Design</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A maize Complete-diallel plus
 							Unbalanced Breeding-like Inter-Cross population (CUBIC)
 							population consist of 1404 individuals derived from twenty-four
 							elite lines that have been widely applied in Chinese breeding
-							programs has been developed.</>
-					</div>
-					<div class="my-panel">
+							programs has been developed.<p/>
+                        <div style="text-align:center">
+							<img alt="graph" src="images\graph.png"
+								style="margin:0 auto;width:700px"></img>
+                        </div>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•30 F1s with best agronomic
 							performance were selected to futher cross in NCII,and the other
 							110 F1s were randomly selected to cross with open pollinated in
@@ -168,13 +166,12 @@
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•Following,the population was
 							self-pollinated for another 6 generations.</p>
 						<div style="text-align:center">
-							<img alt="graph" src="images\graph.png"
-								style="margin:0 auto;width:700px"></img> <img alt="maize"
+                            <img alt="maize"
 								src="images\maize.png" style="margin:0 auto;width:400px"></img>
 						</div>
 					</div>
 					<div class="my-panel">
-						<h2>Sequencing</h2>
+						<h2 style="color:#4381be;">Sequencing</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All progenies and founders
 							have been sequenced at low coverage (1x and 11x, respectively).
 							DNA libraries were sequenced with Illumina HiSeq 2500 with 125-bp
@@ -191,7 +188,7 @@
 					</div>
 					</p>
 					<div class="my-panel">
-						<h2>Genotyping</h2>
+						<h2 style="color:#4381be;">Genotyping</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An integrated strategy in
 							variant calling and imputation was applied to the population, and
 							over 53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
@@ -210,7 +207,7 @@
 					</div>
 
 					<div class="my-panel">
-						<h2>Phenotyping</h2>
+						<h2 style="color:#4381be;">Phenotyping</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
 							five different provinces in the summer of 2014 and 20 traits were
 							investigated.

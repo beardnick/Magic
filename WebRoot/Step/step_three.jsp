@@ -71,12 +71,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="col-md-12">
 			<%@ include file="../py_scripts/chrome.html"%>
-		</div>
-        	<h3>GWAS Search</h3>
-            <br/>
-            <p><font size="3">Three GWAS method including single-variant-based GWAS using mixed linear models, a new the haplotype-based mixed linear model method and allelic genetic heterogeneity GWAS was used for dissecting genetic mechanisms of over 20 agronomic and yield traits. You can search and  visualise the GWAS results in a number of ways.</font></p><!--定义了字体大小-->
-            <p><font size="3">Search the significant SNPs (2.79x10-8) in GWAS results in a number of ways, including by trait, SNP identifier, study and gene.</font></p>
-        </div>
+        <%--
+		   -</div>
+           -	<h3>GWAS Search</h3>
+           -    <br/>
+           -    <p><font size="3">Three GWAS method including single-variant-based GWAS using mixed linear models, a new the haplotype-based mixed linear model method and allelic genetic heterogeneity GWAS was used for dissecting genetic mechanisms of over 20 agronomic and yield traits. You can search and  visualise the GWAS results in a number of ways.</font></p><!--定义了字体大小-->
+           -    <p><font size="3">Search the significant SNPs (2.79x10-8) in GWAS results in a number of ways, including by trait, SNP identifier, study and gene.</font></p>
+           -</div>
+           --%>
 <!--         <div class="steps">
             <image src="images/steps3.png" alt="steps1" width="600" height="50">
         </div> -->

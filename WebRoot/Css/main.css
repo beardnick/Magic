@@ -540,7 +540,7 @@ size3 {
 	padding: 5px;
 }
 
-.line {
+/*.line {
 	float: left;
 	border-right: 1px solid #ddd;
 	height: 400px;
@@ -548,7 +548,7 @@ size3 {
 	position: absolute;
 }
 
-hr.style-two { /*透明渐变水平线*/
+hr.style-two { /*透明渐变水平线
 	width: 90%;
 	margin: 0 auto;
 	border-top: px solid #ddd;
@@ -562,4 +562,23 @@ option {
 body {
 	background: white;
 	min-width: 1130px
+}*/
+
+.line {
+    float: left;
+    border-right: 1px solid #ddd;
+    height: 400px;
+    margin: 0 auto 0 50%;
+    position: absolute;
 }
+hr.style-two {/*透明渐变水平线*/
+width:90%;
+margin:0 auto;
+border-top: px solid #ddd;
+height: 1px;
+}
+
+option{
+	font-size:18px;
+}
+body{background:white;min-width:1150px}
