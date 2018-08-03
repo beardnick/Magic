@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <script type="text/javascript" src="Jscript/jquery.1.11.3.min.js"></script>
         <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
                 <script src="Jscript/data.js" type="text/javascript"></script>
+                <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script type="text/javascript">
     	$(document).ready(function(){
     	    $('input:radio[name="search"]').click(function(){
@@ -84,10 +85,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div style="position:absolute;left:53%;top:125px;width:0px;height:400px;border-style:solid;border-color:#ddd;border-width:0.5px;"></div>
             <div class="search" style="position:absolute;left:56%;top:130px;width:620px;padding:40px;border-style:solid;border-color:#ddd;border-width:1px;border-radius:3px;">
+                <style>
+                    .form-control{border-top-left-radius:4px;border-bottom-left-radius:4px;}
+                </style>
                 <div class="row">
                     <input type="radio" name="search" value="first"> <font size="3">Search By Region</font><br>
-                <div style="background:#EDF1F1;border:solid 2px #D9E2EB;border-radius:3px;float:left;margin:5px;">                    <!-- <input type="text" placeholder="Chr" class="input"> -->
-                    <select  class="input" name="chr" >
+                    <select  class="form-control eg" style="width:220px;display:inline;" title="eg: Chr1 147 6782830" name="chr" >
                         <option value='' disabled selected style='display:none;'>Choose One Chromesome</option>
                     	<option value="1">Chr1</option>
 						<option value="2">Chr2</option>
@@ -100,27 +103,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    <option value="9">Chr9</option>
 					    <option value="10">Chr10</option>
                     </select>
-                    <input type="text" placeholder="Start" class="input" name="start" readonly="readonly" id="sh1">
+                    <input type="text" placeholder="Start" class="form-control" style="width:150px;display:inline;" name="start" readonly="readonly" id="sh1">
                     <span style="color:gray">------</span>
-                    <input type="text" placeholder="End" class="input" name="end" readonly="readonly" id="sh2">
+                    <input type="text" placeholder="End" class="form-control" style="width:150px;display:inline;" name="end" readonly="readonly" id="sh2">
                     <br>
-                </div>
-                    <span style="color:gray;float:left;"><font size="3">(eg: Chr1 147 6782830 )</font></span><!--修改了与注释不符的错误-->
+                    <%--<span style="color:gray;float:left;"><font size="3">(eg: Chr1 147 6782830 )</font></span><!--修改了与注释不符的错误-->--%>
                 </div>
                 <div class="row">
-                <div style="background:#EDF1F1;border:solid 2px #D9E2EB;border-radius:3px;float:left;margin:5px;">
-                    <input type="radio" name="search" value="second"><font size="3"> Search By Gene ID</font><!--定义了字体大小-->
-                    <input type="text" placeholder="Gene" class="input" name="gene" readonly="readonly" id="sh3">
-                    <br>
-                </div>
+                    <input type="radio" name="search" value="second"><font size="3"> Search By Gene ID</font><br><!--定义了字体大小-->
+                    <input type="text" placeholder="Gene" class="form-control eg" style="width:220px;"title="eg: GRMZM2G040389" name="gene" readonly="readonly" id="sh3">
                 <div style="height:44px;"></div>
-                   <span style="color:gray;float:left;"><font size="3">(eg: GRMZM2G040389 )</font></span><!--修改了与注释不符的错误-->
+                   <%--<span style="color:gray;float:left;"><font size="3">(eg: GRMZM2G040389 )</font></span><!--修改了与注释不符的错误-->--%>
                 </div>
             </div>
             </form>
         </div>
         <%@ include file="../ListFooter.jsp"%>
         		<script type="text/javascript">
+                  $(function(){$(".eg").tooltip();});
 			/*
 			$ajax({
 	        	type:"get",

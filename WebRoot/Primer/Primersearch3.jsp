@@ -21,6 +21,11 @@
 <link href="Css/main.css" rel="stylesheet" />
 <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+            $(function(){$(".eg").tooltip();});
+    </script>
 
 </head>
 
@@ -45,8 +50,8 @@
 					<div class="input-group input-lg">
 						<!-- lv 7-12 change 45-> 48-->
 						<span class="Input-group-addon">
-                            Upstream:</span><input class="form-control" type="input"
-								name="upstream" id="upstream1" placeholder="eg.100"
+                            Upstream:</span><input class="form-control eg" type="input"
+								name="upstream" id="upstream1" title="eg:100"
 								/>
 						<!-- lv 7-12 change style="width: 70%;" -->
 
@@ -55,15 +60,15 @@
                     <div class="col-md-6 col-xs-6">
 					<div class="input-group input-lg">
 						<span class="input-group-addon">
-                            Downstream:</span><input class="form-control" type="input"
-								name="downstream" id="downstream1" placeholder="eg.100"
+                            Downstream:</span><input class="form-control eg" type="input"
+								name="downstream" id="downstream1" title="eg:100"
 								/>
 					</div>
 					</div>
                     <div class="col-md-12 col-xs-12">
 					<div class="input-lg">
-						<input class="form-control" type="input" name="id" id="id1"
-							placeholder="Input one Variation ID(eg. chr1.s_67196493)"
+						<input class="form-control eg" title="eg. chr1.s_67196493" type="input" name="id" id="id1"
+							placeholder="Input one Variation ID"
                             style="border-top-left-radius:4px;border-bottom-left-radius:4px;"
 							/>
                     </div>

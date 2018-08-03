@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="Css/bootstrap.min.css" rel="stylesheet"/>
     <link href="Css/main.css" rel="stylesheet"/>
     <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	
 	
 
@@ -64,23 +65,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    		<h4 class="Phenotypicstrongblack">Or input the Material:&nbsp;</h4>
 				    		<div class="input-group lg">
 				    			<span class="input-group-addon">Material:</span>
-				    			<input class="input1 form-control" name="name1" placeholder="Please input the Material" type = "text" ></input>
+				    			<input class="input1 form-control eg" title="eg:M1722 or M1703 or M1727" name="name1" placeholder="Please input the Material" type = "text" ></input>
 				    		</div>
-					    	<span class = "Grand9" style="font-size:14px;color:grey;margin-left:120px">(e.g:M1722 or M1703 or M1727)</span>
+							<%--<span class = "Grand9" style="font-size:14px;color:grey;margin-left:120px">(e.g:M1722 or M1703 or M1727)</span>--%>
 						</div>
 						<hr class="style-two" />
 						<div class="inputMessage" style="display:inline-block;width:100%;height:250px;padding:0 5%">
 				    		<h4 class="Phenotypicstrongblack" style="display:block">Input the start and end position:&nbsp;</h4>
 				    		<div class="input-group input-lg">
 				    			<span class="input-group-addon">Start:</span>
-				    			<input class="inputss form-control" name="names" placeholder="Please input the start position" type = "text"></input>
+				    			<input class="inputss form-control eg" title="eg:start:1 end 300000000 or start:2000 end 3000000" name="names" placeholder="Please input the start position" type = "text"></input>
 				    		</div>
 				    		<div class="input-group input-lg">
 				    			<span class="input-group-addon">End:</span>
-				    			<input class="inpute form-control" name="namee" placeholder="Please input the end position" type = "text"></input>
+				    			<input class="inpute form-control eg" title="eg:start:1 end 300000000 or start:2000 end 3000000" name="namee" placeholder="Please input the end position" type = "text"></input>
 							</div>
-					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">(e.g:start:1 end 300000000</span>
-					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">or start:2000 end 3000000)</span>
+							<%--<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">(e.g:start:1 end 300000000</span>--%>
+							<%--<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">or start:2000 end 3000000)</span>--%>
 							<div class="btns" style="margin-top:3%">
 	                			<button class="btn" style="position:relative;margin:auto;">Submit</button>
 	                		</div>
@@ -94,6 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   
   <script type="text/javascript">
+    $(function(){$(".eg").tooltip();});
   	var sel1 = $("#sel1");
     var sel2 = $("#sel2");
     var sel3 = $("#sel3");

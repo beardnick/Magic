@@ -18,6 +18,7 @@
 <meta name="describe" content="" />
 <link href="Css/bootstrap.min.css" rel="stylesheet" />
 <link href="Css/main.css" rel="stylesheet" />
+<link href="Css/main1.css" rel="stylesheet" />
 <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
 
@@ -72,7 +73,7 @@
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="content" style="height:2500px;margin-top:20px;">
+	<div class="content" style="height:2300px;margin-top:20px;">
 		<div id="carousel">
 			<div class="slidebox-01">
 				<ul style="left:0px;" class="slidepic-01">

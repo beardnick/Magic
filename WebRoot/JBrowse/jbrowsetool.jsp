@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>Variation Browser</title>
+    <title>Tool two</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="author" content="Daliu"/>
@@ -17,9 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="Jscript/jquery.1.11.3.min.js"></script>
     <link type="text/css" rel="stylesheet" href="Css/bootstrap.min.css" />
     <link type="text/css" rel="stylesheet" href="Css/main.css"/>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
     
     <script type="text/javascript">
     //window.location.href = "/Magic/index.jsp";
+        $(function(){$(".eg").tooltip();});
     	$(document).ready(function(){
     	    
     	    $('input:radio[name="search"]').click(function(){
@@ -53,14 +55,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		    	while(start>=0)
     		    	{
     		    		start1=start1+100000;
-    		    		start=start-100000;
+    		    		start=start-1000000;
     		    	}
-    		    	while(end>start1)
+    		    	while(end>start0)
     		    	{
     		    		end1=end1+1;
     		    		end=end-100000;
     		    	}
-    		    	alert(end1);
     		    	while(end1>0)
     		    	{
     		    		end1=end1-1;
@@ -75,8 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		    			str="chr"+$("#chr").val()+"_"+end+"_"+start1;//chr1_100000_200000
     		    		}
     		    	}
-    		    
-    		   		window.location.href = "http://localhost:8080/Magic/JBrowse/jbrowse.jsp?loc="+$("#chr").val()+"%3A"+$("#sh1").val()+".."+$("#sh2").val()+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
+    		   		window.location.href = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="+$("#chr").val()+"%3A"+$("#sh1").val()+".."+$("#sh2").val()+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
     		    }
     		    else if(val=="second")
     		    {
@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    		    	while(start>=0)
 		    		    	{
 		    		    		start1=start1+100000;
-		    		    		start=start-100000;
+		    		    		start=start-1000000;
 		    		    	}
 		    		    	while(end>start0)
 		    		    	{
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    		    			str="chr"+chrr+"_"+end+"_"+start1;//chr1_100000_200000
 		    		    		}
 		    		    	}
-    		                window.location.href = "http://localhost:8080/Magic/JBrowse/jbrowse.jsp?loc="+array[0]+"%3A"+array[1]+".."+array[2]+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
+    		                window.location.href = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="+array[0]+"%3A"+array[1]+".."+array[2]+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
     		    		},
     		    		error:function(error){
     		              console.log("jbrowse    "+error);
@@ -142,17 +142,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%@ include file="../ListHeader.jsp"%>
     <div class="content">
             <div class="describe">
-                <h3>Variation Browser</h3>
-              
+                <h3>GWAS Diagram</h3>
+                <br/>
+                <p>The Visualisation of all SNP-trait associations with genome-wide significance (p≤5 x10-8).</p>
             </div>
+            <div class="steps">
+                <image src="images/steps2.png">
+            </div>
+            
             <div class="search">
+                <style>
+                    .form-control{border-top-left-radius:4px;border-bottom-left-radius:4px;}
+                </style>
                 <p class="bold">Select one or more loci. Specify gene identifiers (e.g. GRMZM2G040380) or regions (e.g. Chr1 147 6782830).</p>
                 <div class="row">
                     <input type="radio" name="search" value="first"> Search By Region
                 </div>
                 <div class="row">  
                     <!-- <input type="text" placeholder="Chr" class="input"> -->
-                    <select  class="input" name="chr" id="chr">
+                    <select  class="form-control eg" title="eg: Chr1 147 67828030" style="width:200px;display:inline;"  name="chr" id="chr">
                         
                     	<option value="1">Chr1</option>
 						<option value="2">Chr2</option>
@@ -165,18 +173,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    <option value="9">Chr9</option>
 					    <option value="10">Chr10</option>
                     </select>
-                    <input type="text" placeholder="Start" class="input" name="start" readonly="readonly" id="sh1">
+                    <input type="text" placeholder="Start" class="form-control eg" style="width:200px;display:inline;" title="eg: Chr1 147 67828030" name="start" readonly="readonly" id="sh1">
                     <span style="color:gray">------</span>
-                    <input type="text" placeholder="End" class="input" name="end" readonly="readonly" id="sh2">
-                    <span style="color:gray;">(eg: Chr1 147 67828030 )</span>
+                    <input type="text" placeholder="End" class="form-control eg" style="width:200px;display:inline;" title="eg: Chr1 147 67828030" name="end" readonly="readonly" id="sh2">
+                    <%--<span style="color:gray;">(eg: Chr1 147 67828030 )</span>--%>
                 </div>
                 <br>
                 <div class="row">
                     <input type="radio" name="search" value="second" > Search By Gene ID
                 </div>
                 <div class="row">
-                    <input type="text" placeholder="Gene" class="input" name="gene" readonly="readonly" id="sh3">
-                    <span style="color:gray;">(eg: GRMZM2G040389 )</span>
+                    <input type="text" placeholder="Gene" class="form-control eg" style="width:200px;display:inline;" title="eg: GRMZM2G040389" name="gene" readonly="readonly" id="sh3">
+                    <%--<span style="color:gray;">(eg: GRMZM2G040389 )</span>--%>
                 </div>
             </div>
             
