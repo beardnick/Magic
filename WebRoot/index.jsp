@@ -181,12 +181,10 @@
 							Illumina HiSeq 2500 with 125-bp paired-end reads using V4
 							reagents, generating almost 2000x genome coverage. Sequences data
 							are available in
-						<div class="class0" style="display:inline;">
 							<a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG
 								Data Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
-						</div>
-					</div>
 					</p>
+					</div>
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Genotyping</h2>
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An integrated strategy in
@@ -199,10 +197,10 @@
 							structural variants was considered as ~60%. This variant map,
 							together with the methodological practices, would be a great
 							valuable resource for the plant community.
-						<div class="class0">
+						<%--<div class="class0">--%>
 							<a href="/Magic/Dataintroduction/genotypedata.jsp"
 								style="color:#4381be;">Read more……</a>
-						</div>
+						<%--</div>--%>
 						</p>
 					</div>
 
@@ -211,10 +209,10 @@
 						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
 							five different provinces in the summer of 2014 and 20 traits were
 							investigated.
-						<div class="class0">
+						<%--<div class="class0">--%>
 							<a href="/Magic/Dataintroduction/genotypedata.jsp"
 								style="color:#4381be;">Read more……</a>
-						</div>
+						<%--</div>--%>
 						</p>
 					</div>
 				</div>

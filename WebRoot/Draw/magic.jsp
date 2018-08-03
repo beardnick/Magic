@@ -34,10 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="inputs" style="width:100%;height:100%;position:relative;">
         	<form method = "post" action ="picture" style="width:1130px;height:500px;margin:0;position:relative;"onsubmit="return check();">
 	        	<div class="left" style="width:45%;height:400px">
-	        		<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Population</h4></div>
-	            	<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Material</h4></div>
-	            	<div class="background" style="width:32.5%;height:35px;display:inline-block;margin:0;"><h4 class="Phenotypicstrongblack">Chr</h4></div>
-	            	<select id="sel1" name="pop" multiple="multiple" size="4" class="select" style = "display:inline-block;width:32.5%;height:350px;margin-top:3px">
+	        		<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Population</h4></div>
+	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Material</h4></div>
+	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Chr</h4></div>
+	            	<select id="sel1" name="pop" multiple="multiple" size="4" class="select" style = "display:inline-block;width:32.5%;height:350px;margin-top:0px">
 				    	<option value="L1">L1</option>
 					    <option value="L2">L2</option>
 					    <option value="L3">L3</option>
@@ -62,22 +62,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="right" style="width:45%;height:400px;float:right">
 						<div class="inputMessage" style="display:inline-block;width:100%;height:150px;padding:0 5% 5%">
 				    		<h4 class="Phenotypicstrongblack">Or input the Material:&nbsp;</h4>
-				    		<div class="background" style="width:80%;height:30px">
-				    			<p style="font-size:19px;float:left;height:29px;display:inline-block;margin-bottom:0">Material:&nbsp;</p>
-				    			<input class="input1" name="name1" placeholder="Please input the Material" type = "text" style="width:270px;float:right;"></input>
+				    		<div class="input-group lg">
+				    			<span class="input-group-addon">Material:</span>
+				    			<input class="input1 form-control" name="name1" placeholder="Please input the Material" type = "text" ></input>
 				    		</div>
 					    	<span class = "Grand9" style="font-size:14px;color:grey;margin-left:120px">(e.g:M1722 or M1703 or M1727)</span>
 						</div>
 						<hr class="style-two" />
 						<div class="inputMessage" style="display:inline-block;width:100%;height:250px;padding:0 5%">
 				    		<h4 class="Phenotypicstrongblack" style="display:block">Input the start and end position:&nbsp;</h4>
-				    		<div class="background" style="width:80%;height:30px">
-				    			<p style="font-size:19px;height:29px;display:inline-block;margin-left:20px;margin-bottom:0">Start:&nbsp;</p>
-				    			<input class="inputss" name="names" placeholder="Please input the start position" type = "text" style="width:270px;float:right;margin-top:0"></input>
+				    		<div class="input-group input-lg">
+				    			<span class="input-group-addon">Start:</span>
+				    			<input class="inputss form-control" name="names" placeholder="Please input the start position" type = "text"></input>
 				    		</div>
-				    		<div class="background" style="width:80%;height:30px">
-				    			<p style="font-size:19px;float:left;height:29px;display:inline-block;margin-left:20px;margin-bottom:0;">End:&nbsp;</p>
-				    			<input class="inpute" name="namee" placeholder="Please input the end position" type = "text" style="width:270px;float:right;"></input>
+				    		<div class="input-group input-lg">
+				    			<span class="input-group-addon">End:</span>
+				    			<input class="inpute form-control" name="namee" placeholder="Please input the end position" type = "text"></input>
 							</div>
 					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">(e.g:start:1 end 300000000</span>
 					    	<span class = "Grand9" style="display:block;font-size:14px;color:grey;margin-left:120px;">or start:2000 end 3000000)</span>

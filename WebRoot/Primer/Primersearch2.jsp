@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="content" style="height:1000px;">
             <div class="describe">
                 <h3>General Primer Design</h3><!-- lv 7-11 change h4->h3 -->
-                <h4>You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine. </h4>
+                <span class="input-group">You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine. 
              
            
             </div>
@@ -46,42 +46,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            		
                 <div class="leftp2" style="height: 350px; width:1200px;">
                                 <h3>Parameter Selection</h3><!-- lv 7-11 change 套用的primersearch2 -->
-                    <div style="height:65px;text-align:right;">
-                        <div class="background" style="float:left;width:33%;margin:10px;">
-                            <h4>Optimal primer size:&nbsp;<input type="text" name="opsize" id="opsize1" value="20"/>&nbsp;</h4>
-                      	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Max primer size:&nbsp;<input type="text" name="maxsize" id="maxsize1" value="27"/>&nbsp;</h4>
-                    	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Min primer size:&nbsp;<input type="text" name="minsize" id="maxsize1" value="18"/>&nbsp;</h4>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="input-group input-lg">
+                            <span class="input-group-addon">Optimal primer size:</span><input class="form-control" type="text" name="opsize" id="opsize1" value="20"/>
+                      	</div>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="input-group input-lg">
+                            <span class="input-group-addon">Max primer size:</span><input class="form-control" type="text" name="maxsize" id="maxsize1" value="27"/>
                     	</div>
-                    </div>
-                    <div style="height:65px;text-align:right;">
-                        <div class="background" style="float:left;width:33%;margin:10px;">
-                            <h4>Optimal primer TM:&nbsp;<input type="text" name="opttm" id="opttm1" value="60.0"/>&nbsp;</h4>
-                      	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Max primer TM:&nbsp;<input type="text" name="maxtm" id="maxtm1" value="63.0"/>&nbsp;</h4>
-                    	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Min primer TM:&nbsp;<input type="text" name="mintm" id="mintm1" value="57.0"/>&nbsp;</h4>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="input-group input-lg">
+                            <span class="input-group-addon">Min primer size:</span><input class="form-control" type="text" name="minsize" id="maxsize1" value="18"/>
+                                    </div>
+                                </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Optimal primer TM:</span><input class="form-control" class="form-control" type="text" name="opttm" id="opttm1" value="60.0"/>
+                        </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Max primer TM:</span><input class="form-control" type="text" name="maxtm" id="maxtm1" value="63.0"/>
                     	</div>
-                    </div>
-                    <div style="height:65px;text-align:right;">
-                        <div class="background" style="float:left;width:33%;margin:10px;">
-                            <h4>Optimal GC percent:&nbsp;<input type="text" name="optgc" id="optgc1" value="50.0"/>&nbsp;</h4>
-                      	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Max GC percent:&nbsp;<input type="text" name="maxgc" id="maxgc1" value="80.0"/>&nbsp;</h4>
-                    	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Min GC percent:&nbsp;<input type="text" name="mingc" id="mingc1" value="20.0"/>&nbsp;</h4>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Min primer TM:</span><input class="form-control" type="text" name="mintm" id="mintm1" value="57.0"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Optimal GC percent:</span><input class="form-control" type="text" name="optgc" id="optgc1" value="50.0"/>
+                            </div>
+                        </div><div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Max GC percent:</span><input class="form-control" type="text" name="maxgc" id="maxgc1" value="80.0"/>
                     	</div>
-                    </div>
-                    <div style="height:65px;text-align:right;">
-                        <div class="background" style="float:left;width:33%;margin:10px;">
-                            <h4>Default product:&nbsp;<input type="text" name="defaultproduct" id="defaultproduct" value="100-300"/>&nbsp;</h4>
-                      	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Max Poly-X:&nbsp;<input type="text" name="maxployx" id="maxployx1" value="5"/>&nbsp;</h4>
-                    	</div><div class="background" style="float:left;width:30%;margin:10px;">
-                            <h4>Max Self Any:&nbsp;<input type="text" name="selfany" id="selfany1" value="8"/>&nbsp;</h4>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Min GC percent:</span><input class="form-control" type="text" name="mingc" id="mingc1" value="20.0"/>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Default product:</span><input class="form-control" type="text" name="defaultproduct" id="defaultproduct" value="100-300"/>
+                      	</div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Max Poly-X:</span><input class="form-control" type="text" name="maxployx" id="maxployx1" value="5"/>
                     	</div>
-                    </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            <div class="input-group input-lg">
+                            <span class="input-group-addon">Max Self Any:</span><input class="form-control" type="text" name="selfany" id="selfany1" value="8"/>
+                            </div>
+                        </div>
+                        
                 </div>
                 <div style="position:absolute;left:46%;top:78%;"><!-- lv 7-11 change new -->
              
