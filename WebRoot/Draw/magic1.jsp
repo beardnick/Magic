@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<%@ include file="../ListHeader.jsp"%>
-  	<div class="content">
+  	<div class="container">
   		<div class="describe">
         	<h3>Bin Map</h3>
             <br/>

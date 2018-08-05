@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<%@ include file="../ListHeader.jsp"%>
-  	<div class="content" style="height:650px;">
+  	<div class="container" style="height:650px;">
   		<div class="describe">
                <h3>Bin Map</h3>
                <br/>
@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="inputs" style="width:100%;height:100%;position:relative;">
         	<form method = "post" action ="picture" style="width:1130px;height:500px;margin:0;position:relative;"onsubmit="return check();">
-	        	<div class="left" style="width:45%;height:400px">
+	        	<div class="left-panel" style="width:45%;height:400px">
 	        		<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Population</h4></div>
 	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Material</h4></div>
 	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Chr</h4></div>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</select>
 				</div>
 				<div class="line"></div>
-				<div class="right" style="width:45%;height:400px;float:right">
+				<div class="right-panel" style="width:45%;height:400px;float:right">
 						<div class="inputMessage" style="display:inline-block;width:100%;height:150px;padding:0 5% 5%">
 				    		<h4 class="Phenotypicstrongblack">Or input the Material:&nbsp;</h4>
 				    		<div class="input-group lg">

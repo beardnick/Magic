@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@ include file="../ListHeader.jsp"%>
     
-    <div class="content" style="height:650px;">
+    <div class="container" style="height:650px;">
             <div class="describe">
                 <h4>TOOLS ONE</h4>
                 <br/>

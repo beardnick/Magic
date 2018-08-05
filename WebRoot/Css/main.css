@@ -391,7 +391,7 @@ size3 {
 .slidepic-01 li {
 	height: 300px;
 	overflow: hidden;
-	float: left;
+float: left;
 	z-index: 0;
 }
 
@@ -438,17 +438,8 @@ size3 {
 	margin-top: 25px;
 }
 
-.left {
-	float: left;
-	width: 49%;
-	height: 480px;
-	border-radius: 3px;
-	border: solid 1px #ddd;
-	margin: 5px;
-	padding: 5px;
-}
 
-.right {
+.right-panel {
 	float: left;
 	width: 49%;
 	height: 400px;
@@ -462,14 +453,14 @@ size3 {
 	margin-top: 25px;
 }
 
-.left {
-	float: left;
-	width: 49%;
-	height: 400px;
-	border-radius: 3px;
-	border: solid 1px #ddd;
-	margin: 5px;
-	padding: 5px;
+.left-panel {
+    float: left;
+    width: 49%;
+    height: 400px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    margin: 5px;
+    padding: 5px;
 } /*<!-- lv 7-11-10：01 change 650->400-->*/
 .background {
 	background: #EDF1F1;
@@ -492,14 +483,14 @@ size3 {
 	margin: 5px;
 	padding: 5px;
 } /*<!-- lv 7-11-10：01 change new-->*/
-.right {
-	float: left;
-	width: 49%;
-	height: 300px;
-	border-radius: 3px;
-	border: solid 1px #ddd;
-	margin: 5px;
-	padding: 5px;
+.right-panel {
+    float: left;
+    width: 49%;
+    height: 300px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    margin: 5px;
+    padding: 5px;
 }
 
 .btn-part {
@@ -582,3 +573,7 @@ option{
 	font-size:18px;
 }
 body{background:white;min-width:1150px}
+
+.container{
+    width:1300px;
+}

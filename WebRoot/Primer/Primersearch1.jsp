@@ -27,7 +27,7 @@
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="content" style="height:700px;width:1200px;">
+	<div class="container" style="height:700px;">
 		<div class="describe">
 			<h3>Primer Design by Region</h3>
 			<h4>You can choose one of the provided databases and input a
@@ -86,6 +86,7 @@
 						</div>
 					</div>
 				</div>
+            </form>
 				<form action="blast" method="post">
 					<div class="leftp2" style="height: 350px;">
 						<h3>Parameter Selection</h3>
@@ -153,7 +154,6 @@
 									value="20.0" />
 							</div>
 						</div>
-						<div iv>
 							<div class="col-md-4 col-xs-4">
 								<div class="input-group input-lg">
 									<span class="input-group-addon">Default product:</span><input
@@ -176,12 +176,12 @@
 								</div>
 							</div>
 						</div>
-						<div style="position:absolute;left:500px;top:590px;">
+						</div>
+				</form>
+						<div class="col-md-2 col-md-offset-5">
 							<!-- lv 7-11 change new -->
 							<button class="btn" id="next1">Submit</button>
 						</div>
-						</div>
-				</form>
 		</div>
 	</div>
 

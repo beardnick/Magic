@@ -221,24 +221,24 @@ body {
 	margin-top: 25px;
 }
 
-.left {
-	float: left;
-	width: 49%;
-	height: 480px;
-	border-radius: 3px;
-	border: solid 1px #ddd;
-	margin: 5px;
-	padding: 5px;
+.left-panel {
+    float: left;
+    width: 49%;
+    height: 480px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    margin: 5px;
+    padding: 5px;
 }
 
-.right {
-	float: left;
-	width: 49%;
-	height: 400px;
-	border-radius: 3px;
-	border: solid 1px #ddd;
-	margin: 5px;
-	padding: 5px;
+.right-panel {
+    float: left;
+    width: 49%;
+    height: 400px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    margin: 5px;
+    padding: 5px;
 }
 
 .btn-part {

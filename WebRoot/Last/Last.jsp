@@ -62,14 +62,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@ include file="../ListHeader.jsp"%>
     
-    <div class="content" style="height:600px;"><!--lv 7-11-11：16 change  850->600-->
+    <div class="container" style="height:600px;"><!--lv 7-11-11：16 change  850->600-->
             <div class="describe">
                 <h3>BLASTN/Primer-BLASTN</h3>
                 <h4>You can use BLASTN program comparing nucleotide sequence to our databases and calculates the statistical significance. If you query sequence is Less than 50 bp, please use Primer-BLASTN. Here we use Basic Local Alignment Search Tool (BLAST) as a backend engine.</h4>
                  </div>
             <div class="inputs">
              <form action="blast" method="post" onsubmit="return check1()">
-                <div class="left">
+                <div class="left-panel">
                     <div style="height:10%;">
                         <div class="col-md-6 col-xs-6">
                         <div class="input-group input-lg"><!-- lv 7-11-10：01 change -->
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <input type="file"  type="text" onblur='javascript:$("#auto")' id="inputfile1" name="inputfile"/>
                     </div>
                 </div>
-				<div class="right">
+				<div class="right-panel">
 					<h4>Parameter selection</h4>
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group input-lg">

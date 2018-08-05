@@ -156,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      	<p style="display:none;Z-index:1;position:absolute;border-style:solid;border-width:thin;Z-index:1;background-color:white;margin:0;margin-left:1%;margin-top:1%" id="in"></p>
     <%@ include file="../ListHeader.jsp"%>
-    <div class="content" style="width:95%">
+    <div class="container" style="width:95%">
         <%if((theChr.length!=1&&parent_allx.size()!=0)||(theChr.length==1)){%>
     
     <div class="describe">

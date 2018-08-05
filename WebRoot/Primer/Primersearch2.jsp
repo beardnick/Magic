@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@ include file="../ListHeader.jsp"%>
     
-    <div class="content" style="height:1000px;">
+    <div class="container" style="height:1000px;">
             <div class="describe">
                 <h3>General Primer Design</h3><!-- lv 7-11 change h4->h3 -->
                 <span class="input-group">You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine. 
@@ -36,15 +36,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <form action="primer2" method="post">
                 
 				  <div class="inputs" style="height: 150px; ">
-            		<div class="" style="height:300px;padding:5px;padding-right:7%;">
-                        <textarea class="form-control" rows="9" name="inputtex"  style="resize:none; width: 1200px; height: 250px"></textarea>
+            		<div  style="height:300px;padding:5px;">
+                        <textarea class="form-control" rows="9" name="inputtex"  style="resize:none; height: 250px"></textarea>
 <!--                         <div class="" style="float:left;width:30%;margin:5px;">
                     	
                     </div> -->
            		 </div>
                           
            		
-                <div class="leftp2" style="height: 350px; width:1200px;">
+                <div class="leftp2" style="height: 350px;">
                                 <h3>Parameter Selection</h3><!-- lv 7-11 change 套用的primersearch2 -->
                                 <div class="col-md-4 col-xs-4">
                                     <div class="input-group input-lg">
@@ -108,11 +108,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         
                 </div>
-                <div style="position:absolute;left:46%;top:78%;"><!-- lv 7-11 change new -->
-             
-				 <button class="btn" id="next1" >Submit</button>
-				 </div>
                 </form>
+						<div class="col-md-2 col-md-offset-5">
+							<!-- lv 7-11 change new -->
+							<button class="btn" id="next1">Submit</button>
+						</div>
                 
             </div>
         </div>

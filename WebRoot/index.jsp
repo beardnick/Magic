@@ -20,7 +20,9 @@
 <link href="Css/main.css" rel="stylesheet" />
 <link href="Css/main1.css" rel="stylesheet" />
 <script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
+<script src="jquery.1.11.3.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <title>Home</title>
 <meta name="viewport"
@@ -31,79 +33,51 @@
 
 
 <link href="Css/main1.css" rel="stylesheet" />
-<script src="jquery.1.11.3.min.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		var width = $('#carousel').width();
-		$('.img').width(width);
-		// 图片左右翻滚
-		var size = $('.slidebtn-01>ul>li').length;
-		var frist = 0;
-		var datetime;
-		$('.slidebtn-01 li').mouseover(function() {
-			frist = $('.slidebtn-01 li').index(this);
-			showpic(frist);
-		}).eq(0).mouseover();
-
-		$('.slidebox-01').hover(function() {
-			clearInterval(datetime);
-		}, function() {
-			datetime = setInterval(function() {
-				showpic(frist)
-				frist++;
-				if (frist == size) {
-					frist = 0;
-				}
-			}, 4000);
-		}).trigger('mouseleave');
-
-		function showpic(frist) {
-			var imgheight = $('.slidebox-01 li').width();
-			$('.slidepic-01').stop(true, false).animate({
-				left : -imgheight * frist
-			}, 600)
-			$('.slidebtn-01 li').removeClass('current').eq(frist).addClass('current');
-		}
-		;
-	});
+        $(function(){$("#mycarousel").carousel('cycle');});
 </script>
+    
 </head>
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="content" style="height:2300px;margin-top:20px;">
-		<div id="carousel">
-			<div class="slidebox-01">
-				<ul style="left:0px;" class="slidepic-01">
+	<div class="container" style="height:2300px;margin-top:20px;">
+        <div class="row" style="margin-top:5px;">
+		<div id="mycarousel" class="carousel slide" >
+					<!--这里是1234小图标-->
+					<ol class="carousel-indicators">
+						<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#mycarousel" data-slide-to="1" ></li>
+						<li data-target="#mycarousel" data-slide-to="2" ></li>
+					</ol>
+                <div class="carousel-inner">
+                    <div class="item active">
 					<a href="/Magic/Dataintroduction/genotypedata.jsp" target="_blank">
 						<!--ie浏览器解析图片的时候有时会默认给它加一个边框-->
-						<li><image class="img" alt="" src="images/index1.png"
-								style="max-width:none;width:100%;" /></li>
+                        <image class="img" alt="First slide" src="images/index1.png" style="width:100%;max-width:none;height:430px;"
+                                 />
 					</a>
-					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank" />
-					<li><image class="img" alt="" src="images/index2.png"
-							style="max-width:none;width:100%;" /></li>
+                    </div>
+                    <div class="item">
+					<a href="/Magic/Dataintroduction/phenotypedata.jsp" target="_blank" >
+                    <image class="img" alt="Second slide" src="images/index2.png" style="width:100%;max-width:none;height:430px;"
+                             />
 					</a>
+                    </div>
+                    <div class="item">
 					<a href="/Magic/contact.jsp" target="_blank">
-						<li><image class="img" alt="" src="images/index3.png"
-								style="max-width:none;width:100%;" /></li>
+                        <image class="img" alt="Third slide" src="images/index3.png" style="width:100%;max-width:none;height:430px;"
+                                 />
 					</a>
-				</ul>
-				<div class="slidebtn-01">
-					<!--这里是1234小图标-->
-					<ul>
-						<li class="current"></li>
-						<li class=""></li>
-						<li class=""></li>
-					</ul>
-				</div>
+                    </div>
+                    </div>
 			</div>
-		</div>
+			</div>
 
 		<div class="row">
-			<div class="col-md-3" style="position:sticky;top:10px;">
+			<div class="col-md-3" style="top:10px;position:sticky;">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Navigation</div>
 					<div class="panel-body">
@@ -145,7 +119,7 @@
 				<div class="panel-body">
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Population Design</h2>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A maize Complete-diallel plus
+						<p style="text-indent:2em;">A maize Complete-diallel plus
 							Unbalanced Breeding-like Inter-Cross population (CUBIC)
 							population consist of 1404 individuals derived from twenty-four
 							elite lines that have been widely applied in Chinese breeding
@@ -154,17 +128,17 @@
 							<img alt="graph" src="images\graph.png"
 								style="margin:0 auto;width:700px"></img>
                         </div>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•30 F1s with best agronomic
+						<p style="text-indent:3em;">•30 F1s with best agronomic
 							performance were selected to futher cross in NCII,and the other
 							110 F1s were randomly selected to cross with open pollinated in
 							isolated region.</p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•The seed from above F1s were
+						<p style="text-indent:3em;">•The seed from above F1s were
 							mixed together with the amount of 2:1 with an expectation to
 							improve the population performance.</p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•All harvest individuals were
+						<p style="text-indent:3em;">•All harvest individuals were
 							next planted under open pollination within isolated region for
 							totally 6 generations.</p>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•Following,the population was
+						<p style="text-indent:3em;">•Following,the population was
 							self-pollinated for another 6 generations.</p>
 						<div style="text-align:center">
                             <img alt="maize"
@@ -173,7 +147,7 @@
 					</div>
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Sequencing</h2>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All progenies and founders
+						<p style="text-indent:2em;">All progenies and founders
 							have been sequenced at low coverage (1x and 11x, respectively).
 							DNA libraries were sequenced with Illumina HiSeq 2500 with 125-bp
 							paired-end reads using V4 reagents, generating generations. All
@@ -188,7 +162,7 @@
 					</div>
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Genotyping</h2>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An integrated strategy in
+						<p style="text-indent:2em;">An integrated strategy in
 							variant calling and imputation was applied to the population, and
 							over 53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
 							finally obtained, which constituted the highest density and the
@@ -207,7 +181,7 @@
 
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Phenotyping</h2>
-						<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The population was planted in
+						<p style="text-indent:em;">The population was planted in
 							five different provinces in the summer of 2014 and 20 traits were
 							investigated.
 						<%--<div class="class0">--%>

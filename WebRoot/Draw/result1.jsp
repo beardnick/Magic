@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%@ include file="../ListHeader.jsp"%>
-    <div class="content">
+    <div class="container">
     
     <%for(int i=0;i<25;i++){
     	color = colors[i];
@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }%>
     </div>
     
-    <div class="content" style="overflow-X: scroll;margin-top:50px;margin-bottom:40px;    border-radius: 5px;">	
+    <div class="container" style="overflow-X: scroll;margin-top:50px;margin-bottom:40px;    border-radius: 5px;">	
     <table>
       <thead>
     	<tr>

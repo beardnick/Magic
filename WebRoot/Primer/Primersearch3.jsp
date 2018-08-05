@@ -32,7 +32,7 @@
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="content" style="height:700px;width:1200px;">
+	<div class="container" style="height:700px;">
 		<div class="describe">
 			<h3>Design Primer by SNP/INDEL ID</h3>
 			<h4>You can input one SNP, INDEL or SV ID (in our database) and
@@ -165,13 +165,13 @@
 						</div>
 					</div>
 				</div>
-				<div style="position:absolute;left:500px;top:590px;">
-					<!-- lv 7-11 change new -->
-					<button class="btn" id="next1">Submit</button>
-				</div>
+	</div>
 		</form>
 
-	</div>
+						<div class="col-md-2 col-md-offset-5">
+							<!-- lv 7-11 change new -->
+							<button class="btn" id="next1">Submit</button>
+						</div>
 	</div>
 
 
