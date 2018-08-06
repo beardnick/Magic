@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	int sta;
     	int end;
     	Map<String,Object> attributes=ActionContext.getContext().getSession();
-    	String [] theName = (String[])attributes.get("name");
+    	String [] theName = (String[])attributes.get("names");
     	String [] theChr = (String[])attributes.get("chrs");
     	String chrx=theChr[0];
     	String nax = theName[0];
