@@ -69,13 +69,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </div>
             <div class="inputs">
              <form action="blast" method="post" onsubmit="return check1()">
+             <%--<form action="blast" method="post">--%>
                 <div class="left-panel">
                     <div style="height:10%;">
                         <div class="col-md-6 col-xs-6">
                         <div class="input-group input-lg"><!-- lv 7-11-10：01 change -->
                             <span class="input-group-addon">BLAST programe:</span><!-- lv 7-11-10：49 change -->
                             <select name="blastprograme" id="blastprograme1" class="form-control"  onchange="checkdata()">
-                            	
                                 <option value="blastn">blastn</option>
                                 <option value="primer-blast">primer-blast</option>
                             </select>

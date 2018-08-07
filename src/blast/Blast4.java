@@ -229,7 +229,7 @@ public class Blast4 extends ActionSupport{
 		listname = "indel";
 		}
 		String sql = "select spos+1"+"-"+startnumber+",epos-spos+1 from "+listname+" where spos between "+startnumber+" and "+endnumber;
-		System.out.println("sql:"+sql);
+	    System.out.println("sql:"+sql);
 		String re;
 		Dbase d = new Dbase();
 		re = d.getPrimer3(sql);

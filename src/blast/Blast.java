@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
 import java.sql.ResultSet;
-import java.io.*;   
+import java.io.*;
 import java.sql.*;
-import java.io.Reader;  
+import java.io.Reader;
 
 public class Blast extends ActionSupport{
 	/**
-	 * 
+	 *
 	 */
-	public String getWebClassesPath() 
+	public String getWebClassesPath()
 	{
 	     String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 	     return path;
@@ -26,10 +26,10 @@ public class Blast extends ActionSupport{
 	 public String getWebRoot()
 	 {
 	     String path = getWebClassesPath();
-	     if (path.indexOf("WEB-INF") > 0) 
+	     if (path.indexOf("WEB-INF") > 0)
 	     {
 	        path = path.substring(0,path.indexOf("WEB-INF/classes"));
-	     } 
+	     }
 	     return path;
 	}
 	private static final long serialVersionUID = 1L;
@@ -74,27 +74,27 @@ public class Blast extends ActionSupport{
     Map<String,String>  querytomap=new HashMap<String, String>();
     Map<String,String>  hitfrommap=new HashMap<String, String>();
     Map<String,String>  hittomap=new HashMap<String, String>();
-    
+
     public String getTrait() {
 		return trait;
 	}
-    
+
 	public void setTrait(String trait) {
 		this.trait= trait;
 	}
-    
+
 	public String getBlastprograme() {
 		return blastprograme;
 	}
-	
-	
+
+
 	public void setBlastprograme(String blastprograme) {
 		this.blastprograme = blastprograme;
 	}
 	public String getPrograme() {
 		return programe;
 	}
-	
+
 	public void setPrograme(String programe) {
 		this.programe = programe;
 	}
@@ -126,7 +126,7 @@ public class Blast extends ActionSupport{
 	public void setInputpercent(String inputpercent) {
 		this.inputpercent = inputpercent;
 	}
-	
+
 	public String getInputfile() {
 		return inputfile;
 	}
@@ -134,7 +134,7 @@ public class Blast extends ActionSupport{
 	public void setInputfile(String inputfile) {
 		this.inputfile = inputfile;
 	}
-	
+
 	public String getInputtext() {
 		return inputtext;
 	}
@@ -142,8 +142,8 @@ public class Blast extends ActionSupport{
 	public void setInputtext(String inputtext) {
 		this.inputtext = inputtext;
 	}
-	
-	
+
+
 	public String execute(){
 		if(inputtext!=null)
 		{
@@ -153,7 +153,7 @@ public class Blast extends ActionSupport{
 	            filePath = filePath.substring(1);
 	            filePath = filePath.replaceAll("\\/","\\\\");
 				String textpath=filePath+"blastin.txt";
-				 File writer = new File(textpath);  
+				 File writer = new File(textpath);
 				 if(writer.exists())
 				 {
 					 OutputStream out=null;
@@ -162,13 +162,13 @@ public class Blast extends ActionSupport{
 					 out.write(b);
 					 out.close();
 				 }
-				 
+
 			}catch (Exception e) {
 				System.out.println("写入文件内容出错");
 				e.printStackTrace();
 			}finally{}
 		}
-		try {  
+		try {
             Runtime rt = Runtime.getRuntime();
             String filePath=getWebRoot();
             filePath = filePath+"file/";
@@ -176,52 +176,74 @@ public class Blast extends ActionSupport{
             filePath = filePath.replaceAll("\\/","\\\\");
             inputfile=filePath+"blastin.txt";
             String cmd1="blastn";
-            if(blastprograme=="primer-blast")
+            if(database == null || blastprograme == null){
+                return SUCCESS;
+            }
+            if(blastprograme.equals("primer-blast"))
             	cmd1="blastn -task blastn-short";
             String datafile = new String();
             if(database.equals("HZS"))
             {
-            	datafile="F:\\work\\website_project\\blast\\blast\\hzs\\HZ_H.genome";
-            	database1=database;
+                datafile="F:\\work\\website_project\\blast\\blast\\hzs\\HZ_H.genome";
+                database1=database;
             }
             else if(database.equals("V3.25"))
             {
-            	datafile="F:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
-            	database1=database;
+                datafile="F:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+                database1=database;
             }
             else if(database.equals("V4"))
             {
-            	datafile="F:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
-            	database1=database;
+                datafile="F:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
+                database1=database;
             }
             else if(database.equals("PAN"))
             {
-            	datafile="F:\\Magic\\blast\\pan\\pan.fasta";
-            	database1=database;
+                datafile="F:\\Magic\\blast\\pan\\pan.fasta";
+                database1=database;
             }
-            
+            /*
+             * the path for the server
+             *if(database.equals("HZS"))
+             *{
+             *	datafile="E:\\Magic\\blast\\hzs\\HZ_H.genome";
+             *}
+             *else if(database.equals("V3.25"))
+             *{
+             *	datafile="E:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+             *}
+             *else if(database.equals("V4"))
+             *{
+             *	datafile="E:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
+             *}
+             *else if(database.equals("PAN"))
+             *{
+             *	datafile="E:\\Magic\\blast\\pan\\pan.fasta";
+             *}
+             */
+
             System.out.println("database="+database);
             System.out.println("database1="+database1);
-            
-            Process pr = rt.exec("cmd /c "+cmd1+" -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query "+inputfile+" -out "+filePath+"blast.txt -db "+ datafile); // cmd /c calc  
-            //Process pr = rt.exec("cmd /c "+cmd1+" -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query "+inputfile+" -out "+filePath+"blast.txt -db "+" E:\\Magic\\blast\\hzs\\HZ_H.genome"); // cmd /c calc  
+
+            Process pr = rt.exec("cmd /c "+cmd1+" -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query "+inputfile+" -out "+filePath+"blast.txt -db "+ datafile); // cmd /c calc
+            //Process pr = rt.exec("cmd /c "+cmd1+" -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query "+inputfile+" -out "+filePath+"blast.txt -db "+" E:\\Magic\\blast\\hzs\\HZ_H.genome"); // cmd /c calc
             	//-task blastn-short
             System.out.println("cmd /c "+cmd1+" -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query "+inputfile+" -out "+filePath+"blast.txt -db "+datafile);
             //blastn  -evalue 0.00001 -perc_identity 95 -max_target_seqs 5 -outfmt 5  -query D:\Blast+\blast\test1.fasta -out D:\Blast+\blast\blast.txt -db D:\Blast+\blast\hzs\HZ_H.genome
-            BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream(), "GBK"));  
-            
-            String line = null;  
-  
-            while ((line = input.readLine()) != null) {  
-                System.out.println(line+"1");  
-            }  
-  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn -task blastn-short  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
+            BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream(), "GBK"));
+
+            String line = null;
+
+            while ((line = input.readLine()) != null) {
+                System.out.println(line+"1");
+            }
+
+            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn -task blastn-short  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");
+        } catch (Exception e) {
+            //System.out.println(e.toString());
+            e.printStackTrace();
         }finally{}
-		
+
 		try {
             String encoding="GBK";
             String filePath=getWebRoot();
@@ -289,7 +311,7 @@ public class Blast extends ActionSupport{
                 			}
             				//System.out.println("score="+score);
             			}
-            			
+
             			else if(lineTxt.indexOf("<Hsp_query-from>")!=-1)
             			{
             			queryfrom=lineTxt.replace("<Hsp_query-from>","");
@@ -298,9 +320,9 @@ public class Blast extends ActionSupport{
             				if(chr!=null&&hitnum!=null&&hspnum!=null&&queryfrom!=null)
             				{
             					queryfrommap.put(chr+"."+hitnum+"."+hspnum,queryfrom);
-                				
+
                 				System.out.println("queryfromput:"+chr+"."+hitnum+"."+hspnum+"  "+queryfrom);
-                				
+
                 			}
             			}
             			else if(lineTxt.indexOf("<Hsp_query-to>")!=-1)
@@ -315,7 +337,7 @@ public class Blast extends ActionSupport{
                     			}
                 				//System.out.println("score="+score);
                 			}
-            			
+
             			else if(lineTxt.indexOf("<Hsp_hit-from>")!=-1)
             			{
             				hitfrom=lineTxt.replace("<Hsp_hit-from>","");
@@ -324,9 +346,9 @@ public class Blast extends ActionSupport{
             				if(chr!=null&&hitnum!=null&&hspnum!=null&&hitfrom!=null)
                 			{
             					hitfrommap.put(chr+"."+hitnum+"."+hspnum,hitfrom);
-                				
+
                 				System.out.println("hitfromput:"+chr+"."+hitnum+"."+hspnum+"  "+hitfrom);
-                				
+
                 			}
             			}
             			else if(lineTxt.indexOf("<Hsp_hit-to>")!=-1)
@@ -341,7 +363,7 @@ public class Blast extends ActionSupport{
                     			}
                 				//System.out.println("score="+score);
                 			}
-            			
+
             			else if(lineTxt.indexOf("<Hsp_score>")!=-1)
             			{
             				score=lineTxt.replace("<Hsp_score>","");
@@ -378,7 +400,7 @@ public class Blast extends ActionSupport{
                 			}
             				//System.out.println("identity="+identity);
             			}
-            			
+
             			else if(lineTxt.indexOf("<Hsp_gaps>")!=-1)
             			{
             				gap=lineTxt.replace("<Hsp_gaps>","");
@@ -403,7 +425,7 @@ public class Blast extends ActionSupport{
             				chr=lineTxt.replace("<Hit_id>","");
             				chr=chr.replace("</Hit_id>","");
             				chr1=chr;
-            				
+
             				//System.out.println("gap="+gap);
             			}
             			else if(lineTxt.indexOf("<Hsp_num>")!=-1)
@@ -435,7 +457,7 @@ public class Blast extends ActionSupport{
             				hseq=hseq.replace("</Hsp_hseq>","");
             				hseq1=hseq;
             				hseqmap.put(chr+"."+hitnum+"."+hspnum,hseq);
-            				
+
             				//System.out.println("hseq="+hseq);
             			}
             			else if(lineTxt.indexOf("</Hit>")!=-1)
@@ -454,7 +476,7 @@ public class Blast extends ActionSupport{
 //                    		System.out.println("gap="+gap1);
 //                    		System.out.println("qseq=   "+qseq1);
 //                    		System.out.println("midline="+midline1);
-//                    		System.out.println("hseq=   "+hseq1);	
+//                    		System.out.println("hseq=   "+hseq1);
 //                    		System.out.println("hitnum="+hitnum1);
 //                    		System.out.println("chr=   "+chr1);
 //                    		System.out.println("hspnum=   "+hspnum1);
@@ -464,8 +486,8 @@ public class Blast extends ActionSupport{
 //                    		System.out.println("queryto="+queryto1);
 //                    		System.out.println("hitfrom="+hitfrom1);
 //                    		System.out.println("hitto="+hitto);
-                    		
-            				
+
+
             				hitfrom=null;
             				hitto=null;
             				queryfrom=null;
@@ -486,9 +508,9 @@ public class Blast extends ActionSupport{
             				hitnum=null;
             				totalscore=null;
             			}
-            			
+
                 }
-            		
+
             		read.close();
             	}else{
             		System.out.println("找不到指定的文件");
@@ -497,8 +519,8 @@ public class Blast extends ActionSupport{
 				System.out.println("读取文件内容出错");
 				e.printStackTrace();
 			}finally{}
-		
-		
+
+
 		if(blastdatabase1.indexOf("hzs")!=-1){
 			database1 = "HZS";
 		}
@@ -539,6 +561,6 @@ public class Blast extends ActionSupport{
 		attribute.put("hitfrommap", hitfrommap);
 		attribute.put("hittomap", hittomap);
 		attribute.put("database",database1);
-		return SUCCESS;  
+		return SUCCESS;
 	}
 }
