@@ -86,7 +86,6 @@
 						</div>
 					</div>
 				</div>
-            </form>
 				<form action="blast" method="post">
 					<div class="leftp2" style="height: 350px;">
 						<h3>Parameter Selection</h3>
@@ -176,14 +175,13 @@
 								</div>
 							</div>
 						</div>
-						</div>
-				</form>
 						<div class="col-md-2 col-md-offset-5">
 							<!-- lv 7-11 change new -->
 							<button class="btn" id="next1">Submit</button>
 						</div>
+						</div>
+				</form>
 		</div>
-	</div>
 
 
 

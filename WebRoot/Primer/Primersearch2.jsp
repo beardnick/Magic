@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container" style="height:1000px;">
             <div class="describe">
                 <h3>General Primer Design</h3><!-- lv 7-11 change h4->h3 -->
-                <span class="input-group">You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine. 
+                <span class="input-group">You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine.</span>
              
            
             </div>
@@ -108,13 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         
                 </div>
-                </form>
+            </div>
 						<div class="col-md-2 col-md-offset-5">
 							<!-- lv 7-11 change new -->
 							<button class="btn" id="next1">Submit</button>
 						</div>
+                </form>
                 
-            </div>
         </div>
     
     

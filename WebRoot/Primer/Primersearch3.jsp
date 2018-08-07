@@ -166,12 +166,12 @@
 					</div>
 				</div>
 	</div>
-		</form>
-
 						<div class="col-md-2 col-md-offset-5">
 							<!-- lv 7-11 change new -->
 							<button class="btn" id="next1">Submit</button>
 						</div>
+		</form>
+
 	</div>
 
 
