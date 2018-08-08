@@ -92,6 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <table id="table" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
+                    
                         <th>Trait</th>
                         <th>Method</th>
                         <th>Start</th>
@@ -115,10 +116,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td><%=data2.get(Integer.toString(i)).get(5)%></td>
                     <td><%=data2.get(Integer.toString(i)).get(6)%></td>
                     <td><%=data2.get(Integer.toString(i)).get(7)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(8)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(9)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(10)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(11)%></td>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(8)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(9)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(10)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(11)%></td>--%>
                 </tr>	
            <%} %>
             </tbody>
@@ -144,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td><%=data.get(Integer.toString(i)).get(2)%></td>
                     <td><%=data.get(Integer.toString(i)).get(3)%></td>
                     <td><%=data.get(Integer.toString(i)).get(4)%></td>
-                    <td><%=data.get(Integer.toString(i)).get(5)%></td>
+                    <%--<td><%=data.get(Integer.toString(i)).get(5)%></td>--%>
                 </tr>	
            <%} %>
                        </tbody>
@@ -165,11 +166,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               	    for(int i=1;i<=len;i++){
             %>
             	<tr>
+                    <td><%=data.get(Integer.toString(i)).get(5)%></td>
                     <td><%=data.get(Integer.toString(i)).get(6)%></td>
                     <td><%=data.get(Integer.toString(i)).get(7)%></td>
                     <td><%=data.get(Integer.toString(i)).get(8)%></td>
                     <td><%=data.get(Integer.toString(i)).get(9)%></td>
-                    <td><%=data.get(Integer.toString(i)).get(10)%></td>
                 </tr>	
            <%} %>
                        </tbody>
@@ -202,10 +203,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td><%=data2.get(Integer.toString(i)).get(5)%></td>
                     <td><%=data2.get(Integer.toString(i)).get(6)%></td>
                     <td><%=data2.get(Integer.toString(i)).get(7)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(8)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(9)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(10)%></td>
-                    <td><%=data2.get(Integer.toString(i)).get(11)%></td>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(8)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(9)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(10)%></td>--%>
+                    <%--<td><%=data2.get(Integer.toString(i)).get(11)%></td>--%>
                 </tr>	
            <%} %>
                        </tbody>
@@ -232,7 +233,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <td><%=data.get(Integer.toString(i)).get(2)%></td>
                     <td><%=data.get(Integer.toString(i)).get(3)%></td>
                     <td><%=data.get(Integer.toString(i)).get(4)%></td>
-                    <td><%=data.get(Integer.toString(i)).get(5)%></td>            
+                    <%--<td><%=data.get(Integer.toString(i)).get(5)%></td>            --%>
                 </tr>	
             
             <%} %>
@@ -255,11 +256,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             %>
            
             	<tr>
+                    <td><%=data.get(Integer.toString(i)).get(5)%></td>
                     <td><%=data.get(Integer.toString(i)).get(6)%></td>
                     <td><%=data.get(Integer.toString(i)).get(7)%></td>
                     <td><%=data.get(Integer.toString(i)).get(8)%></td>
                     <td><%=data.get(Integer.toString(i)).get(9)%></td>
-                    <td><%=data.get(Integer.toString(i)).get(10)%></td>
                 </tr>	
             
            <%} %>
@@ -323,10 +324,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         title: 'End',
         sortable:true
     },{
-        field: 'Interval',
-        title: 'Interval',
-        sortable:true    
-    },{
         field: 'LRT',
         title: 'LRT',
         sortable:true    
@@ -335,6 +332,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         title: 'PVE(%)',
         sortable:true    
     },{
+        field: 'Interval',
+        title: 'Interval',
+        sortable:true    
+    }
+         /*,{
         field: 'Gene_counts',
         title: 'Gene_counts',
         sortable:true    
@@ -350,7 +352,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         field: 'method',
         title: 'method',
         sortable:true    
-    }
+    }*/
     ],   
  		});
  		});
@@ -395,10 +397,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         title: 'End',
         sortable:true
     },{
-        field: 'Interval',
-        title: 'Interval',
-        sortable:true    
-    },{
         field: 'LRT',
         title: 'LRT',
         sortable:true    
@@ -407,6 +405,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         title: 'PVE(%)',
         sortable:true    
     },{
+        field: 'Interval',
+        title: 'Interval',
+        sortable:true    
+    }
+            /*,{
         field: 'Gene_counts',
         title: 'Gene_counts',
         sortable:true    
@@ -422,7 +425,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         field: 'method',
         title: 'method',
         sortable:true    
-    }
+    }*/
     ],   
  		});
  		});
@@ -466,11 +469,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         field: 'p',
         title: 'p',
         sortable:true
-    },{
+    }/*,{
         field: 'markerR2',
         title: 'markerR2',
         sortable:true    
-    }
+    }*/
     ],   
  		});
  		});
@@ -514,11 +517,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         field: 'p',
         title: 'p',
         sortable:true
-    },{
+    }/*,{
         field: 'markerR2',
         title: 'markerR2',
         sortable:true    
-    }
+    }*/
     ],   
  		});
  		});

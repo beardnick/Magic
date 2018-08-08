@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class showThree extends ActionSupport{
 
 	/**
-	 * 
+	 *
 	 */
 
 //	public String execute(){
@@ -20,7 +20,7 @@ public class showThree extends ActionSupport{
 //		session.put("trait", trait);
 //		System.out.println("the trait which you choose is " + session.get("trait"));
 //		String[] traitArray = trait.split(",");
-//		
+//
 //		int len = traitArray.length;
 //		int i = 0;
 //		for(i=0;i<len;i++){
@@ -30,8 +30,8 @@ public class showThree extends ActionSupport{
 //		session.put("traitArray", traitArray);
 //		return SUCCESS;
 //	}
-//	
-	
+//
+
 
 	private static final long serialVersionUID = 1L;
 	private String trait;
@@ -40,7 +40,7 @@ public class showThree extends ActionSupport{
 	private String end;
 	private String gene;
 	private String search;
-	
+
 	public String getWebClassesPath() {
 		String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		return path;
@@ -54,10 +54,10 @@ public class showThree extends ActionSupport{
 		return path;
 	}
 
-	
+
 
 	public String execute(){
-		
+
 		System.out.println(chr);
 		System.out.println(start);
 		System.out.println(end);
@@ -67,23 +67,23 @@ public class showThree extends ActionSupport{
 		attributes.put("trait", trait);
 		System.out.println(attributes.get("trait"));
 		String[] traitArray = trait.split(",");
-		
+
 		int traitlen = traitArray.length;
-		
+
 //		String[] traitArray = (String[]) attributes.get("traitArray");
-		
+
 		for(int i=0;i<traitlen;i++){
 			System.out.println("traitArray "+i+" is "+traitArray[i]);
 		}
-		
+
 
 		attributes.put("search", search);
 		String sql;
 		String sql2;
-		
+
 		Dbase d = new Dbase();
 		Dbase d2 = new Dbase();
-		
+
 		Map<String,Object> map =  new HashMap<String,Object>();
 		Map<String,Object> map2 =  new HashMap<String,Object>();
 		Map<String, String> startEndMap;
@@ -95,10 +95,11 @@ public class showThree extends ActionSupport{
 				traits = traits + "trait = '" + traitArray[i] + "' or ";
 			}
 		}
-		
+
 		if(search.equals("first")){
-			sql = "select Trait,Marker,Locus,Site,p,markerR2,snp,allele,gene,transcript,annotation from sig_snp_annotation,SNP where SNP.Marker=sig_snp_annotation.snp AND Locus='" +chr+ "'AND  Site BETWEEN "+start+" AND "+end+" AND (";
-			sql2 ="select * FROM gwas2 WHERE chr='"+chr+"' AND ((start<"+start+" AND end>"+start+") OR(start<"+end+" AND end>"+end+")) AND (";
+			//sql = "select Trait,Marker,Locus,Site,p,markerR2,snp,allele,gene,transcript,annotation from sig_snp_annotation,magic_all_sig_snp where magic_all_sig_snp.Marker=sig_snp_annotation.snp AND Locus='" +chr+ "'AND  Site BETWEEN "+start+" AND "+end+" AND (";
+            sql = "select Trait,magic_all_sig_snp.snp,Chr,Pos,p,magic_all_sig_snp.snp,allele,gene,transcript,annotation from sig_snp_annotation,magic_all_sig_snp where magic_all_sig_snp.snp=sig_snp_annotation.snp AND Chr='" +chr+ "'AND  Pos BETWEEN "+start+" AND "+end+" AND (";
+			sql2 ="select * FROM gwas WHERE chr='"+chr+"' AND ((start<"+start+" AND end>"+start+") OR(start<"+end+" AND end>"+end+")) AND (";
 			for(int i=0;i<traitlen;i++){
 				String sql1 = "";
 				if(i==traitlen-1){
@@ -113,18 +114,18 @@ public class showThree extends ActionSupport{
 			sql2 += "')";
 			System.out.println(sql2);
 			System.out.println(sql);
-			
+
 		}else{
-			sql = "select * from sig_snp_annotation,SNP where gene='"+gene+"' AND SNP.Marker=snp";
-			sql2 ="SELECT * FROM gwas2 where (`start`<(SELECT `start` FROM zmb73_annotation_combined WHERE id='"+gene+"') AND `end`>(SELECT `start` FROM zmb73_annotation_combined WHERE id='"+gene+"'))OR (`start`<(SELECT `end` FROM zmb73_annotation_combined WHERE id='"+gene+"') AND `end`>(SELECT `end` FROM zmb73_annotation_combined WHERE id='"+gene+"'))";
+			sql = "select trait , chr , pos , p , sig_snp_annotation.* from sig_snp_annotation,magic_all_sig_snp where gene='"+gene+"' AND magic_all_sig_snp.snp=sig_snp_annotation.snp";
+			sql2 ="SELECT * FROM gwas where (`start`<(SELECT `start` FROM zmb73_annotation_combined WHERE id='"+gene+"') AND `end`>(SELECT `start` FROM zmb73_annotation_combined WHERE id='"+gene+"'))OR (`start`<(SELECT `end` FROM zmb73_annotation_combined WHERE id='"+gene+"') AND `end`>(SELECT `end` FROM zmb73_annotation_combined WHERE id='"+gene+"'))";
 			System.out.println(sql2);
 			startEndMap = d.getStartEnd(gene);
 			start = startEndMap.get("start");
 			end = startEndMap.get("end");
 			chr = startEndMap.get("chr");
 		}
-	
-		
+
+
 				String path = getWebRoot();
 		path = path.substring(1, path.length());
 		path = path + "py_scripts/";
@@ -133,7 +134,7 @@ public class showThree extends ActionSupport{
 		Runtime rt = Runtime.getRuntime();
 		try {
 			String tmp = " cmd /c " + driver + " && cd " + path + " &&  " + driver + " &&  python " + path
-					+ "chromesome.py " + (Integer.parseInt(start) - 1000) + " " + (Integer.parseInt(end) + 1000) + " " + chr + " " + "\""+ traits + "\"";
+					+ "chromesome.py " + Integer.parseInt(start) + " " + Integer.parseInt(end) + " " + chr + " " + "\""+ traits + "\"";
 			System.out.println(tmp);
 			rt.exec(tmp).waitFor();
 		} catch (IOException e) {
@@ -142,23 +143,23 @@ public class showThree extends ActionSupport{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		map2 = (HashMap<String,Object>)d2.getChr(sql2);
 		map = (HashMap<String,Object>)d.getChr(sql);
-		
+
 		attributes.put("len", map.get("len"));
 		attributes.put("data", map.get("data"));
 		attributes.put("len2", map2.get("len"));
 		attributes.put("data2", map2.get("data"));
-		
-		
+
+
 		d.Close();
 		d2.Close();
 		return SUCCESS;
 	}
 
 
-	
+
 	public String getSearch() {
 		return search;
 	}
@@ -167,7 +168,7 @@ public class showThree extends ActionSupport{
 	public void setSearch(String search) {
 		this.search = search;
 	}
-	
+
 	public String getChr() {
 		return chr;
 	}
@@ -206,8 +207,8 @@ public class showThree extends ActionSupport{
 	public void setGene(String gene) {
 		this.gene = gene;
 	}
-	
-	
+
+
 	public String getTrait() {
 		return trait;
 	}
@@ -217,6 +218,6 @@ public class showThree extends ActionSupport{
 	}
 
 
-    
+
 }
 
