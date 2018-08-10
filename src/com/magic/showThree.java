@@ -133,7 +133,7 @@ public class showThree extends ActionSupport{
 		System.out.println(path);
 		Runtime rt = Runtime.getRuntime();
 		try {
-			String tmp = " cmd /c " + driver + " && cd " + path + " &&  " + driver + " &&  python " + path
+			String tmp = " cmd /c " + driver + " & cd " + path + " &  " + driver + " & del  chromesome &  python " + path
 					+ "chromesome.py " + Integer.parseInt(start) + " " + Integer.parseInt(end) + " " + chr + " " + "\""+ traits + "\"";
 			System.out.println(tmp);
 			rt.exec(tmp).waitFor();

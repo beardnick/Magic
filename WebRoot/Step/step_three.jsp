@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page import="java.io.*"%>
 <%@ page import="com.opensymphony.xwork2.ActionContext" %>
 <%
 String path = request.getContextPath();
@@ -68,9 +69,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<h3>GWAS Result</h3>
 			<br />
 			<h4>Only significant locus plotted below</h4>
-		</div>
-		<div class="col-md-12">
+		</div> <div class="col-md-12">
+            <%String filePath = this.getClass().getResource("").getPath();%>
+            <%filePath = filePath.substring(filePath.indexOf("/"), filePath.indexOf("work"));%>
+            <%filePath = filePath + "webapps/Magic/py_scripts/chrome.html";%>
+            <%File chrome = new File(filePath);%>
+            <%--<p><%=chrome.getAbsolutePath()%></p>--%>
+            <%
+            if(chrome.exists()){
+            %>
 			<%@ include file="../py_scripts/chrome.html"%>
+            <%}else{%>
+            <table data-toggle="table" class="table table-hover">
+           <tbody><tr class="no-records-found"><td colspan="0">No matching records found</td></tr></tbody>
+           <thead><tr></tr></thead></table>
+            <%}%>
         <%--
 		   -</div>
            -	<h3>GWAS Search</h3>
@@ -282,6 +295,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <br>
             <br>
         </div>
+        </div>
         <%@ include file="../ListFooter.jsp"%>
   </body>
  <script type="text/javascript">
@@ -396,7 +410,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         field: 'End',
         title: 'End',
         sortable:true
-    },{
+    },,{
         field: 'LRT',
         title: 'LRT',
         sortable:true    
