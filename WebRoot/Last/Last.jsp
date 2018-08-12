@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h4>Parameter selection</h4>
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group input-lg">
-							<span class="input-group-addon">Evalue</span>
+							<span class="input-group-addon">Evalue:</span>
 						<!-- lv 7-11 change 200->300 45->55 -->
 						<input id="Eralue" class="form-control" type="text"
 							name="inputeralue" 
@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="col-md-8 col-xs-8">
 						<div class="input-group input-lg">
-							<span class="input-group-addon">Percent Identity</span>
+							<span class="input-group-addon">Percent Identity:</span>
 							<!-- lv 7-11 change 200->300 41->51 -->
 							<input id="percent" type="text" class="form-control"
 								name="inputpercent" 
@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 						<div class="col-md-8 col-xs-8">
 							<div class="input-group input-lg">
-								<span class="input-group-addon">Max target seqences</span>
+								<span class="input-group-addon">Max target seqences:</span>
 								<!-- lv 7-11 change 200->300 41->51 -->
 								<input id="maxtar" type="text" class="form-control"
 									name="inputmaxtarget" 

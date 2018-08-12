@@ -27,13 +27,13 @@
 
 <body>
 <%@ include file="../ListHeader.jsp"%>
-<div class="content" style="height:850px; width:100%">
-  <div class="left" style="height: 700px; width: 45%; ">
+<div class="container" style="height:850px; width:100%">
+  <div class="left-panel" style="height: 700px; width: 45%; ">
   		<h3>Ways to reach me.</h3>
   		<h4>For questions or comments about our database, please contact liujianxiao@mail.hzau.edu.cn or jingyunluo@foxmail.com</h4>
   </div>
   <!--百度地图容器-->
-  <div class="left" style="height: 700px; width: 50%; ">
+  <div class="left-panel" style="height: 700px; width: 50%; ">
   <div float="left">
   <div class="lefttool" style="height: 138px; width: 215px; "><image style="width:215px;height:138px;" src="images/contact.png"></div><div class="lefttool" style="width:65%"><br/><b>National Key Laboratory of Crop Genetic Improvement Huazhong Agricultural University Wuhan 430070,China</b></div></div>
 

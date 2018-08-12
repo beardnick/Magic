@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>Tool two</title>
+    <title>Variation Browser</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="author" content="Daliu"/>
@@ -142,24 +142,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%@ include file="../ListHeader.jsp"%>
     <div class="content">
             <div class="describe">
-                <h3>GWAS Diagram</h3>
+                <h3>Variation Browser</h3>
                 <br/>
                 <p>The Visualisation of all SNP-trait associations with genome-wide significance (p≤5 x10-8).</p>
             </div>
-            <div class="steps">
-                <image src="images/steps2.png">
-            </div>
-            
             <div class="search">
-                <style>
-                    .form-control{border-top-left-radius:4px;border-bottom-left-radius:4px;}
-                </style>
                 <p class="bold">Select one or more loci. Specify gene identifiers (e.g. GRMZM2G040380) or regions (e.g. Chr1 147 6782830).</p>
                 <div class="row">
                     <input type="radio" name="search" value="first"> Search By Region
                 </div>
                 <div class="row">  
                     <!-- <input type="text" placeholder="Chr" class="input"> -->
+                    <div class="col-md-2 col-xs-2">
                     <select  class="form-control eg" title="eg: Chr1 147 67828030" style="width:200px;display:inline;"  name="chr" id="chr">
                         
                     	<option value="1">Chr1</option>
@@ -173,9 +167,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					    <option value="9">Chr9</option>
 					    <option value="10">Chr10</option>
                     </select>
-                    <input type="text" placeholder="Start" class="form-control eg" style="width:200px;display:inline;" title="eg: Chr1 147 67828030" name="start" readonly="readonly" id="sh1">
-                    <span style="color:gray">------</span>
-                    <input type="text" placeholder="End" class="form-control eg" style="width:200px;display:inline;" title="eg: Chr1 147 67828030" name="end" readonly="readonly" id="sh2">
+                    </div>
+
+                    <div class="col-md-3 col-xs-3">
+                    <div class="input-group ">
+                        <span class="input-group-addon">Start:</span>
+                    <input type="text" class="form-control eg" style="display:inline;" title="eg: Chr1 147 67828030" name="start" readonly="readonly" id="sh1">
+                    </div>
+                    </div>
+
+                    <div class="col-md-1 col-xs-1">
+                    <span style="color:gray">------------</span>
+                    </div>
+
+                    <div class="col-md-3 col-xs-3">
+                    <div class="input-group ">
+                        <span class="input-group-addon">End:</span>
+                    <input type="text" class="form-control eg" style="display:inline;" title="eg: Chr1 147 67828030" name="end" readonly="readonly" id="sh2">
+                    </div>
+                    </div>
                     <%--<span style="color:gray;">(eg: Chr1 147 67828030 )</span>--%>
                 </div>
                 <br>
@@ -183,13 +193,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="radio" name="search" value="second" > Search By Gene ID
                 </div>
                 <div class="row">
-                    <input type="text" placeholder="Gene" class="form-control eg" style="width:200px;display:inline;" title="eg: GRMZM2G040389" name="gene" readonly="readonly" id="sh3">
+                    <div class="input-group ">
+                        <span class="input-group-addon">Gene:</span>
+                    <input type="text" class="form-control eg" style="width:200px;display:inline;" title="eg: GRMZM2G040389" name="gene" readonly="readonly" id="sh3">
+                    </div>
                     <%--<span style="color:gray;">(eg: GRMZM2G040389 )</span>--%>
                 </div>
             </div>
             
             <div class="btns">
-                <button class="btn" id="next">NEXT</button>
+                <button class="btn" id="next">Submit</button>
             </div>
             
             

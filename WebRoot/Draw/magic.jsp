@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        	<div class="left-panel" style="width:45%;height:400px">
 	        		<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Population</h4></div>
 	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Material</h4></div>
-	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Chr</h4></div>
+	            	<div class="input-group-addon" style="width:32.5%;height:35px;display:inline-block;margin:0;border-bottom-left-radius:0px;border-top-right-radius:4px;"><h4 class="Phenotypicstrongblack">Chromosome</h4></div>
 	            	<select id="sel1" name="pop" multiple="multiple" size="4" class="select" style = "display:inline-block;width:32.5%;height:350px;margin-top:0px">
 				    	<option value="L1">L1</option>
 					    <option value="L2">L2</option>

@@ -190,6 +190,32 @@
 						<%--</div>--%>
 						</p>
 					</div>
+
+
+					<div class="my-panel">
+						<h2 style="color:#4381be;">Comments or Questions</h2>
+						<p style="text-indent:2em;">For any questions please contact Hu Zhao 
+                        (zhaohu [at] webmail.hzau.edu.cn).</p>
+					</div>
+
+					<div class="my-panel">
+						<h2 style="color:#4381be;">Recommended browsers</h2>
+						<p style="text-indent:2em;">The recommended browsers are Chrome, Firefox, 
+                        Safari, and Edge ( IE8 and earlier have poorer 
+                        support and may give a lesser experience).</p>
+					</div>
+
+
+					<div class="my-panel">
+						<h2 style="color:#4381be;">Citations</h2>
+						<p style="text-indent:2em;">Researchers who wish to use RiceVarMap are encouraged to refer to our publication or 
+                        <a href="/Magic/Dataintroduction/genotypedata.jsp" style="color:#4381be;">more</a>:</p>
+
+                        <p style="text-indent:2em;">Zhao H, Yao W, Ouyang Y, Yang W, Wang G, Lian X, Xing Y, Chen L, Xie W. 
+                        <a href="/Magic/Dataintroduction/genotypedata.jsp" style="color:#4381be;">RiceVarMap: a comprehensive database of rice genomic variations.</a>
+                        Nucleic Acids Res, 2015, 43: D1018-1022</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
