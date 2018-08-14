@@ -53,7 +53,11 @@
 						the most adapted. About 16 individual plants were planted for each
 						line, and the line Chang7-2 was planted after every 50th entry.</p>
 				</div>
+				</div>
+                <div class="col-md-10 col-md-offset-1">
 				<image src="images\china_map.png" style="width:100%"></image>
+                </div>
+                <div class="col-md-12">
 				<div id="my-panel2" class="my-panel">
 					<p style="margin-top:20px;">
 						The population was planted in five different provinces in the
@@ -62,8 +66,10 @@
 						respectivelyDownload <br>Blup phenotype dataDownload
 					</p>
 				</div>
+				</div>
 			</div>
-			<div class="col-md-12">
+
+			<div class="col-md-8 col-md-offset-2">
                 <div class="my-panel" style="margin-top:100px;">
 				<table style="width:100%;">
 					<thead></thead>
@@ -182,7 +188,7 @@
 				</table>
                 </div>
 			</div>
-			<div class="col-md-12">
+			<div class="col-md-10 col-md-offset-1">
 <style>
 table, table tr th, table tr td {
     padding: 8px;

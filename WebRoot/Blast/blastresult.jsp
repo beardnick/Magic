@@ -189,19 +189,10 @@ function check1()
                     </div>
                     <form action="blast" method="post" onsubmit="return check1()">
                     <div class="left4" name="button">
+                    <table id="table3" class="table blast-table"   style="height: auto; width: 100%">
                     <h4  style="color:blue;">Descriptions</h4>
                     <hr/>
-                    <table id="table3" class="table blast-table"   style="height: auto; width: 100%">
-                        
-<!--                         <tr>
-                            <td style="width: 250px; height: 45px">Description<td style="width: 250px; height: 45px">Max score<td style="width: 250px; height: 45px">Total score<td style="width: 250px;height: 45px ">Query cover</td>
-                            <td style="width: 250px;height: 45px ">E&nbsp;value</td><td style="width: 147px;height: 45px ">Ident</td>
-                        </tr> -->
                         <%int sum=0;
-						if(!itchr.hasNext())
-						{%>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
-						<%}
                         while(itchr.hasNext())
                         {
                         	String evaluekey=itevalue.next();
@@ -230,8 +221,6 @@ function check1()
                         	</tr>
                         <%} %>
                         
-                        
-                        
                     </table>
                     </div>
                     <div class="left2">
@@ -258,10 +247,6 @@ function check1()
                         <tr>
                        	<td style="width: 250px; height: 45px">Score<td style="width: 250px; height: 45px">Expect<td style="width: 250px; height: 45px">Identities<td style="width: 250px;height: 45px ">Gaps</td>   <td style="width: 250px;height: 45px ">Query From-To</td>  <td style="width: 250px;height: 45px ">Hit From-To</td>  
                         </tr>
-						<%if(!itchr2.hasNext())/*<!--lv 7-12 change new-->*/
-						{%>
-							<tr><td style="font-size:25px;width:30%;color:red"><b>No matching data!</b></td></tr>
-						<%}%>
                         <tr>
                         <%
                         score=null;

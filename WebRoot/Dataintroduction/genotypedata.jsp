@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
         <%@ include file="../ListHeader.jsp"%>
-        <div class="content" style="width:70%;">
+        <div class="container" style="width:70%;">
        
             <!--<div class="row" style="width:900px;">
               <div class="title" style="width:900px;">
@@ -44,6 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>-->
             <div class="row">
+                <div class="my-panel">
                 <h3 class="title" style="ali">Data generation</h3>
                 <div class="article">
                     <div class="media">
@@ -53,7 +54,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
+            </div>
             <div class="row" style="margin-top:10px;">
+                <div class="my-panel">
                 <h3 class="title">Genomic Variation</h3>
                 <div class="article">
                     <div class="media">
@@ -69,6 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <br></div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         <div style="height:40px;"></div>

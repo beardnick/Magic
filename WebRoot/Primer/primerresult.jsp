@@ -229,8 +229,6 @@
                 </tr>
                 <%} %>
 
-
-
             </table>
         </div>
     </div>
@@ -243,24 +241,24 @@
 
 <script type="text/javascript">
 
-        function hasRecords(table, col){
-             	var x = $(table+ ' #no-records-found');
-    	if(x){
-    		$(table).css("display","none");
-    		var y=document.getElementById('mythead' + col);
-            console.log(y);
-    		var x= document.createElement("p");
-    		var z= document.createTextNode("No matching records found");
-    		x.appendChild(z);
-    		y.appendChild(x);
-            console.log(y);
-    		$("h4 p").css({"text-align":"center","font-size":"14px"})
-            return false;
-    	}
-    	else{
-           return true;
-        }
-        }
+        //function hasRecords(table, col){
+        //     	var x = $(table+ ' #no-records-found');
+    	//if(x){
+    	//	$(table).css("display","none");
+    	//	var y=document.getElementById('mythead' + col);
+        //    console.log(y);
+    	//	var x= document.createElement("p");
+    	//	var z= document.createTextNode("No matching records found");
+    	//	x.appendChild(z);
+    	//	y.appendChild(x);
+        //    console.log(y);
+    	//	$("h4 p").css({"text-align":"center","font-size":"14px"})
+        //    return false;
+    	//}
+    	//else{
+        //   return true;
+        //}
+        //}
 
     $(function(){
         $('#table').bootstrapTable({//'#table' 改为所用表的选择器
@@ -322,7 +320,6 @@
         sortable:true    
     }],  
         });
-    //hasRecords('#table', 1);
         });
 </script>
 <script type="text/javascript">
@@ -386,7 +383,6 @@
         sortable:true    
     }],  
         });
-         //hasRecords('#table1' ,2 );
         });
 </script>
 <script type="text/javascript">
@@ -452,7 +448,6 @@
         sortable:true    
     }],  
  		});
-    //hasRecords('#table2' ,3 );
         });
 </script>
 </body>
