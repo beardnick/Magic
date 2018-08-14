@@ -11,13 +11,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.regex.*;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.io.BufferedReader;  
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;  
+import java.io.InputStreamReader;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,14 +26,14 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.sql.*;
-import java.io.Reader;  
+import java.io.Reader;
 
 public class Blast3 extends ActionSupport{
 	/**
-	 * 
+	 *
 	 */
 	Properties p = new Properties();
-	public String getWebClassesPath() 
+	public String getWebClassesPath()
 	{
 	     String path = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 	     return path;
@@ -40,10 +41,10 @@ public class Blast3 extends ActionSupport{
 	 public String getWebRoot()
 	 {
 	     String path = getWebClassesPath();
-	     if (path.indexOf("WEB-INF") > 0) 
+	     if (path.indexOf("WEB-INF") > 0)
 	     {
 	        path = path.substring(0,path.indexOf("WEB-INF/classes"));
-	     } 
+	     }
 	     return path;
 	}
 
@@ -55,11 +56,11 @@ public class Blast3 extends ActionSupport{
 	String chromosome,database,sposition,eposition,opsize,maxsize,minsize,opttm,maxtm,mintm,optgc,maxgc,mingc,defaultproduct,maxployx,selfany;
 
     Map<String, String> fornummap=new HashMap<String, String>();
-    
+
     Map<String, String> intnummap=new HashMap<String, String>();
-    
+
     Map<String, String> revnummap=new HashMap<String, String>();
-    
+
     Map<String, String> revlitymap=new HashMap<String, String>();
     Map<String, String[]> formap=new HashMap<String, String[]>();
     Map<String, String[]> intmap=new HashMap<String, String[]>();
@@ -67,124 +68,124 @@ public class Blast3 extends ActionSupport{
     public String getChromosome() {
 		return chromosome;
 	}
-    
+
 	public void setChromosome(String chromosome) {
 		this.chromosome= chromosome;
 	}
-    
+
 	public String getDatabase() {
 		return database;
 	}
-    
+
 	public void setDatabase(String database) {
 		this.database= database;
 	}
 	public String getSposition() {
 		return sposition;
 	}
-    
+
 	public void setSposition(String sposition) {
 		this.sposition= sposition;
 	}
-	
+
 	public String getEposition() {
 		return eposition;
 	}
-    
+
 	public void setEposition(String eposition) {
 		this.eposition= eposition;
 	}
 	public String getOpsize() {
 		return opsize;
 	}
-    
+
 	public void setOpsize(String opsize) {
 		this.opsize= opsize;
 	}
 	public String getMaxsize() {
 		return maxsize;
 	}
-    
+
 	public void setMaxsize(String maxsize) {
 		this.maxsize= maxsize;
 	}
-	
+
 	public String getMinsize() {
 		return minsize;
 	}
-    
+
 	public void setMinsize(String minsize) {
 		this.minsize= minsize;
 	}
-	
+
 	public String getOpttm() {
 		return opttm;
 	}
-    
+
 	public void setOpttm(String opttm) {
 		this.opttm= opttm;
 	}
-	
+
 	public String getMaxtm() {
 		return maxtm;
 	}
-    
+
 	public void setMaxtm(String maxtm) {
 		this.maxtm= maxtm;
 	}
-	
+
 	public String getMintm() {
 		return mintm;
 	}
-    
+
 	public void setMintm(String mintm) {
 		this.mintm= mintm;
 	}
-	
+
 	public String getOptgc() {
 		return optgc;
 	}
-    
+
 	public void setOptgc(String optgc) {
 		this.optgc= optgc;
 	}
-	
+
 	public String getMaxgc() {
 		return maxgc;
 	}
-    
+
 	public void setMaxgc(String maxgc) {
 		this.maxgc= maxgc;
 	}
-	
+
 	public String getMingc() {
 		return mingc;
 	}
-    
+
 	public void setMingc(String mingc) {
 		this.mingc= mingc;
 	}
-	
+
 	public String getDefaultproduct() {
 		return defaultproduct;
 	}
-    
+
 	public void setDefaultproduct(String defaultproduct) {
 		this.defaultproduct= defaultproduct;
 	}
-	
+
 	public String getmaxployx() {
 		return maxployx;
 	}
-    
+
 	public void setMaxployx(String maxployx) {
 		this.maxployx= maxployx;
 	}
-	
+
 	public String getSelfany() {
 		return selfany;
 	}
-    
+
 	public void setSelfany(String selfany) {
 		this.selfany= selfany;
 	}
@@ -195,28 +196,31 @@ public class Blast3 extends ActionSupport{
 		this.inputtex = inputtex;
 	}
 
-	
+
 	LocalDateTime localdatetime=LocalDateTime.now();//新建一个LocalDateTime对象获取时间
 	DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
 	String localTime = df.format(localdatetime);
 	String name = localTime;
 	public String execute(){
 		try{
-			
+
 			 String filePath=getWebRoot();
 			 String textpath=filePath+"file/primerexample.input";//parameter.input路径
 			 textpath=textpath.substring(1);
 			 textpath=textpath.replaceAll("\\/","\\\\");
 			 System.out.println(textpath);
-			 File writer = new File(textpath);  
-			
+			 File writer = new File(textpath);
+
 			 if(writer.exists())
 			 {
 				 OutputStream out=null;
-				 
+
 				 out=new FileOutputStream(writer);
 				 byte b[] = ("PRIMER_SEQUENCE_ID="+name+"\r\n").getBytes();
 				 out.write(b);
+                 Pattern p = Pattern.compile("[^ATGCatgc]");
+                 Matcher matcher = p.matcher(inputtex);
+                 inputtex = matcher.replaceAll("");
 				 b=("SEQUENCE="+inputtex+"\r\n").getBytes();
 				 out.write(b);
 				 b=("PRIMER_OPT_SIZE="+opsize+"\r\n").getBytes();
@@ -250,48 +254,48 @@ public class Blast3 extends ActionSupport{
 				 out.close();
 				 //System.out.println("写入文件内容成功");
 			 }
-			 
+
 		}catch (Exception e) {
 			System.out.println("写入文件内容出错");
 			e.printStackTrace();
 		}
 		finally{}
-		try {  
+		try {
 			 // 读取配置文件pro.properties
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primer3_core_path = p.getProperty("path_primer3_core");
-			Runtime rt1 = Runtime.getRuntime();  
+			Runtime rt1 = Runtime.getRuntime();
 			 String filePath=getWebRoot();
 			 filePath=filePath+"file/primerexample.input";//parameter.input路径
 			 filePath = filePath.substring(1,filePath.length());
 			 filePath = filePath.replaceAll("\\/","\\\\");
-           Runtime rt3 = Runtime.getRuntime(); 
-           Process pr3 = rt3.exec("cmd /c "+"cd "+primer3_core_path+" < "+filePath); // cmd /c calc  
-           //Process pr3 = rt3.exec("cmd /c "+"cd C:\\Users\\xinwang\\Desktop\\work\\primer & primer3_core.exe <"+filePath+"p3.input"); // cmd /c calc  
-           
+           Runtime rt3 = Runtime.getRuntime();
+           Process pr3 = rt3.exec("cmd /c "+"cd "+primer3_core_path+" < "+filePath); // cmd /c calc
+           //Process pr3 = rt3.exec("cmd /c "+"cd C:\\Users\\xinwang\\Desktop\\work\\primer & primer3_core.exe <"+filePath+"p3.input"); // cmd /c calc
+
            //System.out.println("cmd /c "+"cd E: & cd E:\\Magic\\primer3 & primer3_core.exe <"+filePath+"p3.input");
            //cmd /c "+"F: & cd F:\\primer\\src & primer3_core.exe
            System.out.println("cmd /c "+"cd "+primer3_core_path+" < "+filePath);
-           BufferedReader input3 = new BufferedReader(new InputStreamReader(pr3.getInputStream(), "GBK")); 
-           String line = null;  
- 
-           while ((line = input3.readLine()) != null) {  
+           BufferedReader input3 = new BufferedReader(new InputStreamReader(pr3.getInputStream(), "GBK"));
+           String line = null;
+
+           while ((line = input3.readLine()) != null) {
            	byte[] line1=line.getBytes();
-               System.out.println(line);  
-           }  
-           int exitVal = pr3.waitFor(); 
-           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-       }catch (IOException e) {  
-           //System.out.println(e.toString());  
-           e.printStackTrace();  
-       }catch (Exception e) {  
-           //System.out.println(e.toString());  
-           e.printStackTrace();  
+               System.out.println(line);
+           }
+           int exitVal = pr3.waitFor();
+           //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");
+       }catch (IOException e) {
+           //System.out.println(e.toString());
+           e.printStackTrace();
+       }catch (Exception e) {
+           //System.out.println(e.toString());
+           e.printStackTrace();
        }
 		finally{}
 
-		try {  
+		try {
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primerexample_path = p.getProperty("path_primerexample");
@@ -299,21 +303,21 @@ public class Blast3 extends ActionSupport{
             filePath = filePath+"file/";
             filePath = filePath.substring(1);
             filePath = filePath.replaceAll("\\/","\\\\");
-            Runtime rt1 = Runtime.getRuntime(); 
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".for "+filePath); // cmd /c calc  
-            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath); // cmd /c calc  
-            
+            Runtime rt1 = Runtime.getRuntime();
+            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".for "+filePath); // cmd /c calc
+            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath); // cmd /c calc
+
             System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".for "+filePath);
             //System.out.println("copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.for "+filePath);
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
+
+            int exitVal = pr1.waitFor();
+            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");
+        } catch (Exception e) {
+            //System.out.println(e.toString());
+            e.printStackTrace();
         }
 		finally{}
-		try {  
+		try {
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primerexample_path = p.getProperty("path_primerexample");
@@ -321,38 +325,38 @@ public class Blast3 extends ActionSupport{
             filePath = filePath+"file/";
             filePath = filePath.substring(1);
             filePath = filePath.replaceAll("\\/","\\\\");
-            Runtime rt1 = Runtime.getRuntime(); 
-            //Process pr1 = rt1.exec("cmd /c "+"copy/y C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.int "+filePath); // cmd /c calc  
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".int "+filePath); // cmd /c calc  
+            Runtime rt1 = Runtime.getRuntime();
+            //Process pr1 = rt1.exec("cmd /c "+"copy/y C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.int "+filePath); // cmd /c calc
+            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".int "+filePath); // cmd /c calc
             System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".int "+filePath);
-            
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
+
+
+            int exitVal = pr1.waitFor();
+            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");
+        } catch (Exception e) {
+            //System.out.println(e.toString());
+            e.printStackTrace();
         }
 		finally{}
-		try {  
+		try {
 		    p.load(Test.class.getClassLoader().getResourceAsStream("pro.properties"));
 		    // 获取配置文件中的相关内容
 		    String primerexample_path = p.getProperty("path_primerexample");
-            Runtime rt1 = Runtime.getRuntime(); 
+            Runtime rt1 = Runtime.getRuntime();
             String filePath=getWebRoot();
             filePath = filePath+"file/";
             filePath = filePath.substring(1);
             filePath = filePath.replaceAll("\\/","\\\\");
-            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.rev "+filePath); // cmd /c calc  
-            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".rev "+filePath); // cmd /c calc  
-            
+            //Process pr1 = rt1.exec("cmd /c "+"copy C:\\Users\\xinwang\\Desktop\\work\\primer\\primerexample.rev "+filePath); // cmd /c calc
+            Process pr1 = rt1.exec("cmd /c "+"copy/y "+primerexample_path+name+".rev "+filePath); // cmd /c calc
+
             System.out.println("cmd /c "+"copy/y "+primerexample_path+name+".rev "+filePath);
-  
-            int exitVal = pr1.waitFor();  
-            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");  
-        } catch (Exception e) {  
-            //System.out.println(e.toString());  
-            e.printStackTrace();  
+
+            int exitVal = pr1.waitFor();
+            //System.out.println("Exited with error code " + exitVal+":"+"cmd /c "+"blastn  -evalue "+inputeralue+" -perc_identity "+inputmaxtarget+" -max_target_seqs "+inputpercent+" -outfmt 5 "+" -query D:\\Blast+\\blast\\test1.fasta"+" -out D:\\Blast+\\blast\\blast.txt -db "+"D:\\Blast+\\blast\\hzs\\HZ_H.genome");
+        } catch (Exception e) {
+            //System.out.println(e.toString());
+            e.printStackTrace();
         }
 		finally{}
 		try {
@@ -372,7 +376,7 @@ public class Blast3 extends ActionSupport{
             			sum++;
             			if(sum<4)
             				continue;
-            			
+
             			lineTxt=lineTxt.trim();
             			String[] str=lineTxt.split("\\s+");
             			fornum=str[0];
@@ -386,9 +390,9 @@ public class Blast3 extends ActionSupport{
             			forend=str[8];
             			forlity=str[9];
             			fornummap.put(fornum,fornum);
-            			
+
             			formap.put(fornum,str);
-            			
+
 //            			System.out.println(""+lineTxt);
 //            			System.out.print("fornum="+fornum);
 //            			System.out.print("forseq="+forseq);
@@ -401,7 +405,7 @@ public class Blast3 extends ActionSupport{
 //            			System.out.print("forend="+forend);
 //            			System.out.println("forlity="+forlity);
                 }
-            		
+
             		read.close();
             	}else{
             		System.out.println("找不到指定的文件");
@@ -413,7 +417,7 @@ public class Blast3 extends ActionSupport{
 		finally{}
 		try {
             String encoding="GBK";
-            
+
             String filePath=getWebRoot();
             filePath = filePath+"file/"+name+".int";//int文件路径
             filePath = filePath.substring(1,filePath.length());
@@ -428,10 +432,10 @@ public class Blast3 extends ActionSupport{
             			sum++;
             			if(sum<4)
             				continue;
-            			
+
             			lineTxt=lineTxt.trim();
             			String[] str=lineTxt.split("\\s+");
-            			
+
             			intnum=str[0];
             			intseq=str[1];
             			intstart=str[2];
@@ -444,7 +448,7 @@ public class Blast3 extends ActionSupport{
             			intlity=str[9];
             			intmap.put(intnum,str);
             			intnummap.put(intnum,intnum);
-            			
+
 //            			System.out.println(""+lineTxt);
 //            			System.out.print("intnum="+intnum);
 //            			System.out.print("intseq="+intseq);
@@ -457,7 +461,7 @@ public class Blast3 extends ActionSupport{
 //            			System.out.print("intend="+intend);
 //            			System.out.println("intlity="+intlity);
                 }
-            		
+
             		read.close();
             	}else{
             		System.out.println("找不到指定的文件");
@@ -469,7 +473,7 @@ public class Blast3 extends ActionSupport{
 		finally{}
 		try {
             String encoding="GBK";
-            
+
             String filePath=getWebRoot();
             filePath = filePath+"file/"+name+".rev";//rev文件路径
             filePath = filePath.substring(1,filePath.length());
@@ -484,7 +488,7 @@ public class Blast3 extends ActionSupport{
             			sum++;
             			if(sum<4)
             				continue;
-            			
+
             			lineTxt=lineTxt.trim();
             			String[] str=lineTxt.split("\\s+");
             			revnum=str[0];
@@ -499,7 +503,7 @@ public class Blast3 extends ActionSupport{
             			revlity=str[9];
             			revmap.put(revnum,str);
             			revnummap.put(revnum,revnum);
-//            			
+//
 //            			System.out.print("revnum="+revnum);
 //            			System.out.print("revseq="+revseq);
 //            			System.out.print("revstart="+revstart);
@@ -520,17 +524,17 @@ public class Blast3 extends ActionSupport{
 				e.printStackTrace();
 			}
 		finally{}
-		
+
 		attribute.put("fornummap", fornummap);
-		
+
 		attribute.put("intnummap", intnummap);
-		
+
 		attribute.put("revnummap", revnummap);
-		
+
 		attribute.put("formap",formap);
 		attribute.put("intmap",intmap);
 		attribute.put("revmap",revmap);
-		return SUCCESS;  
+		return SUCCESS;
 	}
 }
 

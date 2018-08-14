@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.regex.*;
 import java.sql.ResultSet;
 import java.io.*;
 import java.sql.*;
@@ -158,6 +159,9 @@ public class Blast extends ActionSupport{
 				 {
 					 OutputStream out=null;
 					 out=new FileOutputStream(writer);
+                     Pattern p = Pattern.compile("[^ATGCatgc]");
+                     Matcher matcher = p.matcher(inputtext);
+                     inputtext = matcher.replaceAll("");
 					 byte b[] = inputtext.getBytes();
 					 out.write(b);
 					 out.close();
@@ -176,51 +180,54 @@ public class Blast extends ActionSupport{
             filePath = filePath.replaceAll("\\/","\\\\");
             inputfile=filePath+"blastin.txt";
             String cmd1="blastn";
-            if(database == null || blastprograme == null){
-                return SUCCESS;
-            }
-            if(blastprograme.equals("primer-blast"))
-            	cmd1="blastn -task blastn-short";
-            String datafile = new String();
-            if(database.equals("HZS"))
-            {
-                datafile="F:\\work\\website_project\\blast\\blast\\hzs\\HZ_H.genome";
-                database1=database;
-            }
-            else if(database.equals("V3.25"))
-            {
-                datafile="F:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
-                database1=database;
-            }
-            else if(database.equals("V4"))
-            {
-                datafile="F:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
-                database1=database;
-            }
-            else if(database.equals("PAN"))
-            {
-                datafile="F:\\Magic\\blast\\pan\\pan.fasta";
-                database1=database;
-            }
             /*
-             * the path for the server
+             *if(database == null || blastprograme == null){
+             *    return SUCCESS;
+             *}
+             */
+            //如果database为空就执行try后面的代码，这不是bug，而是正常流程
+            if(blastprograme.equals("primer-blast"))
+                cmd1="blastn -task blastn-short";
+            String datafile = new String();
+            /*
              *if(database.equals("HZS"))
              *{
-             *	datafile="E:\\Magic\\blast\\hzs\\HZ_H.genome";
+             *    datafile="F:\\work\\website_project\\blast\\blast\\hzs\\HZ_H.genome";
+             *    database1=database;
              *}
              *else if(database.equals("V3.25"))
              *{
-             *	datafile="E:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+             *    datafile="F:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+             *    database1=database;
              *}
              *else if(database.equals("V4"))
              *{
-             *	datafile="E:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
+             *    datafile="F:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
+             *    database1=database;
              *}
              *else if(database.equals("PAN"))
              *{
-             *	datafile="E:\\Magic\\blast\\pan\\pan.fasta";
+             *    datafile="F:\\Magic\\blast\\pan\\pan.fasta";
+             *    database1=database;
              *}
              */
+//             the path for the server
+            if(database.equals("HZS"))
+            {
+                datafile="E:\\Magic\\blast\\hzs\\HZ_H.genome";
+            }
+            else if(database.equals("V3.25"))
+            {
+                datafile="E:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+            }
+            else if(database.equals("V4"))
+            {
+                datafile="E:\\Magic\\blast\\v4\\Zea_mays.AGPv4.dna.toplevel.fa";
+            }
+            else if(database.equals("PAN"))
+            {
+                datafile="E:\\Magic\\blast\\pan\\pan.fasta";
+            }
 
             System.out.println("database="+database);
             System.out.println("database1="+database1);
