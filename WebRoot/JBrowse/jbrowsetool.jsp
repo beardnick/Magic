@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+ 	<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		    	{
     		    		end1=end1+1;
     		    		end=end-100000;
-    		    	}
+   		    	} 		
     		    	while(end1>0)
     		    	{
     		    		end1=end1-1;
@@ -143,8 +143,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="content">
             <div class="describe">
                 <h3>Variation Browser</h3>
-                <br/>
-                <p>The Visualisation of all SNP-trait associations with genome-wide significance (p≤5 x10-8).</p>
             </div>
             <div class="search">
                 <p class="bold">Select one or more loci. Specify gene identifiers (e.g. GRMZM2G040380) or regions (e.g. Chr1 147 6782830).</p>

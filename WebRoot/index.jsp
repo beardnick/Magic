@@ -194,8 +194,8 @@
 
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Comments or Questions</h2>
-						<p style="text-indent:2em;">For any questions please contact Hu Zhao 
-                        (zhaohu [at] webmail.hzau.edu.cn).</p>
+						<p style="text-indent:2em;">For any questions please contact Jianxiao Liu 
+                        (liujianxiao [at] webmail.hzau.edu.cn) or Jingyun Luo  (jingyunluo [at] foxmail.com)</p>
 					</div>
 
 					<div class="my-panel">

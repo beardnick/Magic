@@ -299,6 +299,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <%@ include file="../ListFooter.jsp"%>
   </body>
  <script type="text/javascript">
+
     $(function(){
         $('#table').bootstrapTable({//'#table' 改为所用表的选择器
         url: "localhost:8080/Magic/Step/step_one.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出

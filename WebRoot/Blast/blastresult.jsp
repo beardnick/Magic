@@ -326,50 +326,39 @@ function check1()
   						 int hseqlen=hseq.length();%>
                     	<h3><%=chr1 %>:</h3>
                     	<br>
-                    	<%while(t1<qseqlen-1&&t2<midlinelen-1&&t3<hseqlen-1)
-                   		 {%>
+                    	<%while(t1<qseqlen-1&&t2<midlinelen-1&&t3<hseqlen-1) {%>
                    		
-                    			<%for(int s=0;s<130;s++,t1++)
-                    			{	
+                    			<%for(int s=0;s<130;s++,t1++){	
                     				if(midline.charAt(t1)==' ' )
                     				{ %>
                     					<% out.print("<font color=#EE1100><b>" + qseq.charAt(t1) + "</b></font>");%>
-                    				<%} %>
-                 			 	  	 <%else %>
-                    				<%{%>
+                    				<%}else{%>
                     					<%=qseq.charAt(t1) %>
                     				<%} %> 
-                    	            <%if(t1==qseqlen-1) 
-                    		            break;%>
-                    	        <%}%>
+                    	            <%if(t1==qseqlen-1) {
+                    		            break;}%>
+                    	       <%} %>
 						&nbsp;&nbsp;<%out.print("Query&nbsp&nbsp"+t1+"   "); %>
                     	<br>
                     	      <%for(int s=0;s<130;s++,t2++)
                     	      {%>	
                     	         <%if(t2==midlinelen)
                     		          break; %>
-                    	         <%if(midline.charAt(t2)==' ')%>
-                    	          <%{ %>
+                    	         <%if(midline.charAt(t2)==' '){ %>
                     		          <% out.print("<font color=#EE1100><b>" + "X" + "</b></font>");%>
-                    	           <%} %>
-                    	          <%else %>
-                    	          <%{ %>
+                    	           <%}else{ %>
                     	 	          <%=midline.charAt(t2)%>
                     	          <%} %>
                     	     <%}%>
                     	<br>
-                    	     <%for(int s=0;s<130;s++,t3++)
-                    	      {
-                    	        if(midline.charAt(t3)==' ')
-                    	          { %>
+                    	     <%for(int s=0;s<130;s++,t3++){%>
+                    	        <% if(midline.charAt(t3)==' '){%>
                     	             <% out.print("<font color=#EE1100><b>" + hseq.charAt(t3) + "</b></font>");%>
-                    	        <%} %>
-                    	        <%else %>
-                            	<%{%>
+                    	        <%}else{%>
                     	           <%=hseq.charAt(t3) %>
                     	        <%} %> 
-                    	        <%if(t3==hseqlen-1) 
-                    		        break;%>
+                    	        <%if(t3==hseqlen-1) %>
+                    		        <% break;%>
                     	     <%}%>
                     	&nbsp;&nbsp;<%out.print("Subject&nbsp"+t1+"   "); %>
                     	<br></br>
