@@ -81,9 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             %>
             <jsp:include page="../py_scripts/chrome.html" flush="true"/>
             <%}else{%>
-            <table data-toggle="table" class="table table-hover">
-           <tbody><tr class="no-records-found"><td colspan="0">No matching records found</td></tr></tbody>
-           <thead><tr></tr></thead></table>
+                        <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
             <%}%>
         <%--
 		   -</div>
@@ -103,6 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 if(search.equals("first")){
             %>
             <h3>QTL region</h3>
+            <%if(len2 > 0){%>
             <table id="table" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -138,7 +137,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%} %>
             </tbody>
            </table> 
+           <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
            <h3>Significant SNP</h3>
+            <%if(len > 0){%>
             <table id="table3" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -164,7 +168,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%} %>
                        </tbody>
            </table>
+           <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
            <h3>Significant annotation</h3>
+            <%if(len > 0){%>
             <table id="table5" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -190,6 +199,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </tbody>
            </table>
            <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
+           <%}else{%>
+            <%if(len2 > 0){%>
            <h3>QTL region</h3>
             <table id="table2" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -225,7 +239,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%} %>
                        </tbody>
            </table>
+           <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
            <h3>Significant SNP</h3>
+            <%if(len > 0){%>
             <table id="table4" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -253,6 +272,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <%} %>
             </tbody>
            </table>     
+           <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
+            <%if(len > 0){%>
            <h3>Significant annotation</h3>
            <table id="table6" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -280,6 +304,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%} %>
            </tbody>
            </table>
+           <%}else{%>
+                           <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}%>
            <%}%>
             </div>
 <!--             <div class="btns">

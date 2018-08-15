@@ -86,7 +86,7 @@
 								class="list-group-item" style="color:#333;text-align:center;">Genotype Data</a>
 							<a href="Dataintroduction/phenotypedata.jsp"
 								class="list-group-item" style="color:#333;text-align:center;">Phenotype Data</a>
-							<a href="Draw/magic" class="list-group-item"
+							<a href="Draw/magic.jsp" class="list-group-item"
 								style="color:#333;text-align:center;">Bin Map</a>
 							<a href="JBrowse/jbrowsetool.jsp" class="list-group-item"
 								style="color:#333;text-align:center;">Variation Browser</a>
@@ -185,8 +185,8 @@
 							five different provinces in the summer of 2014 and 20 traits were
 							investigated.
 						<%--<div class="class0">--%>
-							<a href="/Magic/Dataintroduction/genotypedata.jsp"
-								style="color:#4381be;">Read more……</a>
+							<a href="/Magic/Dataintroduction/phenotypedata.jsp"
+								style="color:#4381be;"></a>
 						<%--</div>--%>
 						</p>
 					</div>
@@ -195,7 +195,7 @@
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Comments or Questions</h2>
 						<p style="text-indent:2em;">For any questions please contact Jianxiao Liu 
-                        (liujianxiao [at] webmail.hzau.edu.cn) or Jingyun Luo  (jingyunluo [at] foxmail.com)</p>
+                        (liujianxiao@webmail.hzau.edu.cn) or Jingyun Luo  (jingyunluo@foxmail.com)</p>
 					</div>
 
 					<div class="my-panel">
@@ -209,10 +209,10 @@
 					<div class="my-panel">
 						<h2 style="color:#4381be;">Citations</h2>
 						<p style="text-indent:2em;">Researchers who wish to use RiceVarMap are encouraged to refer to our publication or 
-                        <a href="/Magic/Dataintroduction/genotypedata.jsp" style="color:#4381be;">more</a>:</p>
+                        <a href="http://ricevarmap.ncpgr.cn/v2/publication/" style="color:#4381be;">more</a>:</p>
 
                         <p style="text-indent:2em;">Zhao H, Yao W, Ouyang Y, Yang W, Wang G, Lian X, Xing Y, Chen L, Xie W. 
-                        <a href="/Magic/Dataintroduction/genotypedata.jsp" style="color:#4381be;">RiceVarMap: a comprehensive database of rice genomic variations.</a>
+                        <a href="https://academic.oup.com/nar/article/43/D1/D1018/2439488" style="color:#4381be;">RiceVarMap: a comprehensive database of rice genomic variations.</a>
                         Nucleic Acids Res, 2015, 43: D1018-1022</p>
 					</div>
 

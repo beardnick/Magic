@@ -106,10 +106,16 @@
     <div class="describe1" style="margin:50px;">
 
         <div class="left5" name="button" style="height: auto; width: 100%;">
-            
+                <%int sum=0;
+                	if(!itfornum.hasNext())
+						{%>
+            <h4 style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
+            <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                            <%}else{%>
             <table id='table' class="table blast-table"  data-toggle="table">
             
-            <h4 id="mythead1" style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
+            <h4 style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
             <hr/>
 <!--                 <tr>
                     <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
@@ -119,7 +125,7 @@
                     <td style="width: 20px;height: 45px ">#N</td><td style="width: 50px;height: 45px ">GC%</td><td style="width: 50px;height: 45px ">Tm</td><td style="width: 20px;height: 45px ">selfany</td>
                     <td style="width: 30px;height: 45px ">selfend</td><td style="width: 30px;height: 45px ">quallity</td>
                 </tr> -->
-                <%int sum=0;
+                <%
                     while(itfornum.hasNext())
                     {
                         String numkey=itfornum.next();
@@ -147,7 +153,7 @@
                     <td align="left"><%=sseq %></td><td align="left"><%=sstart %></td><td align="left"><%=sin %></td><td align="left"><%=sN %></td><td align="left"><%=sgc %>%</td>
                     <td align="left"><%=sTm %></td><td align="left"><%=sany %></td><td align="left"><%=send %></td><td align="left"><%=slity %></td>
                 </tr>
-                <%} %>
+                <%}} %>
 			</table>
 		</div>
     </div>
@@ -155,10 +161,17 @@
     <div class="col-md-12">
     <div class="describe2" style="margin:50px;">
         <div class="left5" name="int" style="height: auto; width: 100%"> 
-            <table id='table1' class="table blast-table"  data-toggle="table" >
-            <h4  id="mythead2" style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
-            <hr/>
                 <%sum=0;
+                	if(!itintnum.hasNext())
+						{%>
+            <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
+            <hr/>
+                        <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                <%}else{%>
+            <table id='table1' class="table blast-table"  data-toggle="table" >
+            <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
+            <hr/>
+            <%
                     while(itintnum.hasNext())
                     {
                         String numkey=itintnum.next();
@@ -186,7 +199,7 @@
                     <td align="left"><%=sseq %></td><td align="left"><%=sstart %></td><td align="left"><%=sin %></td><td align="left"><%=sN %></td><td align="left"><%=sgc %>%</td>
                     <td align="left"><%=sTm %></td><td align="left"><%=sany %></td><td align="left"><%=send %></td><td align="left"><%=slity %></td>
                 </tr>
-                <%} %>
+                <%}}%>
             </table>
         </div>
 
@@ -198,10 +211,17 @@
         <div class="left5" name="int" style="height: auto; width: 100%">
            
 
-            <table id='table2' class="table blast-table"  data-toggle="table" >
-			 <h4 id="mythead3"  style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
-			 <hr/>
                 <%sum=0;
+                	if(!itrevnum.hasNext())
+						{%>
+			 <h4 style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
+			 <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                <%}else{%>
+        <table id='table2' class="table blast-table"  data-toggle="table" >
+			 <h4 style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
+			 <hr/>
+             <%
                     while(itrevnum.hasNext())
                     {
                         String numkey=itrevnum.next();
@@ -219,6 +239,8 @@
                         String sany=str[7];
                         String send=str[8];
                         String slity=str[9];
+
+
                 %>
                 <tr>
 
@@ -227,7 +249,7 @@
                     <td align="left"><%=sseq %></td><td align="left"><%=sstart %></td><td align="left"><%=sin %></td><td align="left"><%=sN %></td><td align="left"><%=sgc %>%</td>
                     <td align="left"><%=sTm %></td><td align="left"><%=sany %></td><td align="left"><%=send %></td><td align="left"><%=slity %></td>
                 </tr>
-                <%} %>
+                <%}}%>
 
             </table>
         </div>
@@ -240,26 +262,6 @@
 </div>
 
 <script type="text/javascript">
-
-        //function hasRecords(table, col){
-        //     	var x = $(table+ ' #no-records-found');
-    	//if(x){
-    	//	$(table).css("display","none");
-    	//	var y=document.getElementById('mythead' + col);
-        //    console.log(y);
-    	//	var x= document.createElement("p");
-    	//	var z= document.createTextNode("No matching records found");
-    	//	x.appendChild(z);
-    	//	y.appendChild(x);
-        //    console.log(y);
-    	//	$("h4 p").css({"text-align":"center","font-size":"14px"})
-        //    return false;
-    	//}
-    	//else{
-        //   return true;
-        //}
-        //}
-
     $(function(){
         $('#table').bootstrapTable({//'#table' 改为所用表的选择器
         url: "localhost:8080/Magic/Primer/Primersearch1.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
@@ -319,8 +321,8 @@
         title: 'quality',
         sortable:true    
     }],  
-        });
-        });
+ 		});
+ 		});
 </script>
 <script type="text/javascript">
     $(function(){
@@ -382,11 +384,10 @@
         title: 'quality',
         sortable:true    
     }],  
-        });
-        });
+ 		});
+ 		});
 </script>
 <script type="text/javascript">
-
     $(function(){
         $('#table2').bootstrapTable({//'#table' 改为所用表的选择器
         url: "localhost:8080/Magic/Primer/Primersearch1.jsp",//改为当前网页的url，可通过鼠标右击网页 查看信息找出
@@ -448,7 +449,7 @@
         sortable:true    
     }],  
  		});
-        });
+ 		});
 </script>
 </body>
 </html>

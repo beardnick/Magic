@@ -189,10 +189,18 @@ function check1()
                     </div>
                     <form action="blast" method="post" onsubmit="return check1()">
                     <div class="left4" name="button">
+
+                        <%int sum=0;
+                	if(!itchr.hasNext())
+						{%>
+                    <h4  style="color:blue;">Descriptions</h4>
+                    <hr/>
+							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                        <%}else{%>
                     <table id="table3" class="table blast-table"   style="height: auto; width: 100%">
                     <h4  style="color:blue;">Descriptions</h4>
                     <hr/>
-                        <%int sum=0;
+                    <%
                         while(itchr.hasNext())
                         {
                         	String evaluekey=itevalue.next();
@@ -219,7 +227,7 @@ function check1()
                         	
                         	<td align="left"><%=scorevalue %></td><td align="left"><%=totalscorevalue %></td><td align="left"><%=querycover %></td><td align="left"><%=evaluevalue %></td><td align="left"><%=identities %>%</td>
                         	</tr>
-                        <%} %>
+                            <%}} %>
                         
                     </table>
                     </div>
