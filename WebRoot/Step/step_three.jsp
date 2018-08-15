@@ -75,10 +75,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <%filePath = filePath + "webapps/Magic/py_scripts/chrome.html";%>
             <%File chrome = new File(filePath);%>
             <%--<p><%=chrome.getAbsolutePath()%></p>--%>
+            <%--<p><%=chrome.exists()%></p>--%>
             <%
             if(chrome.exists()){
             %>
-			<%@ include file="../py_scripts/chrome.html"%>
+            <jsp:include page="../py_scripts/chrome.html" flush="true"/>
             <%}else{%>
             <table data-toggle="table" class="table table-hover">
            <tbody><tr class="no-records-found"><td colspan="0">No matching records found</td></tr></tbody>

@@ -97,7 +97,7 @@ if __name__ == "__main__":
         my_dict.update({'param':[]})
         for i in range(length):
             # s = "1%3A123..1231412&tracks=chr1_67195493_67197493%2CDNA&highlight="
-            s = "http://localhost:8080/Magic/JBrowse/jbrowse.jsp?loc="
+            s = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="
             s = s + data[i][column_dict['chr']]
             s = s + "%3A";
             s  = s + str(start)
