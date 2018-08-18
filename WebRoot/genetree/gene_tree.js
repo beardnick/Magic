@@ -3,7 +3,7 @@
  * @author:daliu
  * @date:2017-04-22
  * @description:
- * 
+ *
  */
 var treeNode = document.getElementById('treeNode');
 var html = '';
@@ -51,7 +51,7 @@ for(var i=0; i<rstlength; i++){
 	for(var k=0;k<length;k++){
 		var gyY = topHeight+500+yTemp;
 		yTemp += parseInt(eachRst[k].height);
-		
+
 		html += '<rect x="'+rst.x+'" y="'+gyY+'" width="'+gyWidth+'" height="'+eachRst[k].height+'" style="fill:'+eachRst[k].color+';"/>';//stroke:#797677;stroke-width:1;
 		var eachYZ = eachRst[k].children;//每一组因子
 		var yzlength = eachYZ.length;
@@ -169,7 +169,7 @@ function zoom(type){
 	}
 	treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
 	if(newx1>-1&&newy1>-1){
-		
+
 	}else{
 		//alert('已经缩到最小了！');
 	}
@@ -178,7 +178,7 @@ function zoom(type){
 
 //平移
 var drag = false;
-treeNode.mousedown(function(){
+treeNode.mousedown(function(e){
   drag = true;
   pageXTemp = e.pageX;
   pageYTemp = e.pageY;
@@ -217,7 +217,7 @@ treeNode.mousemove(function(e){
 		var y2 = parseInt(viewBoxArray[3]);
 		var doX = pageXTemp == 0? 1.3:Math.abs(e.pageX-pageXTemp)*x2/svgWidth;
 		var doY = pageYTemp == 0? 1.3:Math.abs(e.pageY-pageYTemp)*y2/500;
-		
+
 		if(pageXTemp<e.pageX){
 			doX = -doX;
 		}
@@ -315,14 +315,14 @@ function filter(filter){
 		$("circle").css({'fill-opacity':1});
 		$("polygon").css({'fill-opacity':1});
 	}
-	
+
 	$("#filterlist").children().removeClass('filter-item-selected');
 	for(var k in filterListArray){
 		$("circle[filter=\'"+filterListArray[k]+"\']").css({'fill-opacity':1});
 		$("polygon[filter=\'"+filterListArray[k]+"\']").css({'fill-opacity':1});
 		$("#"+filterListArray[k]).addClass('filter-item-selected');
 	}
-	
+
 }
 //
 function filtercircle(filter){
@@ -392,9 +392,9 @@ function filterPan(tree){
 				if(has == false){
 					if(jy[n].filter!='space'){
 						data.push({filter:jy[n].filter,num:1,color:jy[n].color});
-				
+
 					}
-				}	
+				}
 			}
 		}
 	}

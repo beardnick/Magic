@@ -22,11 +22,11 @@ public class Dbase {
 	private String password = "";
 	private String url = "jdbc:mysql://localhost:3306/magic";
 	private String driver = "com.mysql.jdbc.Driver";
-	
+
 	private Connection con = null;
     private Statement stmt = null;
 	private ResultSet rs = null;
-	
+
 	public Dbase(){
 		try {
 			Class.forName(driver);
@@ -40,10 +40,10 @@ public class Dbase {
 			// TODO Auto-generated catch block
 			System.out.println("密码错误!");
 			System.out.println(e2.toString());
-		}	
+		}
 	}
-	
-	
+
+
 	public Map<String,Object> getChr(String sql){
 		Map<String,Object> map = new HashMap<String,Object> ();
 		Map<String,ArrayList<String>> map1 = new HashMap<String,ArrayList<String>> ();
@@ -64,11 +64,11 @@ public class Dbase {
 			    list.add(rs.getString(9));
 			    list.add(rs.getString(10));*/
 			    while(j<=rs.getMetaData().getColumnCount()){
-			    	System.out.println(j);
+			    	//System.out.println(j);
 			    	list.add(rs.getString(j));
 			    	j++;
 			    }
-			    System.out.println(list);
+			    //System.out.println(list);
 			    map1.put(Integer.toString(i), list);
 			    i++;
 			}
@@ -79,6 +79,7 @@ public class Dbase {
 		map.put("data", map1);
 		int len = map1.size();
 		map.put("len", len);
+        System.out.println("getChr: query sucessfully length = " + len);
 		return map;
 	}
 
@@ -92,7 +93,7 @@ public class Dbase {
 				 String st2 = rs.getString(2);
 				 /*System.out.println(st1+ st2);*/
 				 result =result+"TARGET=" + st1+"," + st2+ "\r\n"+"PRIMER_INTERNAL_OLIGO_EXCLUDED_REGION="+st1+"," + st2+"\r\n";
-				 
+
 		     }
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -100,7 +101,7 @@ public class Dbase {
 		System.out.println("result:" + result);
 		return result;
 	}
-	
+
 	public Map<String, String> getStartEnd(String gene){
 		Map<String, String> map = new HashMap<String, String>();
 		try {
@@ -120,7 +121,7 @@ public class Dbase {
 		}
 		return map;
 	}
-	
+
 	public String test(String sql){
 		String result = "";
 		try {
@@ -136,7 +137,7 @@ public class Dbase {
 
 		return result;
 	}
-	
+
 	public String jbtest(String sql){
 		String result = "";
 		try {
@@ -151,7 +152,7 @@ public class Dbase {
 		return result;
 	}
 	public JSONArray gettree(String sql){
-		
+
 		JSONArray jsonArray = new JSONArray();
 		try {
 			String ende;
@@ -163,9 +164,9 @@ public class Dbase {
 			int genenum=0;
 			float start;
 			float end;
-			ResultSetMetaData metaData = (ResultSetMetaData) rs.getMetaData();  
-			int columnCount = metaData.getColumnCount(); 
-			// 遍历ResultSet中的每条数据  
+			ResultSetMetaData metaData = (ResultSetMetaData) rs.getMetaData();
+			int columnCount = metaData.getColumnCount();
+			// 遍历ResultSet中的每条数据
 			while(rs.next())
 			{
 				start=Float.MAX_VALUE;
@@ -173,37 +174,37 @@ public class Dbase {
 				text++;
 				genenum=0;
 				int sum=0;
-				
+
 				JSONObject jsonresult1=new JSONObject();
 				JSONObject jsonobj=new JSONObject();
 				//获取第一个chr
-				for (int i = 1; i <= columnCount; i++) {  
-		            String columnName =metaData.getColumnLabel(i);  
-		            String value = rs.getString(columnName);  
-		            jsonobj.put(columnName, value);  
-		        }  
+				for (int i = 1; i <= columnCount; i++) {
+		            String columnName =metaData.getColumnLabel(i);
+		            String value = rs.getString(columnName);
+		            jsonobj.put(columnName, value);
+		        }
 				String chr1;
 				chr1=jsonobj.getString("Chr");
-				
+
 				start=Float.parseFloat(jsonobj.getString("start"));
 				end=Float.parseFloat(jsonobj.getString("end"));
-				
+
 				//获取第二层
 				JSONArray children2 = new JSONArray();
 				JSONArray children1 = new JSONArray();
-				
+
 				while(rs!=null)
 				{
-					
+
 					sum++;
 					JSONObject jsonobj2=new JSONObject();
 					JSONObject jsonresult2=new JSONObject();
 					JSONObject jsonspace=new JSONObject();
-					for (int i = 1; i <= columnCount; i++) {  
-			            String columnName =metaData.getColumnLabel(i);  
-			            String value = rs.getString(columnName);  
-			            jsonobj2.put(columnName, value);  
-			        } 
+					for (int i = 1; i <= columnCount; i++) {
+			            String columnName =metaData.getColumnLabel(i);
+			            String value = rs.getString(columnName);
+			            jsonobj2.put(columnName, value);
+			        }
 					String chr2=jsonobj2.getString("Chr");
 					if(!chr2.equals(chr1))
 					{
@@ -213,7 +214,7 @@ public class Dbase {
 					float start2=Float.parseFloat(jsonobj2.getString("start"));
 					float end2=Float.parseFloat(jsonobj2.getString("end"));
 					//第三层
-					
+
 					if((start2<=end)&&(end2>start)&&sum!=1)
 					{
 						color=jsonobj2.getString("Trait");
@@ -235,7 +236,7 @@ public class Dbase {
 					}
 					else
 					{
-						
+
 						color=jsonobj2.getString("Trait");
 						String color1=colorr(color);
 						float x=(Float.parseFloat(jsonobj2.getString("end"))-Float.parseFloat(jsonobj2.getString("start")));
@@ -265,15 +266,15 @@ public class Dbase {
 					        jsonresult3.put("name","空白");
 					        JSONArray childrenspace=new JSONArray();
 							childrenspace.add(jsonresult3);
-							
+
 							if(!childrenspace.isEmpty())
 							{
-								
+
 								jsonspace.put("children", childrenspace);
 								childrenspace.clear();
 							}
 						}
-						
+
 						JSONObject jsonresult3=new JSONObject();
 						jsonresult3.put("Chr", jsonobj2.getString("Chr"));
 				        jsonresult3.put("type",jsonobj2.getString("POP"));
@@ -288,7 +289,7 @@ public class Dbase {
 						genenum=1;
 						if(!children2.isEmpty())
 						{
-							
+
 							jsonresult2.put("children", children2);
 							children2.clear();
 						}
@@ -303,7 +304,7 @@ public class Dbase {
 						//children1.add(jsonspace);
 						children1.add(jsonresult2);
 					}
-					
+
 			        rs.next();
 				}
 				if(!children1.isEmpty())
@@ -311,14 +312,14 @@ public class Dbase {
 				jsonArray.add(jsonresult1);
 			}
 		}
-			
-			
+
+
 		 catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 		return jsonArray;
 	}
 	public float numberwei(float f,String chr)
@@ -339,7 +340,7 @@ public class Dbase {
 		    	while(f>10)
 		    	{
 		    		f /= 10 ;
-		    	} 
+		    	}
 		    }
 		    if(f<1)
 		    {
@@ -444,7 +445,7 @@ public class Dbase {
 			 String color1="#C30000";
 			 return color1;
 		}
-		else 
+		else
 		{
 		      String color1="#2F4F4F";
 		      return color1;
@@ -471,7 +472,7 @@ public class Dbase {
 		data.add(end_all);
 		return data;
 	}
-	
+
 	public ArrayList<String> getTable(String sql){
 		ArrayList<String> table_data = new ArrayList<String>();
 		try {
@@ -487,8 +488,8 @@ public class Dbase {
 		}
 		return table_data;
 	}
-	
-	
+
+
 	public void Close(){
 		try {
 			if (rs != null) {

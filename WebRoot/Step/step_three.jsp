@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<h4>Only significant locus plotted below</h4>
 		</div> <div class="col-md-12">
             <%String filePath = this.getClass().getResource("").getPath();%>
-            <%filePath = filePath.substring(filePath.indexOf("/"), filePath.indexOf("work"));%>
+            <%filePath = filePath.substring(filePath.indexOf("/"), filePath.lastIndexOf("work"));%>
             <%filePath = filePath + "webapps/Magic/py_scripts/chrome.html";%>
             <%File chrome = new File(filePath);%>
             <%--<p><%=chrome.getAbsolutePath()%></p>--%>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             %>
             <jsp:include page="../py_scripts/chrome.html" flush="true"/>
             <%}else{%>
-                        <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                    <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
             <%}%>
         <%--
 		   -</div>
