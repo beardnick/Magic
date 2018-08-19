@@ -61,7 +61,7 @@
 	<%@ include file="../ListHeader.jsp"%>
 	<h3 style="position:relative;left:4.9%;">GWAS Search</h3>
 	<br>
-	<div class="content">
+	<div class="container">
 		<div class="describe">
 			<p>
 				<font size="3">Three GWAS method including
@@ -79,7 +79,18 @@
 			<!--定义了字体大小-->
 		</div>
 		<form action="showThree" method="post" onsubmit="return check();">
-			<div class="search" style="width:40%;position:relative;left:10%;">
+            <div class="row">
+            <div class="col-md-6">
+			<div class="search">
+<style>
+table, table tr th, table tr td {
+    padding: 8px;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+</style>
 				<table id="table-methods-table" data-toggle="table" data="data"
 					data-height="370">
 					<!-- data-height="246" -->
@@ -94,14 +105,10 @@
 					</thead>
 				</table>
 			</div>
-			<br> <br> <input type="hidden" id="sead" name="trait" />
-			<div class="btns2">
-				<button class="btn" text-algin="right" id="next" float="right">Search</button>
 			</div>
-			<div
-				style="position:absolute;left:53%;top:125px;width:0px;height:400px;border-style:solid;border-color:#ddd;border-width:0.5px;"></div>
-			<div class="search"
-				style="position:absolute;left:56%;top:130px;width:620px;padding:40px;border-style:solid;border-color:#ddd;border-width:1px;border-radius:3px;">
+			<br> <br> <input type="hidden" id="sead" name="trait" />
+			<div class="col-md-6">
+			<div class="search">
 				<style>
 .col-md-3, .col-xs-3, .col-md-1, .col-xs-1, .col-md-5, .col-md-5 {
 	padding-right: 3px;
@@ -168,6 +175,11 @@
 					<div style="height:44px;"></div>
 					<%--<span style="color:gray;float:left;"><font size="3">(eg: GRMZM2G040389 )</font></span><!--修改了与注释不符的错误-->--%>
 				</div>
+			</div>
+			</div>
+			<div class="btns2">
+				<button class="btn" text-algin="right" id="next" float="right">Submit</button>
+			</div>
 			</div>
 		</form>
 	</div>

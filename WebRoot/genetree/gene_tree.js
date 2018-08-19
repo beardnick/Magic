@@ -167,12 +167,8 @@ function zoom(type){
 		$("circle").css({'fill-opacity':1});
 		$("polygon").css({'fill-opacity':1});
 	}
-	treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
-	if(newx1>-1&&newy1>-1){
-
-	}else{
-		//alert('已经缩到最小了！');
-	}
+	//treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
+        setViewBox(treeNode, newx1, newy1, newx2, newy2);
 }
 
 
@@ -230,7 +226,8 @@ treeNode.mousemove(function(e){
 		var newy1 = y1+doY;
 		var newx2 = x2+doX;
 		var newy2 = y2+doY;
-		treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
+        //treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
+        setViewBox(treeNode, newx1, newy1, newx2, newy2);
 	}
 });
 
@@ -272,7 +269,8 @@ if(e.wheelDelta){//IE/Opera/Chrome
  }
  if(iszoom == true){
 	e.preventDefault();
-	treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
+	//treeNode.attr('viewBox',newx1+" "+newy1+" "+newx2+" "+newy2);
+        setViewBox(treeNode, newx1, newy1, newx2, newy2);
  }
 }
 
@@ -431,4 +429,12 @@ function filterPan2(tree){
 		}
 	}
 	return data;
+}
+
+function setViewBox(view, x1, y1, x2, y2){
+	if(x2 < 10000 && x2 > 0 && y2 < 10000 && y2 > 0){
+	view.attr('viewBox',x1+" "+y1+" "+x2+" "+y2);
+	}else{
+        //alert('已经缩到最小了！');
+	}
 }

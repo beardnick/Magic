@@ -29,15 +29,17 @@
 <%@ include file="../ListHeader.jsp"%>
 <div class="container" style="height:850px; width:100%">
   <div class="left-panel" style="height: 700px; width: 45%; ">
-  		<h3>Ways to reach me.</h3>
-  		<h4>For questions or comments about our database, please contact liujianxiao@mail.hzau.edu.cn or jingyunluo@foxmail.com</h4>
+      <div class="col-md-10 col-md-offset-1">
+    <h3>Ways to reach me.</h3>
+    <br>
+    <h4>For questions or comments about our database, please contact liujianxiao@mail.hzau.edu.cn or jingyunluo@foxmail.com</h4>
+    <div style="text-align:center;"><image src="images/contact.png"></div>
+    <div>National Key Laboratory of Crop Genetic Improvement Huazhong Agricultural University Wuhan 430070,China</div>
+      </div>
   </div>
   <!--百度地图容器-->
   <div class="left-panel" style="height: 700px; width: 50%; ">
-  <div float="left">
-  <div class="lefttool" style="height: 138px; width: 215px; "><image style="width:215px;height:138px;" src="images/contact.png"></div><div class="lefttool" style="width:65%"><br/><b>National Key Laboratory of Crop Genetic Improvement Huazhong Agricultural University Wuhan 430070,China</b></div></div>
-
-  		<div  class="lefttool" style="width:100%;height:520px;border:#ccc solid 1px;" id="dituContent"></div>
+<div  class="lefttool" style="width:100%;height:680px;border:#ccc solid 1px;" id="dituContent"></div>
   </div>
   </div>
   <%@ include file="../ListFooter.jsp"%>

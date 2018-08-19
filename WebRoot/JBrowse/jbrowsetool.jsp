@@ -140,12 +140,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <%@ include file="../ListHeader.jsp"%>
-    <div class="content">
+    <div class="container">
             <div class="describe">
                 <h3>Variation Browser</h3>
             </div>
             <div class="search">
-                <p class="bold">Select one or more loci. Specify gene identifiers (e.g. GRMZM2G040380) or regions (e.g. Chr1 147 6782830).</p>
+<style>
+.row{
+    margin-left:0px;
+}
+</style>
+                <br>
+                <h4>Select one or more loci. Specify gene identifiers (e.g. GRMZM2G040380) or regions (e.g. Chr1 147 6782830).</h4>
                 <div class="row">
                     <input type="radio" name="search" value="first"> Search By Region
                 </div>
@@ -191,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="radio" name="search" value="second" > Search By Gene ID
                 </div>
                 <div class="row">
-                    <div class="input-group ">
+                    <div class="input-group" style="padding-left:15px;">
                         <span class="input-group-addon">Gene:</span>
                     <input type="text" class="form-control eg" style="width:200px;display:inline;" title="eg: GRMZM2G040389" name="gene" readonly="readonly" id="sh3">
                     </div>

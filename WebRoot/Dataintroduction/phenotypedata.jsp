@@ -34,7 +34,7 @@
 
 <body>
 	<%@ include file="../ListHeader.jsp"%>
-    <div class="content" style="height:2800px">
+    <div class="container" style="height:2300px">
 
 	<div class="container">
 		<div class="row">
@@ -62,15 +62,15 @@
 					<p style="margin-top:20px;">
 						The population was planted in five different provinces in the
 						summer of 2014, as shown in the map and 20 traits were
-						investigated. <br>Phenotype data in 5 locations
-						respectivelyDownload <br>Blup phenotype dataDownload
+						investigated. Phenotype data in 5 locations
+						respectivelyDownload Blup phenotype dataDownload
 					</p>
 				</div>
 				</div>
 			</div>
 
 			<div class="col-md-8 col-md-offset-2">
-                <div class="my-panel" style="margin-top:100px;">
+                <div class="my-panel" style="margin-top:10px;">
 				<table style="width:100%;">
 					<thead></thead>
 					<tbody>
@@ -201,8 +201,12 @@ table td{
 tr:nth-child(even) {
 	background-color: #f9f9f9;
 }
+
+::-webkit-scrollbar{
+    display:none;
+}
 </style>
-<div class="my-panel" style="margin-top:100px;">
+<div class="my-panel" style="margin-top:10px;">
                 <table>
                     <tr>
                         <table style="width:100%">

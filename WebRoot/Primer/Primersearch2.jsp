@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@ include file="../ListHeader.jsp"%>
     
-    <div class="container" style="height:1000px;">
+    <div class="container" style="height:900px;">
             <div class="describe">
                 <h3>General Primer Design</h3><!-- lv 7-11 change h4->h3 -->
                 <span class="input-group">You can input your sequences directly to pick PCR-primers or develop molecular markers. Here we use Primer3 as a backend engine.</span>

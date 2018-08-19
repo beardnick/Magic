@@ -292,7 +292,6 @@ size3 {
 }
 
 .search {
-	padding-top: 40px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -575,5 +574,5 @@ option{
 body{background:white;min-width:1150px}
 
 .container{
-    width:1300px;
+    width:90%;
 }
