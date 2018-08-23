@@ -57,6 +57,10 @@
      .btn{
      line-height:0.4;
      }
+     .btn-group>.btn:first-child {
+		margin-left: 0 !impotant;
+		padding:7px !important;
+		}
   </style>
     <%
         Map attribute = ActionContext.getContext().getSession();

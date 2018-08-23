@@ -61,13 +61,13 @@
 					<div class="input-group input-lg">
 						<span class="input-group-addon">
                             Downstream:</span><input class="form-control eg" type="input"
-								name="downstream" id="downstream1" title="eg:100"
+								name="downstream" id="downstream1" title="eg:200"
 								/>
 					</div>
 					</div>
                     <div class="col-md-12 col-xs-12">
 					<div class="input-lg">
-						<input class="form-control eg" title="eg. chr1.s_67196493" type="input" name="id" id="id1"
+						<input class="form-control eg" title="eg: chr1.s_67196493" type="input" name="id" id="id1"
 							placeholder="Input one Variation ID"
                             style="border-top-left-radius:4px;border-bottom-left-radius:4px;"
 							/>

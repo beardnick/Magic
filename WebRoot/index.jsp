@@ -43,7 +43,7 @@
 <body>
 	<%@ include file="../ListHeader.jsp"%>
 
-	<div class="container" style="height:2300px;margin-top:20px;">
+	<div class="container" style="width:1400px;height:2300px;margin-top:20px;">
         <div class="row" style="margin-top:5px;">
 		<div id="mycarousel" class="carousel slide" >
 					<!--这里是1234小图标-->

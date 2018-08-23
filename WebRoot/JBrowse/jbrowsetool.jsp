@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="row">  
                     <!-- <input type="text" placeholder="Chr" class="input"> -->
                     <div class="col-md-2 col-xs-2">
-                    <select  class="form-control eg" title="eg: Chr1 147 67828030" style="width:200px;display:inline;"  name="chr" id="chr">
+                    <select  class="form-control eg" title="eg: Chr1" style="width:200px;display:inline;"  name="chr" id="chr">
                         
                     	<option value="1">Chr1</option>
 						<option value="2">Chr2</option>
@@ -176,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-md-3 col-xs-3">
                     <div class="input-group ">
                         <span class="input-group-addon">Start:</span>
-                    <input type="text" class="form-control eg" style="display:inline;" title="eg: Chr1 147 67828030" name="start" readonly="readonly" id="sh1">
+                    <input type="text" class="form-control eg" style="display:inline;" title="eg: 147" name="start" readonly="readonly" id="sh1">
                     </div>
                     </div>
 
@@ -187,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="col-md-3 col-xs-3">
                     <div class="input-group ">
                         <span class="input-group-addon">End:</span>
-                    <input type="text" class="form-control eg" style="display:inline;" title="eg: Chr1 147 67828030" name="end" readonly="readonly" id="sh2">
+                    <input type="text" class="form-control eg" style="display:inline;" title="eg: 67828030" name="end" readonly="readonly" id="sh2">
                     </div>
                     </div>
                     <%--<span style="color:gray;">(eg: Chr1 147 67828030 )</span>--%>

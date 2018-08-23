@@ -92,7 +92,7 @@ table, table tr th, table tr td {
 }
 </style>
 				<table id="table-methods-table" data-toggle="table" data="data"
-					data-height="370">
+					data-height="500">
 					<!-- data-height="246" -->
 					<thead>
 						<tr>
@@ -110,22 +110,20 @@ table, table tr th, table tr td {
 			<div class="col-md-6">
 			<div class="search">
 				<style>
-.col-md-3, .col-xs-3, .col-md-1, .col-xs-1, .col-md-5, .col-md-5 {
-	padding-right: 3px;
-	padding-left: 3px;
+.col-md-7, .col-xs-7, col-md-9{
+    padding:10px 10px
 }
 
-.input-group-addon {
-	padding: 1px 2px;
-}
 </style>
-				<div class="row">
+				<div class="row col-md-9 col-md-offset-3">
 					<input type="radio" name="search" value="first"> <font
 						size="3">Search By Region</font><br>
-					<div class="col-md-5 col-xs-5"
+					<div class="col-md-9 col-xs-9"
 						style="padding-right:3px;padding-left:3px;">
+						<div class="input-group ">
+                    <span class="input-group-addon">Chromesome:</span>
 						<select class="form-control eg" style="display:inline;"
-							title="eg: Chr1 147 6782830" name="chr">
+							title="eg: Chr1" name="chr">
 							<option value='' disabled selected style='display:none;'>Choose One Chromesome</option>
 							<option value="1">Chr1</option>
 							<option value="2">Chr2</option>
@@ -139,40 +137,39 @@ table, table tr th, table tr td {
 							<option value="10">Chr10</option>
 						</select>
 					</div>
+					</div>
 
-					<div class="col-md-3 col-xs-3">
+					<div class="col-md-7 col-xs-7">
 						<div class="input-group ">
 							<span class="input-group-addon">Start:</span> <input type="text"
-								class="form-control" style="display:inline;" name="start"
+								class="form-control eg" title="eg: 147" style="display:inline;" name="start"
 								readonly="readonly" id="sh1">
 						</div>
 					</div>
 
-					<div class="col-md-1 col-xs-1">
-						<span style="color:gray">------</span>
-					</div>
 
-					<div class="col-md-3 col-xs-3">
+					<div class="col-md-7 col-xs-7">
 						<div class="input-group ">
 							<span class="input-group-addon">End:</span> <input type="text"
-								class="form-control" style="display:inline;" name="end"
+								class="form-control eg" title="eg: 6782830 " style="display:inline;" name="end"
 								readonly="readonly" id="sh2">
 						</div>
 					</div>
 					<br>
 					<%--<span style="color:gray;float:left;"><font size="3">(eg: Chr1 147 6782830 )</font></span><!--修改了与注释不符的错误-->--%>
 				</div>
-				<div class="row">
+				<div class="row col-md-9 col-md-offset-3">
 					<input type="radio" name="search" value="second"><font
 						size="3"> Search By Gene ID</font><br>
 					<!--定义了字体大小-->
+                    <div class="col-md-7 col-xs-7">
 					<div class="input-group ">
 						<span class="input-group-addon">Gene:</span> <input type="text"
 							class="form-control eg" style="width:220px;"
 							title="eg: GRMZM2G040389" name="gene" readonly="readonly"
 							id="sh3">
 					</div>
-					<div style="height:44px;"></div>
+					</div>
 					<%--<span style="color:gray;float:left;"><font size="3">(eg: GRMZM2G040389 )</font></span><!--修改了与注释不符的错误-->--%>
 				</div>
 			</div>

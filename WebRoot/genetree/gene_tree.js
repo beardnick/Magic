@@ -432,7 +432,8 @@ function filterPan2(tree){
 }
 
 function setViewBox(view, x1, y1, x2, y2){
-	if(x2 < 10000 && x2 > 0 && y2 < 10000 && y2 > 0){
+	if(x2 < 10000 && x2 > 0 && y2 < 10000 && y2 > 0 &&
+        Math.abs(x1 ) < x2 && Math.abs(y1) < y2 ){
 	view.attr('viewBox',x1+" "+y1+" "+x2+" "+y2);
 	}else{
         //alert('已经缩到最小了！');
