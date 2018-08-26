@@ -61,6 +61,13 @@
 		margin-left: 0 !impotant;
 		padding:7px !important;
 		}
+    tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    th{
+        background-color:white;
+    }
   </style>
     <%
         Map attribute = ActionContext.getContext().getSession();
@@ -113,13 +120,13 @@
                 <%int sum=0;
                 	if(!itfornum.hasNext())
 						{%>
-            <h4 style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
+            <h4>ACCEPTABLE LEFT PRIMERS</h4>
             <hr/>
 							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
                             <%}else{%>
             <table id='table' class="table blast-table"  data-toggle="table">
             
-            <h4 style = "color:blue;">ACCEPTABLE LEFT PRIMERS</h4>
+            <h4>ACCEPTABLE LEFT PRIMERS</h4>
             <hr/>
 <!--                 <tr>
                     <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
@@ -168,12 +175,12 @@
                 <%sum=0;
                 	if(!itintnum.hasNext())
 						{%>
-            <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
+            <h4>ACCEPTABLE INTERNAL OLIGOS</h4>
             <hr/>
                         <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
                 <%}else{%>
             <table id='table1' class="table blast-table"  data-toggle="table" >
-            <h4 style = "color:blue;">ACCEPTABLE INTERNAL OLIGOS</h4>
+            <h4>ACCEPTABLE INTERNAL OLIGOS</h4>
             <hr/>
             <%
                     while(itintnum.hasNext())
@@ -218,12 +225,12 @@
                 <%sum=0;
                 	if(!itrevnum.hasNext())
 						{%>
-			 <h4 style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
+			 <h4>ACCEPTABLE RIGHT PRIMERS</h4>
 			 <hr/>
 							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
                 <%}else{%>
         <table id='table2' class="table blast-table"  data-toggle="table" >
-			 <h4 style = "color:blue;">ACCEPTABLE RIGHT PRIMERS</h4>
+			 <h4>ACCEPTABLE RIGHT PRIMERS</h4>
 			 <hr/>
              <%
                     while(itrevnum.hasNext())

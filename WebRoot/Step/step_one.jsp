@@ -61,7 +61,7 @@
 	<%@ include file="../ListHeader.jsp"%>
 	<h3 style="position:relative;left:4.9%;">GWAS Search</h3>
 	<br>
-	<div class="container">
+	<div class="container" style="height:700px;">
 		<div class="describe">
 			<p>
 				<font size="3">Three GWAS method including
@@ -110,12 +110,12 @@ table, table tr th, table tr td {
 			<div class="col-md-6">
 			<div class="search">
 				<style>
-.col-md-7, .col-xs-7, col-md-9{
+.col-md-9, .col-xs-9, col-md-9{
     padding:10px 10px
 }
 
 </style>
-				<div class="row col-md-9 col-md-offset-3">
+				<div class="row col-md-9 col-md-offset-1">
 					<input type="radio" name="search" value="first"> <font
 						size="3">Search By Region</font><br>
 					<div class="col-md-9 col-xs-9"
@@ -139,7 +139,7 @@ table, table tr th, table tr td {
 					</div>
 					</div>
 
-					<div class="col-md-7 col-xs-7">
+					<div class="col-md-9 col-xs-9">
 						<div class="input-group ">
 							<span class="input-group-addon">Start:</span> <input type="text"
 								class="form-control eg" title="eg: 147" style="display:inline;" name="start"
@@ -148,7 +148,7 @@ table, table tr th, table tr td {
 					</div>
 
 
-					<div class="col-md-7 col-xs-7">
+					<div class="col-md-9 col-xs-9">
 						<div class="input-group ">
 							<span class="input-group-addon">End:</span> <input type="text"
 								class="form-control eg" title="eg: 6782830 " style="display:inline;" name="end"
@@ -158,7 +158,7 @@ table, table tr th, table tr td {
 					<br>
 					<%--<span style="color:gray;float:left;"><font size="3">(eg: Chr1 147 6782830 )</font></span><!--修改了与注释不符的错误-->--%>
 				</div>
-				<div class="row col-md-9 col-md-offset-3">
+				<div class="row col-md-9 col-md-offset-1">
 					<input type="radio" name="search" value="second"><font
 						size="3"> Search By Gene ID</font><br>
 					<!--定义了字体大小-->

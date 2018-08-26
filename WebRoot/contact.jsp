@@ -33,8 +33,14 @@
     <h3>Ways to reach me.</h3>
     <br>
     <h4>For questions or comments about our database, please contact liujianxiao@mail.hzau.edu.cn or jingyunluo@foxmail.com</h4>
-    <div style="text-align:center;"><image src="images/contact.png"></div>
-    <div>National Key Laboratory of Crop Genetic Improvement Huazhong Agricultural University Wuhan 430070,China</div>
+    <div class="my-panel" style="box-shadow:5px 5px 20px gray;margin-top:40px;">
+    <div style="text-align:center;">
+        <a href="http://croplab.hzau.edu.cn/CommonDetail.aspx?id=189" target="_blank">
+        <image src="images/contact.png" style="width:100%"/>
+        </a>
+    </div>
+    <div style="margin-top:20px;color:gray;text-align:center;">National Key Laboratory of Crop Genetic Improvement Huazhong Agricultural University Wuhan 430070,China</div>
+    </div>
       </div>
   </div>
   <!--百度地图容器-->

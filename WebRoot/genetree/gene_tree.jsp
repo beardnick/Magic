@@ -17,25 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE html>
 <html>
-    <head>
-    <%
-    Map attribute = ActionContext.getContext().getSession();
-    JSONArray tree=new JSONArray();
-	tree=(JSONArray)attribute.get("tree");
-	%>
- 	  <base href="<%=basePath%>">
-        <meta charset="utf-8">
-        <title>GWAS Diagram</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="author" content="Daliu"/>
-        <meta name="keywords" content=""/>
-        <meta name="describe" content=""/>
-        <link href="Css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="Css/main.css" rel="stylesheet"/>
-        <script src="genetree/gene_tree_data.js"></script>
-        <script src="genetree/jquery.min.js" type="text/javascript"></script>
-    </head>
     <body>
     <s:action name="genetree.action" executeResult="true" />
     	 <%@ include file="../ListHeader.jsp"%>

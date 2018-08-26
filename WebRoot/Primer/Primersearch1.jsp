@@ -66,8 +66,8 @@
                                 Database:</span><select
 									name="database" id="database1" class="form-control"
 									>
-									<option style="width:150px" value="HZS">HZS</option>
 									<option style="width:150px" value="V3.25">V3.25</option>
+									<option style="width:150px" value="HZS">HZS</option>
 									<option style="width:150px" value="V4">V4</option>
 									<option style="width:150px" value="PAN">PAN</option>
 								</select>
@@ -86,7 +86,7 @@
                         <div class="col-md-6 col-xs-6">
 						<div class="input-group input-lg">
 							<span class="input-group-addon">
-                                End position:</span><input class="form-control eg" title="eg: 200" type="text"
+                                End position:</span><input class="form-control eg" title="eg: 400" type="text"
 									name="eposition" id="eposition1" />
 						</div>
 						</div>

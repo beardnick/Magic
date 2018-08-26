@@ -358,7 +358,7 @@ function setFilterPan(tree){
 		html += '<div id="'+data[i].filter+'" onclick="filter(\''+data[i].filter+'\')" class="filter-item">'+
 					'<div style="background:'+data[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
 					'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data[i].num+'</div>'+
-					'<div style="width:100%;float:left;">Data type：'+data[i].filter+'</div>'+
+					'<div style="width:100%;float:left;">Triat：'+data[i].filter+'</div>'+
 				'</div>';
 	}
 	var filterlist = document.getElementById('filterlist');

@@ -20,6 +20,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="Jscript/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="Jscript/bootstrap-table.min.js"></script>
 <script type="text/javascript"> 
+
+        var blast_example = 
+'TTGAGAGTTCTAATAAGAGCAACGGCCAATACCATTAGCGAGTTATTTTTCTGCAATATATGTCAGCAAC\n'+
+'CGATCATTTGGTTATGGCTCGTGTCATACAGGATGTATTGGATCCCTTTACACCAACCATTCCACTAAGA\n'+
+'ATAACGTACAACAATAGGCTACTTCTGCCAAGTGCTGAGCTAAAGCCATCCGCGGTTGTAAGTAAACCAC\n'+
+'GAGTCGATATCGGTGGCAGTGACATGAGGGCTTTCTACACCCTGGTAAGCCAAGCAATTTACAGATAATG\n'+
+'ATACCATTTTGGAGAATTTATGCCAATTCATTTGGTATGTTACACATAAAAGTATTATGCACTTTGTAAT\n'+
+'GGATTTATCAATATTAGTTTGAACAAATTTAATAAGAACAAAATGCCTAAATCTTGCAGTATATAAACAT\n'+
+'GTATATATGCTAACTTGTTTGTCTTCGACTTGAAAAGGTACTGATTGACCCGGATGCCCCAAGTCCAAGC\n'+
+'CATCCATCACTAAGGGAGTACTTGCACTGGTAAAAAAAGCGCAATATGTTCCACTTCCTAGATTTGGTTC\n'+
+'TTTTTCGCTTTGCCTTATTATGATATTGGTCCACTATTGTGTAGGATGGTGACAGATATTCCAGAAACAA\n'+
+'CTAGTGTCAACTTTGGTAAGAATGCATATAGTTATCTGTCATTCCATTGTGTTTCTGCTGAATATAGTAT\n'+
+'CTGTGGAGCTTAGGTTGTAGTCTCTTCTTGCTTCTCAGACCTATTGGCTACCATTGAACTGATGCAGATA\n'+
+'AGGATGCAATTAATACATGAAATCAGCAACCATAGGCTGAATGCTAGACCAACTTGTTAGGTGAATGCAA\n'+
+'TATGGCAGCTTACCGCTTACATGCATAGTAATATCATGAAATCCACTAACTTAGTACCATAACTAAAGAA\n'+
+'GCAATCTGGTAGAACTCACTTTCAATCCAGCCCATTACTAGAGACTGGATTATCGATATTAAACACAAAC\n'+
+'AAGTATTTAACAGTGTAATAAACTGGTATACGTATGATTCACAGTGCCCCTGTTTGTTCTTTAATTGGTT\n'+
+'GGTAACCTTGAGGTGTCAATTTCAGCAGAACTAAGGTTCATTTACAGTTGCCATACTAAAGTTACTCAAG\n'+
+'TACACTTTTTAGTTTACATAGTTTTTTCATACTCGATTTTACCTGAGACTTTGAAACCGATATTGGAAAC\n'+
+'AAAGCAGCCATTAATTTTGTCAAACAAGAGGAGCTATATTTAAAGGCTTCTCTTTGTCTAAATTGAAAGA\n'+
+'ATTAAAAACAATAAATGACGACGCTTCCACATACTTCAGTGCTCCTTGAACTATTCAGTATATAATGTCA\n'+
+'GGATGCTCTCGCAGGCCAAGAGCTAATATTTTATGAGAGGCCGGACCCAAGATCTGGCATCCACAGGCTG\n'+
+'GTATTTGTGCTGTTCCGTCAACTTGGCAGGGGGACAGTTTTTGCACCAGAAATGCGCCACAACTTCAACT\n'+
+'GCAGAAGCTTTGCACGGCAATATCACCTCAGCATTGCCACCGCTACATATTTCAACTGTCAAAGGGAAGG\n'+
+'TGGATCCGGCGGAAGAAGGTTTAGGGAAGAGTAGAAACCATAGGCCACTGCATGGTCACACTATAGAAAT\n'+
+'ATCATCAATAATGTGCACTATATTGAATCAATGCACCACCTCTATATGCTGAATGTTATGTATCTCAAAC\n'+
+'TATGATTGTACTGACTTGAAAGGTTGAGAGCTTAGTCTCTTAGCAGAATATAGCACAATATTACTAGTA \n';
+        var primer_example ='TTGAGAGTTCTAATAAGAGC';
+        function showExample(){
+            var database = $('#blastprograme1');
+        if(database.val() === 'blastn'){
+            $('#inputtext').val(blast_example);
+        }else if(database.val() === 'primer-blast'){
+            $('#inputtext').val(primer_example);
+        }
+
+        }
+
+        function resetExample(){
+            $('#inputtext').val("");
+        }
   function check1()
 { 
 	var eralue=$("#Eralue").val();//用户名
@@ -95,6 +136,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div class="background" style="height:260px;padding:5px;padding-right:7%;clear:both"><!-- lv 7-11-10：01 change class=""->class="background" 180px->280px-->
                         <span style="padding-left:8px;display:inline-block;height:30px;line-height:30px;"><h4>Enter FASTA sequence</h4></span><!-- lv 7-11-10：49 change -->
+                        <div class="btn example" onclick="showExample()" style="padding:2px 2px;font-size:15;width:80px;">example</div>
+                        <div class="btn example" onclick="resetExample()" style="padding:2px 2px;font-size:15;width:80px;">reset</div>
                         <textarea style="resize:none" class="form-control" rows="8" name="inputtext" id="inputtext" type="text" onblur='javascript:$("#auto")'></textarea><!-- lv 7-11-10：49 change rows8->12-->
                     </div>
                     <div style="padding-top:5px;"><!-- lv 7-11-10：01 change class=""->class="background"-->

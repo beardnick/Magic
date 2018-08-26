@@ -61,15 +61,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      .btn{
      line-height:0.4;
      }
+
+    tr:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+
+    th{
+        background-color:white;
+    }
+
   </style>
   <body>
     <%@ include file="../ListHeader.jsp"%>
     <div class="content" style="">
     	<div class="describe">
-		<h3>GWAS Result</h3>
+		<h3 style="color:black;">GWAS Result</h3>
 			<br />
 			<h4>Only significant locus plotted below</h4>
-		</div> <div class="col-md-12">
+		</div> 
+        <div class="col-md-12">
             <%String filePath = this.getClass().getResource("").getPath();%>
             <%filePath = filePath.substring(filePath.indexOf("/"), filePath.lastIndexOf("work"));%>
             <%filePath = filePath + "webapps/Magic/py_scripts/chrome.html";%>
@@ -81,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             %>
             <jsp:include page="../py_scripts/chrome.html" flush="true"/>
             <%}else{%>
-                    <tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+                   <b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
             <%}%>
         <%--
 		   -</div>
@@ -94,13 +104,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--         <div class="steps">
             <image src="images/steps3.png" alt="steps1" width="600" height="50">
         </div> -->
+
         <div class="search">
             <br>
             <br>
             <%
                 if(search.equals("first")){
             %>
+            <div class="my-panel">
             <h3>QTL region</h3>
+            <hr/>
             <%if(len2 > 0){%>
             <table id="table" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -138,10 +151,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tbody>
            </table> 
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
+            </div>
+            <div class="my-panel">
            <h3>Significant SNP</h3>
+           <hr/>
             <%if(len > 0){%>
             <table id="table3" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -169,10 +184,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </tbody>
            </table>
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
+            </div>
+            <div class="my-panel">
            <h3>Significant annotation</h3>
+           <hr/>
             <%if(len > 0){%>
             <table id="table5" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -199,12 +216,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </tbody>
            </table>
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
+            </div>
            <%}else{%>
-            <%if(len2 > 0){%>
+            <div class="my-panel">
            <h3>QTL region</h3>
+           <hr/>
+            <%if(len2 > 0){%>
             <table id="table2" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -240,10 +259,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </tbody>
            </table>
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
+            </div>
+            <div class="my-panel">
            <h3>Significant SNP</h3>
+           <hr/>
             <%if(len > 0){%>
             <table id="table4" data-toggle="table" class="table table-hover">
 <!--             <thead>
@@ -273,11 +294,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tbody>
            </table>     
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
-            <%if(len > 0){%>
+            </div>
+            <div class="my-panel">
            <h3>Significant annotation</h3>
+           <hr/>
+            <%if(len > 0){%>
            <table id="table6" data-toggle="table" class="table table-hover">
 <!--             <thead>
                     <tr>
@@ -305,8 +328,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </tbody>
            </table>
            <%}else{%>
-                           <hr/>
-							<tr><td><b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b></td></tr>
+							<b  style="font-size:25px;width:30%;color:red !important; ">No matching data!</b>
                             <%}%>
            <%}%>
             </div>
@@ -323,6 +345,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <br>
             <br>
             <br>
+        </div>
         </div>
         </div>
         <%@ include file="../ListFooter.jsp"%>
