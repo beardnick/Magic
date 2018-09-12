@@ -18,7 +18,7 @@ treeNode.setAttribute('width',svgWidth);
 treeNode.setAttribute('viewBox','0 0 '+svgWidth+' 580');
 
 var width = 200;//每一组的宽度
-var height = 1200;//每一组的高度
+var height = 2000;//每一组的高度
 var xNum = 10;//每一水平方向染色体的个数（水平方向组数）
 var topHeight = -700;//距离顶部的高度（相当于一个顶部边距）
 var leftWidth = 40;//距离左边的宽度（相当于一个左边距）
@@ -60,38 +60,38 @@ for(var i=0; i<rstlength; i++){
 			continue;
 		}
 		var circley = topHeight+r*k*2*circleRow+Math.floor(i/xNum)*height+circleRowSpan*k;
-		if(eachRst[k].chr=='9')
-		{
-			circley=circley+550;
-		}
-		if(eachRst[k].chr=='10')
-		{
-			circley=circley+250;
-		}
-		if(eachRst[k].chr=='8')
-		{
-			circley=circley+200;
-		}
-		if(eachRst[k].chr=='7')
-		{
-			circley=circley+250;
-		}
-		if(eachRst[k].chr=='6')
-		{
-			circley=circley+550;
-		}
-		if(eachRst[k].chr=='4')
-		{
-			circley=circley+150;
-		}
-		if(eachRst[k].chr=='2')
-		{
-			circley=circley-150;
-		}
-		if(eachRst[k].chr=='5')
-		{
-			circley=circley-230;
-		}
+        if(eachRst[k].chr=='9')
+        {
+            circley=circley+550;
+        }
+        if(eachRst[k].chr=='10')
+        {
+            circley=circley+250;
+        }
+        if(eachRst[k].chr=='8')
+        {
+            circley=circley+200;
+        }
+        if(eachRst[k].chr=='7')
+        {
+            circley=circley+250;
+        }
+        if(eachRst[k].chr=='6')
+        {
+            circley=circley+550;
+        }
+        if(eachRst[k].chr=='4')
+        {
+            circley=circley+150;
+        }
+        if(eachRst[k].chr=='2')
+        {
+            circley=circley-150;
+        }
+        if(eachRst[k].chr=='5')
+        {
+            circley=circley-230;
+        }
 		var circlex = rst.x+lineLength+gyWidth;
 		html += '<line x1="'+(rst.x+gyWidth)+'" y1="'+(gyY+eachRst[k].height/2)+'" x2="'+circlex+'" y2="'+circley+'" style="stroke:black;stroke-width:1"/>';
 		for(var j=0;j<yzlength;j++){
@@ -99,7 +99,7 @@ for(var i=0; i<rstlength; i++){
 				if(eachYZ[j].type == 'SV_GWAS'){
 					eachYZ[j].type = 'circle';
 					html += '<circle filter="'+eachYZ[j].filter+'" cx="'+circlex+'" cy="'+circley+'" r="'+r+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" fill="'+eachYZ[j].color+'"/>';
-				}else if(eachYZ[j].type == 'BIN_GWAS'){
+				}else if(eachYZ[j].type == 'BIN_GWAS' || eachYZ[j].type == 'hGWAS'){
 					eachYZ[j].type = 'triangle';
 					var x1 = circlex-Math.sqrt(3)/2*r;
 					var x2 = circlex+Math.sqrt(3)/2*r;
@@ -114,7 +114,7 @@ for(var i=0; i<rstlength; i++){
 				//顶部高度+半径*（本组个数+前面组的个数）+染色体组高度
 				var circley2 = topHeight+r*(2*(Math.floor(j/circleNum))+k*2*circleRow)+Math.floor(i/xNum)*height+circleRowSpan*k;
 				var circlex2 = rst.x+lineLength+gyWidth+2*r*(j%circleNum);
-				if(eachYZ[j].type == 'SV_GWAS'){
+				if(eachYZ[j].type == 'SV_GWAS' || eachYZ[j].type == 'sGWAS'){
 					eachYZ[j].type = 'circle';
 					html += '<circle filter="'+eachYZ[j].filter+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" cx="'+circlex2+'" cy="'+circley2+'" r="'+r+'" fill="'+eachYZ[j].color+'"/>';
 				}else if(eachYZ[j].type == 'BIN_GWAS'){

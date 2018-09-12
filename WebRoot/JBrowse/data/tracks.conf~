@@ -1,0 +1,16 @@
+[ tracks . B73_gff]
+storeClass = JBrowse/Store/SeqFeature/GFF3
+urlTemplate =seqfiles/Zea_mays.AGPv3.25.dna.gff3
+type = CanvasFeatures
+metadata.description = This is just all the features in the gff3 file, displayed directly from a web-accessible GFF3 file
+category = Miscellaneous
+key = GFF3 
+[ tracks . B73_gtf ]
+storeClass = JBrowse/Store/SeqFeature/GTF
+urlTemplate =seqfiles/Zea_mays.AGPv3.25.gtf
+type = CanvasFeatures
+metadata.description = This is just all the features in the chr10.gtf file, which like the chr10.gff3 file, is displayed directly from a web-accessible GTF file
+category = Miscellaneous
+key = GTF 
+style.label = transcript_id,gene_id
+

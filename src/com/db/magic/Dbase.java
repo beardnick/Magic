@@ -221,11 +221,11 @@ public class Dbase {
 						String color1=colorr(color);
 						JSONObject jsonresult3=new JSONObject();
 						jsonresult3.put("Chr", jsonobj2.getString("Chr"));
-				        jsonresult3.put("type",jsonobj2.getString("POP"));
+				        jsonresult3.put("type",jsonobj2.getString("method"));
 				        jsonresult3.put("start",jsonobj2.getString("start"));
 				        jsonresult3.put("end",jsonobj2.getString("end"));
 				        jsonresult3.put("color",color1);
-				        jsonresult3.put("value",jsonobj2.getString("Pvalue"));
+				        jsonresult3.put("value",jsonobj2.getString("pve"));
 				        jsonresult3.put("filter",jsonobj2.getString("Trait"));
 				        jsonresult3.put("name","第"+genenum+"个基因");
 				        if(jsonresult3.containsKey("Chr")){
@@ -242,24 +242,24 @@ public class Dbase {
 						float x=(Float.parseFloat(jsonobj2.getString("end"))-Float.parseFloat(jsonobj2.getString("start")));
 						x=numberwei(x,jsonobj2.getString("Chr"));
 						jsonresult2.put("chr", jsonobj2.getString("Chr"));
-						jsonresult2.put("id", jsonobj2.getString("POP"));
-						jsonresult2.put("type", jsonobj2.getString("POP"));
+						jsonresult2.put("id", jsonobj2.getString("method"));
+						jsonresult2.put("type", jsonobj2.getString("method"));
 				        jsonresult2.put("color", color1);
-				        jsonresult2.put("value", jsonobj2.getString("Pvalue"));
+				        jsonresult2.put("value", jsonobj2.getString("pve"));
 				        jsonresult2.put("height", x);
 						jsonresult2.put("name", "第"+text+"段");
 						if(sum!=1)
 						{
 							x=numberwei(Math.abs(start2-end),jsonobj2.getString("Chr"));
 							jsonspace.put("id", "space");
-							jsonspace.put("type", jsonobj2.getString("POP"));
+							jsonspace.put("type", jsonobj2.getString("method"));
 							jsonspace.put("color", "gray");
 							jsonspace.put("value", "null");
 							jsonspace.put("height", x);
 							jsonspace.put("name", "空白");
 							JSONObject jsonresult3=new JSONObject();
 							jsonresult3.put("Chr", jsonobj2.getString("Chr"));
-					        jsonresult3.put("type",jsonobj2.getString("POP"));
+					        jsonresult3.put("type",jsonobj2.getString("method"));
 					        jsonresult3.put("color","gray");
 					        jsonresult3.put("value","null");
 					        jsonresult3.put("filter","space");
@@ -277,11 +277,11 @@ public class Dbase {
 
 						JSONObject jsonresult3=new JSONObject();
 						jsonresult3.put("Chr", jsonobj2.getString("Chr"));
-				        jsonresult3.put("type",jsonobj2.getString("POP"));
+				        jsonresult3.put("type",jsonobj2.getString("method"));
 				        jsonresult3.put("color",color1);
 				        jsonresult3.put("start",jsonobj2.getString("start"));
 				        jsonresult3.put("end",jsonobj2.getString("end"));
-				        jsonresult3.put("value",jsonobj2.getString("Pvalue"));
+				        jsonresult3.put("value",jsonobj2.getString("pve"));
 				        jsonresult3.put("filter",jsonobj2.getString("Trait"));
 				        jsonresult3.put("name","第"+genenum+"个基因");
 				        children2.add(jsonresult3);
