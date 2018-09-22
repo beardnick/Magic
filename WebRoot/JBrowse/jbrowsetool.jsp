@@ -21,6 +21,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script type="text/javascript">
     //window.location.href = "/Magic/index.jsp";
+            //
+            function getTracks(start, end){
+                var from = Math.floor(parseInt(start) / 100000);
+                var to = Math.floor((parseInt(end) / 100000) + 1);
+                var chr = "chr" + $("#chr").val()
+                var str = chr + "_" + (from * 100000) + "_" + ((from + 1) * 100000);
+                for (var i = from + 1; i < to; i++) {
+                    str = str + "," + chr + "_" +
+            (i * 100000) + "_" + ((i + 1) * 100000);
+                }
+                return str;
+            }
         $(function(){$(".eg").tooltip();});
     	$(document).ready(function(){
     	    
@@ -49,33 +61,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		    	var str;
     		    	var start=$("#sh1").val();
     		    	var end=$("#sh2").val();
-    		    	var start0=start;
-    		    	var start1=0,end1=0;
-    		    	start=start-100000;
-    		    	while(start>=0)
-    		    	{
-    		    		start1=start1+100000;
-    		    		start=start-1000000;
-    		    	}
-    		    	while(end>start0)
-    		    	{
-    		    		end1=end1+1;
-    		    		end=end-100000;
-   		    	} 		
-    		    	while(end1>0)
-    		    	{
-    		    		end1=end1-1;
-    		    		end=start1;
-    		    		start1=start1+100000;
-    		    		if(str!=null)
-    		    		{
-    		    			str=str+"%2Cchr"+$("#chr").val()+"_"+end+"_"+start1;//chr1_100000_200000
-    		    		}
-    		    		else
-    		    		{
-    		    			str="chr"+$("#chr").val()+"_"+end+"_"+start1;//chr1_100000_200000
-    		    		}
-    		    	}
+    		    	//var start0=start;
+    		    	//var start1=0,end1=0;
+    		    	//start=start-100000;
+    		    	//while(start>=0)
+    		    	//{
+    		    		//start1=start1+100000;
+    		    		//start=start-1000000;
+    		    	//}
+    		    	//while(end>start0)
+    		    	//{
+    		    		//end1=end1+1;
+    		    		//end=end-100000;
+   		    	//} 		
+                    //var vcfTracks;
+    		    	//while(end1>0)
+    		    	//{
+    		    		//end1=end1-1;
+    		    		//end=start1;
+    		    		//start1=start1+100000;
+    		    		//if(str!=null)
+    		    		//{
+    		    			//str=str+"%2Cchr"+$("#chr").val()+"_"+end+"_"+start1;//chr1_100000_200000
+    		    		//}
+    		    		//else
+    		    		//{
+    		    			//str="chr"+$("#chr").val()+"_"+end+"_"+start1;//chr1_100000_200000
+    		    		//}
+    		    	//}
+                    str = getTracks(start, end);
+                    var vcfTracks = str;
+    		    	//$.ajax({
+    		    		//type:"post",
+    		    		//url:"jbrowse",
+    		    		//data:{"vcfTracks":vcfTracks},
+    		    		//success:function(){}
+                     //})
     		   		window.location.href = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="+$("#chr").val()+"%3A"+$("#sh1").val()+".."+$("#sh2").val()+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
     		    }
     		    else if(val=="second")
@@ -92,34 +113,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		                var str;
 		    		    	var start=array[1];
 		    		    	var end=array[2];
-		    		    	var start0=start;
-		    		    	var chrr=array[0];
-		    		    	var start1=0,end1=0;
-		    		    	start=start-100000;
-		    		    	while(start>=0)
-		    		    	{
-		    		    		start1=start1+100000;
-		    		    		start=start-1000000;
-		    		    	}
-		    		    	while(end>start0)
-		    		    	{
-		    		    		end1=end1+1;
-		    		    		end=end-100000;
-		    		    	}
-		    		    	while(end1>0)
-		    		    	{
-		    		    		end1=end1-1;
-		    		    		end=start1;
-		    		    		start1=start1+100000;
-		    		    		if(str!=null)
-		    		    		{
-		    		    			str=str+"%2Cchr"+chrr+"_"+end+"_"+start1;//chr1_100000_200000
-		    		    		}
-		    		    		else
-		    		    		{
-		    		    			str="chr"+chrr+"_"+end+"_"+start1;//chr1_100000_200000
-		    		    		}
-		    		    	}
+		    		    	//var start0=start;
+		    		    	//var chrr=array[0];
+		    		    	//var start1=0,end1=0;
+		    		    	//start=start-100000;
+		    		    	//while(start>=0)
+		    		    	//{
+		    		    		//start1=start1+100000;
+		    		    		//start=start-1000000;
+		    		    	//}
+		    		    	//while(end>start0)
+		    		    	//{
+		    		    		//end1=end1+1;
+		    		    		//end=end-100000;
+		    		    	//}
+		    		    	//while(end1>0)
+		    		    	//{
+		    		    		//end1=end1-1;
+		    		    		//end=start1;
+		    		    		//start1=start1+100000;
+		    		    		//if(str!=null)
+		    		    		//{
+		    		    			//str=str+"%2Cchr"+chrr+"_"+end+"_"+start1;//chr1_100000_200000
+		    		    		//}
+		    		    		//else
+		    		    		//{
+		    		    			//str="chr"+chrr+"_"+end+"_"+start1;//chr1_100000_200000
+		    		    		//}
+		    		    	//}
+                            str = getTracks(start, end);
     		                window.location.href = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="+array[0]+"%3A"+array[1]+".."+array[2]+"&tracks="+str+"%2CGFF3%2CDNA&highlight=";
     		    		},
     		    		error:function(error){

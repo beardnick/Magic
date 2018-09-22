@@ -15,12 +15,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
   
-  <link href="Css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="Css/main.css" rel="stylesheet"/>
-  
+  <link href="../Css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../Css/main.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../Jscript/jquery.1.11.3.min.js"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>JBrowse</title>
-    <link rel="stylesheet" type="text/css" href="css/genome.css">
+    <link rel="stylesheet" type="text/css" href="./css/genome.css">
 </head>
 <body>
 	
@@ -67,7 +68,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    // dynamically-generated JBrowse config here.
 
                    // parse the query vars in the page URL
-                   var queryParams = ioQuery.queryToObject( window.location.search.slice(1) );
+                   //var queryParams = ioQuery.queryToObject( window.location.search.slice(1) );
+                   var validurl = window.location.search.replace(/&amp;/g, '&');
+                   var queryParams = ioQuery.queryToObject( validurl.slice(1) );
+                   var tracks = queryParams.tracks;
+                   var vcfTracks = tracks.substring(0, tracks.indexOf(",GFF3"));
+                   //alert(vcfTracks)
+                    $.ajax({
+                        type:"post",
+                        url:"jbrowse",
+                        data:{"vcfTracks":vcfTracks},
+                        success:function(){}
+                     })
 
                    var config = {
                        containerID: "GenomeBrowser",

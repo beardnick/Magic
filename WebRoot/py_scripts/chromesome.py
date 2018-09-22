@@ -14,6 +14,16 @@ import numpy as np
 import pandas as pd
 import pymysql as mysql
 import math
+from urllib import parse
+
+def getTracks(c, start, end):
+    f = int(start / 100000)
+    to = int((end / 100000) + 1)
+    chr = c
+    res = chr + "_" + str(f * 100000) + "_" + str((f + 1) * 100000)
+    for i in range(f + 1, to):
+        res = res + "," + chr + "_" + str(i * 100000) + "_" + str((i + 1) * 100000)
+    return res
 
 color_dict = {"CW": "#FF0000", "ED": "#87CEEB", "EL": "#6B8E23", "ELW": "#71C671", "KNPR": "#FF1493", "KWPE": "#7A7A7A", "LBT": "#218868", "PH": "#FFFF00", "LNAE": "#C7C7C7",
         "DTA":"#6A5ACD","DTS":"#DC143C","DTT":"#9400D3","EH":"#F08080","ELL":"#7FFF00","ERN":"#B03060","EW":"#00FF7F","LNBE":"#0000AA","TBN":"#191970","TL":"#228B22"
@@ -33,7 +43,6 @@ column_dict = {
 my_dict = {'x':[],
            'y':[],
            'color':[]}
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='draw graph')
@@ -97,22 +106,27 @@ if __name__ == "__main__":
         my_dict.update({'param':[]})
         for i in range(length):
             # s = "1%3A123..1231412&tracks=chr1_67195493_67197493%2CDNA&highlight="
-            s = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?loc="
-            s = s + data[i][column_dict['chr']]
-            s = s + "%3A";
-            s  = s + str(start)
-            s = s + ".."
-            s = s + str(end)
-            s = s + "&tracks="
-            s = s + my_dict['chr'][i]
-            s = s + '_'
+            s = "http://modem.hzau.edu.cn/Magic/JBrowse/jbrowse.jsp?"
+            urldict = {}
+            urldict['loc'] = data[i][column_dict['chr']] + ":" + str(start) + ".." + str(end)
             snp = data[i][column_dict['snp']]
             snp = snp[snp.find('_') + 1:]
-            s = s + str(int(snp) - 1000)
-            s = s + '_'
-            s = s + str(int(snp) + 1000)
-            s = s + "%2CDNA&highlight="
+            urldict['tracks'] = getTracks(my_dict['chr'][i], int(snp), int(snp)) + ",GFF3,DNA"
+            # s = s + "%3A";
+            # s  = s + str(start)
+            # s = s + ".."
+            # s = s + str(end)
+            # s = s + "%26tracks="
+            # # s = s + my_dict['chr'][i]
+            # # s = s + '_'
+            # # s = s + str(int(snp) - 1000)
+            # # s = s + '_'
+            # # s = s + str(int(snp) + 1000)
+            # s = s + getTracks(my_dict['chr'][i], int(snp), int(snp))
+            # s = s + "%2CGFF3%2CDNA%26highlight="
+            s = s + parse.urlencode(urldict)
             my_dict['param'].append(s)
+            # print("param:" , s)
         # print(s)
         my_dict.update({'label':[]})
         for i in range(length):

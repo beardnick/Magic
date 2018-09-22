@@ -128,6 +128,7 @@ for(var i=0; i<rstlength; i++){
 	var yTemp = 0;
     console.log("eachRst.length:" + eachRst.length);
 	for(var k=0;k<length;k++){
+        //eachRst[k].height = eachRst[k].height * 2;
 		var gyY = topHeight+500+yTemp;
 		//var gyY = topHeight+1000+yTemp;
 		yTemp += parseInt(eachRst[k].height);
@@ -437,22 +438,43 @@ function setFilterPan(tree){
 				html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
 					'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
 					'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
-					'<div style="width:100%;float:left;">Data type：'+data2[i].filter+'</div>'+
+					'<div style="width:100%;float:left;font-size:10px;">SV_GWAS sGWAS: '+data2[i].filter+'</div>'+
 				'</div>';
 		}
 		else{
 			html += '<div onclick="filtertriangle(\''+'triangle'+'\')" class="filter-item">'+
 				'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
 				'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
-				'<div style="width:100%;float:left;">Data type：'+data2[i].filter+'</div>'+
+				'<div style="width:100%;float:left;font-size:10px;">BIN_GWAS hGWAS: '+data2[i].filter+'</div>'+
 			'</div>';
 		}
 	}
+    //html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
+        //'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
+        //'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
+        //'<div style="width:100%;float:left;">SV_GWAS: circle</div>'+
+    //'</div>';
+    //html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
+        //'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
+        //'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
+        //'<div style="width:100%;float:left;">sGWAS: circle</div>'+
+    //'</div>';
+    //html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
+        //'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
+        //'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
+        //'<div style="width:100%;float:left;">BIN_GWAS: triangle</div>'+
+    //'</div>';
+    //html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
+        //'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
+        //'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
+        //'<div style="width:100%;float:left;">hGWAS: triangle</div>'+
+    //'</div>';
+
 	for(var i in data){
 		html += '<div id="'+data[i].filter+'" onclick="filter(\''+data[i].filter+'\')" class="filter-item">'+
 					'<div style="background:'+data[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
 					'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data[i].num+'</div>'+
-					'<div style="width:100%;float:left;">Triat：'+data[i].filter+'</div>'+
+					'<div style="width:100%;float:left;">Trait：'+data[i].filter+'</div>'+
 				'</div>';
 	}
 	var filterlist = document.getElementById('filterlist');
