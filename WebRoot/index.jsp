@@ -145,51 +145,53 @@
 								src="images\maize.png" style="margin:0 auto;width:400px"></img>
 						</div>
 					</div>
-					<div class="my-panel">
-						<h2 style="color:#4381be;">Sequencing</h2>
-						<p style="text-indent:2em;">All progenies and founders
-							have been sequenced at low coverage (1x and 11x, respectively).
-							DNA libraries were sequenced with Illumina HiSeq 2500 with 125-bp
-							paired-end reads using V4 reagents, generating generations. All
-							progenies and founders have been sequenced at low coverage (1x
-							and 11x, respectively). DNA libraries were sequenced with
-							Illumina HiSeq 2500 with 125-bp paired-end reads using V4
-							reagents, generating almost 2000x genome coverage. Sequences data
-							are available in
-							<a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG
-								Data Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
-					</p>
-					</div>
-					<div class="my-panel">
-						<h2 style="color:#4381be;">Genotyping</h2>
-						<p style="text-indent:2em;">An integrated strategy in
-							variant calling and imputation was applied to the population, and
-							over 53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
-							finally obtained, which constituted the highest density and the
-							most diverse maize variant map to date. The SNP set was found
-							>99% consistency compared with genotypes derived from array- and
-							assembly- based methods, while the percent of validated large
-							structural variants was considered as ~60%. This variant map,
-							together with the methodological practices, would be a great
-							valuable resource for the plant community.
-						<%--<div class="class0">--%>
-							<a href="/Magic/Dataintroduction/genotypedata.jsp"
-								style="color:#4381be;">Read more……</a>
-						<%--</div>--%>
-						</p>
-					</div>
-
-					<div class="my-panel">
-						<h2 style="color:#4381be;">Phenotyping</h2>
-						<p style="text-indent:em;">The population was planted in
-							five different provinces in the summer of 2014 and 20 traits were
-							investigated.
-						<%--<div class="class0">--%>
-							<a href="/Magic/Dataintroduction/phenotypedata.jsp"
-								style="color:#4381be;"></a>
-						<%--</div>--%>
-						</p>
-					</div>
+<%--
+   -                    <div class="my-panel">
+   -                        <h2 style="color:#4381be;">Sequencing</h2>
+   -                        <p style="text-indent:2em;">All progenies and founders
+   -                            have been sequenced at low coverage (1x and 11x, respectively).
+   -                            DNA libraries were sequenced with Illumina HiSeq 2500 with 125-bp
+   -                            paired-end reads using V4 reagents, generating generations. All
+   -                            progenies and founders have been sequenced at low coverage (1x
+   -                            and 11x, respectively). DNA libraries were sequenced with
+   -                            Illumina HiSeq 2500 with 125-bp paired-end reads using V4
+   -                            reagents, generating almost 2000x genome coverage. Sequences data
+   -                            are available in
+   -                            <a href="http://bigd.big.ac.cn/" style="color:#4381be;">BIG
+   -                                Data Center (BIGD)</a>, and GSA project accession number is <u><b>PRJCA000346</u></b>.
+   -                    </p>
+   -                    </div>
+   -                    <div class="my-panel">
+   -                        <h2 style="color:#4381be;">Genotyping</h2>
+   -                        <p style="text-indent:2em;">An integrated strategy in
+   -                            variant calling and imputation was applied to the population, and
+   -                            over 53M SNPs, 2.8M InDels, 660K SVs, 600M novel sequences were
+   -                            finally obtained, which constituted the highest density and the
+   -                            most diverse maize variant map to date. The SNP set was found
+   -                            >99% consistency compared with genotypes derived from array- and
+   -                            assembly- based methods, while the percent of validated large
+   -                            structural variants was considered as ~60%. This variant map,
+   -                            together with the methodological practices, would be a great
+   -                            valuable resource for the plant community.
+   -                        [><div class="class0"><]
+   -                            <a href="/Magic/Dataintroduction/genotypedata.jsp"
+   -                                style="color:#4381be;">Read more……</a>
+   -                        [></div><]
+   -                        </p>
+   -                    </div>
+   -
+   -                    <div class="my-panel">
+   -                        <h2 style="color:#4381be;">Phenotyping</h2>
+   -                        <p style="text-indent:em;">The population was planted in
+   -                            five different provinces in the summer of 2014 and 20 traits were
+   -                            investigated.
+   -                        [><div class="class0"><]
+   -                            <a href="/Magic/Dataintroduction/phenotypedata.jsp"
+   -                                style="color:#4381be;"></a>
+   -                        [></div><]
+   -                        </p>
+   -                    </div>
+   --%>
 
 
 					<div class="my-panel">
