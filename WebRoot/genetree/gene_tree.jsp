@@ -443,7 +443,7 @@ function setFilterPan(tree){
 		}
 		else{
 			html += '<div onclick="filtertriangle(\''+'triangle'+'\')" class="filter-item">'+
-				'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
+				'<div style="border-top:20px solid '+data2[i].color+';border-left:10px solid transparent;border-right:10px solid transparent;float:left;"></div>'+
 				'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
 				'<div style="width:100%;float:left;font-size:10px;">BIN_GWAS hGWAS: '+data2[i].filter+'</div>'+
 			'</div>';
