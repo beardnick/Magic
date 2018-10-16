@@ -64,12 +64,7 @@
 	<div class="container" style="height:700px;">
 		<div class="describe">
 			<p>
-				<font size="3">Three GWAS method including
-					single-variant-based GWAS using mixed linear models, a new the
-					haplotype-based mixed linear model method and allelic genetic
-					heterogeneity GWAS was used for dissecting genetic mechanisms of
-					over 20 agronomic and yield traits. You can search and visualise
-					the GWAS results in a number of ways. </font>
+				<font size="3">Single-variant-based GWAS and haplotype-based GWAS results of 23 agronomic traits for poplulation were available in this section. And detailed information of significant SNPs(p&lt;2.79x10-8) for you interested traits can be queried by limiting genomic coordinate or gene ID.</font>
 			</p>
 			<p>
 				<font size="3">Search the significant SNPs (2.79x10-8) in

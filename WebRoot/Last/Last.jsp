@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container" style="height:600px;"><!--lv 7-11-11：16 change  850->600-->
             <div class="describe">
                 <h3>BLASTN/Primer-BLASTN</h3>
-                <h4>You can use BLASTN program comparing nucleotide sequence to our databases and calculates the statistical significance. If you query sequence is Less than 50 bp, please use Primer-BLASTN. Here we use Basic Local Alignment Search Tool (BLAST) as a backend engine.</h4>
+                <h4>You can use BLASTN program comparing nucleotide sequence to our databases and calculates the statistical significance. If you query sequence is less than 50 bp, please use Primer-BLASTN. Here we use Basic Local Alignment Search Tool (BLAST) as a backend engine.</h4>
                  </div>
             <div class="inputs">
              <form action="blast" method="post" onsubmit="return check1()">
@@ -129,7 +129,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <option style="width:150px" value="HZS">HZS</option>
                                 <option style="width:150px" value="V3.25">V3.25</option>
                                 <option style="width:150px" value="V4">V4</option>
-                                <option style="width:150px" value="PAN">PAN</option>
                             </select>
                         </div>
                         </div>

@@ -77,6 +77,18 @@ var data = [
     {
 		"id": "TL",
         "name": "Tassel length"
+    },
+    {
+        "id": "ATI",
+        "name": "anthesis and tasseling interval"
+    },
+    {
+        "id": "STI",
+        "name": "silking and tasseling interval"
+    },
+    {
+        "id": "SAI",
+        "name": "silking and anthesis interval"
     }
 ]
 

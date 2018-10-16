@@ -132,7 +132,7 @@
                     <td style="width: 50px; height: 20px"></td><td style="width: 280px; height: 45px"></td><td style="width: 80px; height: 45px">0-based</td><td style="width: 30px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 50px;height: 45px "></td><td style="width: 20px;height: 45px "></td><td style="width: 30px;height: 45px "></td><td style="width: 30px;height: 45px "></td>
                 </tr>
                 <tr>
-                    <td style="width: 50px; height: 20px">#</td><td style="width: 300px; height: 45px">seqence</td><td style="width: 30px; height: 45px">start</td><td style="width: 30px;height: 45px ">in</td>
+                    <td style="width: 50px; height: 20px">#</td><td style="width: 300px; height: 45px">sequence</td><td style="width: 30px; height: 45px">start</td><td style="width: 30px;height: 45px ">in</td>
                     <td style="width: 20px;height: 45px ">#N</td><td style="width: 50px;height: 45px ">GC%</td><td style="width: 50px;height: 45px ">Tm</td><td style="width: 20px;height: 45px ">selfany</td>
                     <td style="width: 30px;height: 45px ">selfend</td><td style="width: 30px;height: 45px ">quallity</td>
                 </tr> -->
@@ -296,8 +296,8 @@
         title: '#',
         sortable:true
     }, {
-        field: 'seqence',
-        title: 'seqence',
+        field: 'sequence',
+        title: 'sequence',
         sortable:true
     }, {
         field: 'start',
@@ -359,8 +359,8 @@
         title: '#',
         sortable:true
     }, {
-        field: 'seqence',
-        title: 'seqence',
+        field: 'sequence',
+        title: 'sequence',
         sortable:true
     }, {
         field: 'start',

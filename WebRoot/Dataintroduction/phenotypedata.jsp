@@ -61,7 +61,7 @@
 				<div id="my-panel2" class="my-panel">
 					<p style="margin-top:20px;">
 						The population was planted in five different provinces in the
-						summer of 2014, as shown in the map and 20 traits were
+						summer of 2014, as shown in the map and 23 traits were
 						investigated. Phenotype data in 5 locations
 						respectivelyDownload Blup phenotype dataDownload
 					</p>
@@ -183,6 +183,21 @@
 							<td>TL</td>
 							<td>Tassel length</td>
 							<td>雄穗主轴长度</td>
+						</tr>
+						<tr>
+							<td>ATI</td>
+							<td>anthesis and tasseling interval</td>
+							<td>抽雄和散粉的间距</td>
+						</tr>
+						<tr>
+							<td>STI</td>
+							<td>silking and tasseling interval</td>
+							<td>吐丝和抽雄的间距</td>
+						</tr>
+						<tr>
+							<td>SAI</td>
+							<td>silking and anthesis interval</td>
+							<td>吐丝和散粉的间距</td>
 						</tr>
 					</tbody>
 				</table>

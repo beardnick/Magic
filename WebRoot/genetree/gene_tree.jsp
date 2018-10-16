@@ -35,7 +35,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link href="Css/main.css" rel="stylesheet"/>
         <script src="genetree/gene_tree_data.js"></script>
         <script src="genetree/jquery.min.js" type="text/javascript"></script>
-    </head>
+		<!-- <script src="js/bootstrap.min.js" type="text/javascript"></script> -->
+<!--         <script type="text/javascript">
+		$(function() {
+			$(".dot").tooltip();
+		});
+        </script>
+ -->    </head>
     <body>
     <s:action name="genetree.action" executeResult="true" />
     	 <%@ include file="../ListHeader.jsp"%>
@@ -133,7 +139,7 @@ for(var i=0; i<rstlength; i++){
 		//var gyY = topHeight+1000+yTemp;
 		yTemp += parseInt(eachRst[k].height);
 
-		html += '<rect x="'+rst.x+'" y="'+gyY+'" width="'+gyWidth+'" height="'+eachRst[k].height+'" style="fill:'+eachRst[k].color+';"/>';//stroke:#797677;stroke-width:1;
+		html += '<rect x="'+rst.x+'" y="'+gyY+'" width="'+gyWidth+'" height="'+eachRst[k].height+'" style="fill:'+eachRst[k].color+'"/>';//stroke:#797677;stroke-width:1;
 		var eachYZ = eachRst[k].children;//每一组因子
 		var yzlength = eachYZ.length;
 		if(eachRst[k].id=='space')
@@ -192,7 +198,8 @@ for(var i=0; i<rstlength; i++){
 			if(j<circleNum){
 				if(eachYZ[j].type == 'SV_GWAS' || eachYZ[j].type == 'sGWAS'){
 					eachYZ[j].type = 'circle';
-					html += '<circle filter="'+eachYZ[j].filter+'" cx="'+circlex+'" cy="'+circley+'" r="'+r+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" fill="'+eachYZ[j].color+'"/>';
+					// title="start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value
+					html += '<circle  filter="'+eachYZ[j].filter+'" cx="'+circlex+'" cy="'+circley+'" r="'+r+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" fill="'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
 				}else if(eachYZ[j].type == 'BIN_GWAS' || eachYZ[j].type == 'hGWAS'){
 					eachYZ[j].type = 'triangle';
 					var x1 = circlex-Math.sqrt(3)/2*r;
@@ -201,7 +208,7 @@ for(var i=0; i<rstlength; i++){
 					var y1 = circley-r/2;
 					var y2 = circley-r/2;
 					var y3 = circley+r;
-					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x1+','+y1+' '+x2+','+y2+' '+x3+','+y3+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" style="fill:'+eachYZ[j].color+';"/>';
+					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x1+','+y1+' '+x2+','+y2+' '+x3+','+y3+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" style="fill:'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></polygon>';
 				}
 				circlex = circlex+2*r;
 			}else{
@@ -211,7 +218,7 @@ for(var i=0; i<rstlength; i++){
 				var circlex2 = rst.x+lineLength+gyWidth+2*r*(j%circleNum);
 				if(eachYZ[j].type == 'SV_GWAS' || eachYZ[j].type == 'sGWAS'){
 					eachYZ[j].type = 'circle';
-					html += '<circle filter="'+eachYZ[j].filter+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" cx="'+circlex2+'" cy="'+circley2+'" r="'+r+'" fill="'+eachYZ[j].color+'"/>';
+					html += '<circle filter="'+eachYZ[j].filter+'" onclick="clickYZ('+eachYZ[j].start+',\''+eachYZ[j].end+'\','+eachYZ[j].value+')" cx="'+circlex2+'" cy="'+circley2+'" r="'+r+'" fill="'+eachYZ[j].color+'"/><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
 				}else if(eachYZ[j].type == 'BIN_GWAS' || eachYZ[j].type == 'hGWAS'){
 					eachYZ[j].type = 'triangle';
 					var x21 = circlex2-Math.sqrt(3)/2*r;
@@ -220,7 +227,7 @@ for(var i=0; i<rstlength; i++){
 					var y21 = circley2-r/2;
 					var y22 = circley2-r/2;
 					var y23 = circley2+r;
-					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x21+','+y21+' '+x22+','+y22+' '+x23+','+y23+'" onclick="alert(222)" style="fill:'+eachYZ[j].color+';"/>';
+					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x21+','+y21+' '+x22+','+y22+' '+x23+','+y23+'" onclick="alert(222)" style="fill:'+eachYZ[j].color+'"/><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></polygon>';
 				}
 			}
 		}
@@ -231,7 +238,8 @@ treeNode.innerHTML = html;
 
 //点击
 function clickYZ(start,end,value){
-	alert("start:"+start+"\nend:"+end+"\nPvalue="+value);
+	// alert("start:"+start+"\nend:"+end+"\nPvalue="+value);
+	// window.location('')
 }
 
 
@@ -438,14 +446,14 @@ function setFilterPan(tree){
 				html += '<div onclick="filtercircle(\''+'circle'+'\')" class="filter-item">'+
 					'<div style="background:'+data2[i].color+';width:20px;height:20px;border-radius:10px;float:left;"></div>'+
 					'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
-					'<div style="width:100%;float:left;font-size:10px;">SV_GWAS sGWAS: '+data2[i].filter+'</div>'+
+					'<div style="width:100%;float:left;">sGWAS: '+data2[i].filter+'</div>'+
 				'</div>';
 		}
 		else{
 			html += '<div onclick="filtertriangle(\''+'triangle'+'\')" class="filter-item">'+
 				'<div style="border-top:20px solid '+data2[i].color+';border-left:10px solid transparent;border-right:10px solid transparent;float:left;"></div>'+
 				'<div style="background:#398A96;color:white;text-align:center;float:right;width:40px;height:20px;border-radius:10px;">'+data2[i].num+'</div>'+
-				'<div style="width:100%;float:left;font-size:10px;">BIN_GWAS hGWAS: '+data2[i].filter+'</div>'+
+				'<div style="width:100%;float:left;">hGWAS: '+data2[i].filter+'</div>'+
 			'</div>';
 		}
 	}

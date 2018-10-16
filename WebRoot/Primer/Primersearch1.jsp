@@ -69,7 +69,6 @@
 									<option style="width:150px" value="V3.25">V3.25</option>
 									<option style="width:150px" value="HZS">HZS</option>
 									<option style="width:150px" value="V4">V4</option>
-									<option style="width:150px" value="PAN">PAN</option>
 								</select>
 						</div>
                         </div>
