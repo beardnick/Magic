@@ -218,7 +218,7 @@ public class Blast extends ActionSupport{
             }
             else if(database.equals("V3.25"))
             {
-                datafile="E:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25";
+                datafile="E:\\Magic\\blast\\v3.25\\Zea_mays.AGPv3.25.database";
             }
             else if(database.equals("V4"))
             {
