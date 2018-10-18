@@ -199,7 +199,7 @@ for(var i=0; i<rstlength; i++){
 				if(eachYZ[j].type == 'SV_GWAS' || eachYZ[j].type == 'sGWAS'){
 					eachYZ[j].type = 'circle';
 					// title="start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value
-					html += '<circle  filter="'+eachYZ[j].filter+'" cx="'+circlex+'" cy="'+circley+'" r="'+r+'" onclick="clickYZ('+r+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" fill="'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
+					html += '<circle  filter="'+eachYZ[j].filter+'" cx="'+circlex+'" cy="'+circley+'" r="'+r+'" onclick="clickYZ('+eachYZ[j].Chr+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" fill="'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
 				}else if(eachYZ[j].type == 'BIN_GWAS' || eachYZ[j].type == 'hGWAS'){
 					eachYZ[j].type = 'triangle';
 					var x1 = circlex-Math.sqrt(3)/2*r;
@@ -208,7 +208,7 @@ for(var i=0; i<rstlength; i++){
 					var y1 = circley-r/2;
 					var y2 = circley-r/2;
 					var y3 = circley+r;
-					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x1+','+y1+' '+x2+','+y2+' '+x3+','+y3+'" onclick="clickYZ('+r+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" style="fill:'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></polygon>';
+					html += '<polygon filter="'+eachYZ[j].filter+'" points="'+x1+','+y1+' '+x2+','+y2+' '+x3+','+y3+'" onclick="clickYZ('+eachYZ[j].Chr+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" style="fill:'+eachYZ[j].color+'"><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></polygon>';
 				}
 				circlex = circlex+2*r;
 			}else{
@@ -218,7 +218,7 @@ for(var i=0; i<rstlength; i++){
 				var circlex2 = rst.x+lineLength+gyWidth+2*r*(j%circleNum);
 				if(eachYZ[j].type == 'SV_GWAS' || eachYZ[j].type == 'sGWAS'){
 					eachYZ[j].type = 'circle';
-					html += '<circle filter="'+eachYZ[j].filter+'" onclick="clickYZ('+r+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" cx="'+circlex2+'" cy="'+circley2+'" r="'+r+'" fill="'+eachYZ[j].color+'"/><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
+					html += '<circle filter="'+eachYZ[j].filter+'" onclick="clickYZ('+eachYZ[j].Chr+',\''+eachYZ[j].filter+'\','+eachYZ[j].start+','+eachYZ[j].end+')" cx="'+circlex2+'" cy="'+circley2+'" r="'+eachYZ[j].chr+'" fill="'+eachYZ[j].color+'"/><title>start:'+eachYZ[j].start+'\nend:'+eachYZ[j].end+'\nPvalue:'+eachYZ[j].value+ '</title></circle>';
 				}else if(eachYZ[j].type == 'BIN_GWAS' || eachYZ[j].type == 'hGWAS'){
 					eachYZ[j].type = 'triangle';
 					var x21 = circlex2-Math.sqrt(3)/2*r;
