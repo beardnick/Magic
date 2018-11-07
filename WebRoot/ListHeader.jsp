@@ -40,8 +40,9 @@
                     
                 </div>
                 <div class="list">
-                    GUIDE
+                    <a href="/Magic/guide.jsp">GUIDE</a>
                     
+
                 </div>
                 <div class="list">
                 	<a href="/Magic/contact.jsp">CONTACT</a>

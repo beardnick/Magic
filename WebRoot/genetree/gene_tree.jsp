@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 <div class="describe" style="margin-left:50px;">
                 <h3>GWAS Diagram</h3>
                 <br/>
-                <p>The Visualisation of all SNP-trait associations with genome-wide significance (2.79x10-8).</p>
+                <p>The Visualisation of all SNP-trait associations with genome-wide significance (2.79x10-8).Concerned results can be filtered via tracks on side of the page. The trait name and detailed information display when hovering over it. And clicking on it links to the relevant entry in the GWAS Search.</p>
             </div>
       <div class="content" style="height:1450px;width:100%" >
         <div class="content" style="margin-top:60px;">
