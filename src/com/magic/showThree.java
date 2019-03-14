@@ -95,7 +95,7 @@ public class showThree extends ActionSupport{
 				traits = traits + "trait = '" + traitArray[i] + "' or ";
 			}
 		}
-
+        // FIXME: sql is not correct, write the sql again
 		if(search.equals("first")){
 			//sql = "select Trait,Marker,Locus,Site,p,markerR2,snp,allele,gene,transcript,annotation from sig_snp_annotation,magic_all_sig_snp where magic_all_sig_snp.Marker=sig_snp_annotation.snp AND Locus='" +chr+ "'AND  Site BETWEEN "+start+" AND "+end+" AND (";
             sql = "select Trait,magic_all_sig_snp.snp,Chr,Pos,p,magic_all_sig_snp.snp,allele,gene,transcript,annotation from sig_snp_annotation,magic_all_sig_snp where magic_all_sig_snp.snp=sig_snp_annotation.snp AND Chr='" +chr+ "'AND  Pos BETWEEN "+start+" AND "+end+" AND (";

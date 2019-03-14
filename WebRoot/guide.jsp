@@ -177,7 +177,9 @@ p{
             <p>Single-variant-based GWAS and haplotype-based GWAS results of 23 agronomic traits for poplulation were available in this section. And detailed information of significant SNPs(p&lt;2.79x10-8) for you interested traits can be queried by limiting genomic coordinate or gene ID.</p>
             <p>The results show like this:</p>
         <div style="text-align:center">
-            <img src="images\guide_gentree.png"></img>
+            <img src="images\gwas_search_column.PNG"></img>
+            <img src="images\gwas_dot.PNG"></img>
+            <img src="images\gwas_table.PNG"></img>
         </div>
         </div>
     </div>
@@ -191,9 +193,7 @@ p{
                 </div>
             <p>We integrated the GWAS results for multiple traits obtained by diverse methods, and dynamic showing their distribution characteristics in whole chromosome range. Concerned results can be filtered via tracks on side of the page. The trait name and detailed information display when hovering over it. And clicking on it links to the relevant entry in the GWAS Search.</p>
         <div style="text-align:center">
-            <img src="images\gwas_search_column.PNG"></img>
-            <img src="images\gwas_dot.PNG"></img>
-            <img src="images\gwas_table.PNG"></img>
+            <img src="images\guide_gentree.png"></img>
         </div>
         </div>
     </div>
